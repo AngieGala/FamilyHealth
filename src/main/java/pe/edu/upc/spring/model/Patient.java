@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name="Paciente")
 public class Patient implements Serializable{
@@ -36,6 +38,7 @@ public class Patient implements Serializable{
 	private int bednumberPatient;
 	
 	@Column(name="fechaPaciente", nullable=false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date datePatient;
 
 	public Patient() {
