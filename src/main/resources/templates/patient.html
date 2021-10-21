@@ -34,11 +34,60 @@
     				
     				<div class="form-group">
     				
+    				
+    				
+    				
     					<label for="nombre">NOMBRE:</label> <input type="text" 
     						class="form-control" th:field="*{namePatient}" id="nombre"></input>
 
 						<div class="alert alert-danger" th:if="${#fields.hasErrors('namePatient')}" 
 								th:errors="*{namePatient}"></div>
+						
+						
+						
+						
+						<label for="apellido">APELLIDO:</label> <input type="text" 
+    						class="form-control" th:field="*{lastnamePatient}" id="apellido"></input>
+
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('lastnamePatient')}" 
+								th:errors="*{lastnamePatient}"></div>
+								
+						
+						
+						
+						<label for="dni">DNI:</label> <input type="text" 
+    						class="form-control" th:field="*{dniPatient}" id="dni"></input>
+
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('dniPatient')}" 
+								th:errors="*{dniPatient}"></div>
+										
+						
+						
+						
+						<label for="edad">EDAD:</label> <input type="text" 
+    						class="form-control" th:field="*{agePatient}" id="edad"></input>
+
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('agePatient')}" 
+								th:errors="*{agePatient}"></div>
+						
+										
+						
+						
+						<label for="edad">EDAD:</label> <input type="text" 
+    						class="form-control" th:field="*{agePatient}" id="edad"></input>
+
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('agePatient')}" 
+								th:errors="*{agePatient}"></div>
+						
+										
+						
+						
+						<label for="ncama"># DE CAMA:</label> <input type="text" 
+    						class="form-control" th:field="*{bednumberPatient}" id="ncama"></input>
+
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('bednumberPatient')}" 
+								th:errors="*{bednumberPatient}"></div>
+								
 						
 						
 						
@@ -52,7 +101,10 @@
 						
     					
     					
+    					
     				</div>
+    				
+    				
     				
     			</div>
     			<button type="submit" class="btn btn-primary">Aceptar</button>
