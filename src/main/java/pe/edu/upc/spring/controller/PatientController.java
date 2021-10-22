@@ -120,15 +120,15 @@ public class PatientController {
 		listaPacientes = pService.buscarNombre(patient.getNamePatient()); //buscando 1
 		
 		if(listaPacientes.isEmpty()) {
-			listaPacientes = pService.buscarApellido(patient.getLastnamePatient());
+			listaPacientes = pService.buscarApellido(patient.getNamePatient());
 		}
 		
 		if(listaPacientes.isEmpty()) {
-			listaPacientes = pService.buscarDNI(patient.getDniPatient());
+			listaPacientes = pService.buscarDNI(patient.getNamePatient());
 		}
 		
 		if(listaPacientes.isEmpty()) {
-			listaPacientes = pService.buscarCama(patient.getBednumberPatient());
+			listaPacientes = pService.buscarCama(Integer.parseInt(patient.getNamePatient()));
 		}
 		
 		if(listaPacientes.isEmpty()) {

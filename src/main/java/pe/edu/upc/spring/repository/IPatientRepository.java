@@ -21,7 +21,7 @@ public interface IPatientRepository extends JpaRepository<Patient, Integer>{
 	@Query("from Patient p where p.dniPatient like %:dniPatient%")
 	List<Patient> buscarDNI(@Param("dniPatient") String dniPatient);
 	
-	@Query("from Patient p where p.bednumberPatient like %:bednumberPatient%")
+	@Query("from Patient p where p.bednumberPatient = :bednumberPatient")
 	List<Patient> buscarCama(@Param("bednumberPatient") int bednumberPatient);
 	
 	List<Patient> findByDatePatient(Date datePatient);
