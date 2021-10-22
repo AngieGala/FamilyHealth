@@ -38,19 +38,24 @@ public class Medication implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="idPM", nullable=false)
 	private MedicalStaff medicalstaff;
+	
+	@ManyToOne
+	@JoinColumn(name="idPatient", nullable=false)
+	private Patient patient;
 
 	public Medication() {
 		super();
 	}
 
 	public Medication(int idMedication, Medicine medicine, MedicineStatus medicinestatus, Date dateMedication,
-			MedicalStaff medicalstaff) {
+			MedicalStaff medicalstaff, Patient patient) {
 		super();
 		this.idMedication = idMedication;
 		this.medicine = medicine;
 		this.medicinestatus = medicinestatus;
 		this.dateMedication = dateMedication;
 		this.medicalstaff = medicalstaff;
+		this.patient = patient;
 	}
 
 	public int getIdMedication() {
@@ -92,5 +97,15 @@ public class Medication implements Serializable{
 	public void setMedicalstaff(MedicalStaff medicalstaff) {
 		this.medicalstaff = medicalstaff;
 	}
+
+	public Patient getPatient() {
+		return patient;
+	}
+
+	public void setPatient(Patient patient) {
+		this.patient = patient;
+	}
+
+	
 	
 }
