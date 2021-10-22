@@ -30,7 +30,7 @@
     			<div class="form-group">
     			
     				<label for="idpatient">ID:</label> <input type="text" 
-    					class="form-control" th:field="*{idpatient}"></input>
+    					class="form-control" th:field="*{idPatient}"></input>
     				
     				<div class="form-group">
     				
@@ -62,15 +62,6 @@
 								th:errors="*{dniPatient}"></div>
 										
 						
-						
-						
-						<label for="edad">EDAD:</label> <input type="text" 
-    						class="form-control" th:field="*{agePatient}" id="edad"></input>
-
-						<div class="alert alert-danger" th:if="${#fields.hasErrors('agePatient')}" 
-								th:errors="*{agePatient}"></div>
-						
-										
 						
 						
 						<label for="edad">EDAD:</label> <input type="text" 
