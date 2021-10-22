@@ -54,12 +54,18 @@
     								<th class="text-center">OPERACION</th>
     							</tr>
     						</thead>
+    						
     						<tbody>
-    							<tr th:each="rac: ${listaRazas}">
-    								<td th:text="${rac.idPatient}"></td>
-    								<td th:text="${rac.namePatient}"></td>
-    								<td><a th:href="@{/patient/eliminar?id=}+${rac.idPatient}">Eliminar</a></td>    								
-    								<td><a th:href="@{'/patient/modificar/'}+${rac.idPatient}">Modificar</a></td>
+    							<tr th:each="pat: ${listaPacientes}">
+    								<td th:text="${pat.idPatient}"></td>
+    								<td th:text="${pat.namePatient}"></td>
+    								<td th:text="${pat.lastnamePatient}"></td>
+    								<td th:text="${pat.dniPatient}"></td>
+    								<td th:text="${pat.agePatient}"></td>
+    								<td th:text="${pat.bednumberPatient}"></td>
+    								<td th:text="${#dates.format(pat.datePatient,'dd/MM/yyyy')}"></td>
+    								<td><a th:href="@{/patient/eliminar?id=}+${pat.idPatient}">Eliminar</a></td>    								
+    								<td><a th:href="@{'/patient/modificar/'}+${pat.idPatient}">Modificar</a></td>
     							</tr>
     						</tbody>
     					</table> 
