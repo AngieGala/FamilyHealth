@@ -1,5 +1,6 @@
 package pe.edu.upc.spring.controller;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -94,4 +95,48 @@ public class PatientController {
 		model.put("listaPacientes", pService.listar());
 		return "listPatient";
 	}
+	
+	@RequestMapping("/listarId")
+	public String listarId(Map<String, Object> model, @ModelAttribute Patient patient ) 
+		throws ParseException
+	{
+		pService.listarId(patient.getIdPatient());
+		return "listPet";
+	}
+	
+	@RequestMapping("/irBuscar")
+	public String irBuscar(Model model ) {
+		model.addAttribute("patient", new Patient());
+		return "buscar";
+	}
+	
+	@RequestMapping("/buscar")
+	public String buscar(Map<String, Object> model, @ModelAttribute Patient patient ) throws ParseException
+	{
+		//vamos a buscar por nombre, apellido, dni, o numero de cama
+		
+		List<Patient> listaPacientes;
+		patient.setNamePatient(patient.getNamePatient());//capturo lo de la caja de texto
+		listaPacientes = pService.buscarNombre(patient.getNamePatient()); //buscando 1
+		
+		if(listaPacientes.isEmpty()) {
+			listaPacientes = pService.buscarApellido(patient.getLastnamePatient());
+		}
+		
+		if(listaPacientes.isEmpty()) {
+			listaPacientes = pService.buscarDNI(patient.getDniPatient());
+		}
+		
+		if(listaPacientes.isEmpty()) {
+			listaPacientes = pService.buscarCama(patient.getBednumberPatient());
+		}
+		
+		if(listaPacientes.isEmpty()) {
+			model.put("mensaje", "No existen coincidencias");
+		}
+		
+		model.put("listaPacientes", listaPacientes);
+		return "buscar";
+	}
+	
 }
