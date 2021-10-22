@@ -38,7 +38,17 @@ public class PatientServiceImpl implements IPatientService{
 	public Optional<Patient> listarId(int idPatient) {
 		return dPatient.findById(idPatient);
 	}
+	
+	@Override
+	public Optional<Patient> buscarId(int idPatient) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
+	
+	
+	
+	
 	@Override
 	@Transactional(readOnly = true)
 	public List<Patient> listar() {
@@ -49,6 +59,24 @@ public class PatientServiceImpl implements IPatientService{
 	@Transactional(readOnly = true)
 	public List<Patient> buscarNombre(String namePatient) {
 		return dPatient.buscarNombre(namePatient);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Patient> buscarApellido(String lastnamePatient) {
+		return dPatient.buscarApellido(lastnamePatient);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Patient> buscarDNI(String dniPatient) {
+		return dPatient.buscarDNI(dniPatient);
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<Patient> buscarCama(int bednumberPatient) {
+		return dPatient.buscarCama(bednumberPatient);
 	}
 	
 }
