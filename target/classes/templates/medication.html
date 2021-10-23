@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+	
+		<meta charset="ISO-8859-1"></meta>
+		<title>Medicacion</title>
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		
+		<link 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+				rel="stylesheet" id="bootstrap-css">
+		</link>
+
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+		
+		<script type="text/javascript" th:src="@{/js/medication.js}"></script>
+				
+	</head>
+
+	<body>
+    	<div th:replace="fragments/header :: header"></div>
+    	<div class="container">
+    	
+    		<form th:action="@{/medication/registrar}" method="post" th:object="${medication}" 
+    			
+    			enctype="multipart/form-data">
+    			<div class="form-group">
+    			
+    				<label for="idmedication">ID:</label> <input type="text" 
+    					class="form-control" th:field="*{idMedication}"></input>
+    				
+    				<div class="form-group">
+    				
+    		
+    					
+								
+						<label for="medicamento">NOMBRE DE MEDICAMENTO:</label>
+    					<select class="form-control" th:field="*{medicine.idMedicine}">
+    					<option th:each="medic: ${listaMedicinas}"
+    							th:value="${medic.idMedicine}"
+    							th:text="${medic.nameMedicine}"
+    							th:selected="(${medic.idMedicine} == *{medicine.idMedicine})">
+    							</option>
+    					</select>
+								
+						
+						
+						<label for="fechaMedicacion">FECHA MEDICACION </label> <input
+							type="date" th:field="*{dateMedication}" class="form-control"
+							id="fechaMedicacion"></input>
+
+						<div class="alert alert-danger"
+							th:if="${#fields.hasErrors('dateMedication')}"
+							th:errors="*{dateMedication}"></div>
+						
+						
+									
+						<label for="estadomedicamento">ESTADO DE MEDICAMENTO:</label>
+    					<select class="form-control" th:field="*{medicinestatus.idEDLM}">
+    					<option th:each="estatus: ${listaEstadoMedicina}"
+    							th:value="${estatus.idEDLM}"
+    							th:text="${estatus.nameEDLM}"
+    							th:selected="(${estatus.idEDLM} == *{medicinestatus.idEDLM})">
+    							</option>
+    					</select>	
+								
+						
+								
+								<label for="personalmedico">PERSONAL MEDICO:</label>
+    					<select class="form-control" th:field="*{medicalstaff.idPM}">
+    					<option th:each="personal: ${listaPersonalMedico}"
+    							th:value="${personal.idPM}"
+    							th:text="${personal.namePM}"
+    							th:selected="(${personal.idPM} == *{medicalstaff.idPM})">
+    							</option>
+    					</select>	
+								
+						
+					
+						
+							<label for="paciente">PACIENTE:</label>
+    					<select class="form-control" th:field="*{patient.idPatient}">
+    					<option th:each="pat: ${listaPacientes}"
+    							th:value="${pat.idPatient}"
+    							th:text="${pat.namePatient}"
+    							th:selected="(${pat.idPatient} == *{patient.idPatient})">
+    							</option>
+    					</select>	
+						
+					
+    				</div>
+    				
+    				
+    			</div>
+    			<button type="submit" class="btn btn-primary">Aceptar</button>
+    			<a href="/medication/listar" class="btn btn-danger">Cancelar</a>
+    		</form>
+    	</div>
+    	<div th:replace="fragments/footer :: footer"></div>
+	</body>
+
+</html>
