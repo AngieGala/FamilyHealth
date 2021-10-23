@@ -101,7 +101,7 @@ public class PatientController {
 		throws ParseException
 	{
 		pService.listarId(patient.getIdPatient());
-		return "listPet";
+		return "listPatient";
 	}
 	
 	@RequestMapping("/irBuscar")
