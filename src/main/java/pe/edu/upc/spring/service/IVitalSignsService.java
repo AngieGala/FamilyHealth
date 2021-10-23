@@ -9,6 +9,8 @@ public interface IVitalSignsService {
 	public boolean grabar (VitalSigns vitalsigns);
 	public void eliminar(int idSV);
 	public Optional<VitalSigns> listarId(int idSV);
+	public Optional<VitalSigns> buscarId(int idSV);
+	
 	public List<VitalSigns> listar();
 	public List<VitalSigns> buscarPaciente(String namePatient);
 }
