@@ -17,7 +17,7 @@
 	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
 		</script>
 
-<script type="text/javascript" th:src="@{/js/patient.js}"></script>
+<script type="text/javascript" th:src="@{/js/vitalsigns.js}"></script>
 
 </head>
 
@@ -26,17 +26,17 @@
 	<div class="container-fluid">
 		<div class="row clearfix">
 			<h1 class="btn btn-primary btn-md left-block">Busquedas</h1>
-			<form th:action="@{/patient/buscar}" method="post" th:object="${patient}">
+			<form th:action="@{/vitalsigns/buscar}" method="post" th:object="${patient}">
 				<div class="form-group">
 					<div class="col-sm-12">
 						<input type="text" class="form-control" th:field="*{namePatient}"
 							id="nombre"
-							placeholder="Ingrese dato a buscar por Nombre, Apellido, DNI o Numero de cama">
+							placeholder="Ingrese dato a buscar por Nombre del paciente">
 						</input>
 
 						<div align="left">
 							<button type="submit" class="btn btn-primary">Buscar</button>
-							<a href="/patient/listar" class="btn btn-dark">Cancelar</a>
+							<a href="/vitalsigns/listar" class="btn btn-dark">Cancelar</a>
 
 						</div>
 					</div>
@@ -55,24 +55,22 @@
 			<thead>
 				<tr>
 					<th class="text-center">CODIGO</th>
-    				<th class="text-center">NOMBRE</th>
-    				<th class="text-center">APELLIDO</th>
-    				<th class="text-center">DNI</th>
-    				<th class="text-center">EDAD</th>
-    				<th class="text-center"># DE CAMA</th>
-    				<th class="text-center">FECHA INGRESO</th>
+    				<th class="text-center">SATURACION</th>
+    				<th class="text-center">PRESION</th>
+    				<th class="text-center">TEMPERATURA</th>
+    				<th class="text-center">FECHA</th>
+    				<th class="text-center">PACIENTE</th>
 
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="pat: ${listaPacientes}">
-					<td th:text="${pat.idPatient}"></td>
-    				<td th:text="${pat.namePatient}"></td>
-    				<td th:text="${pat.lastnamePatient}"></td>
-    				<td th:text="${pat.dniPatient}"></td>
-    				<td th:text="${pat.agePatient}"></td>
-    				<td th:text="${pat.bednumberPatient}"></td>
-    				<td th:text="${#dates.format(pat.datePatient,'dd/MM/yyyy')}"></td>
+				<tr th:each="vs: ${listaSignosVitales}">
+					<td th:text="${vs.idSV}"></td>
+    				<td th:text="${vs.saturationSV}"></td>
+    				<td th:text="${vs.pressureSV}"></td>
+    				<td th:text="${vs.temperatureSV}"></td>
+    				<td th:text="${#dates.format(vs.dateSV,'dd/MM/yyyy')}"></td>
+    				<td th:text="${vs.patient.namePatient}"></td>
 
 				</tr>
 			</tbody>
