@@ -34,7 +34,7 @@
     				
     				<div class="form-group">
     				
-    		
+
     					
 								
 						<label for="medicamento">NOMBRE DE MEDICAMENTO:</label>
@@ -46,6 +46,7 @@
     							</option>
     					</select>
 								
+
 						
 						
 						<label for="fechaMedicacion">FECHA MEDICACION </label> <input
@@ -55,8 +56,7 @@
 						<div class="alert alert-danger"
 							th:if="${#fields.hasErrors('dateMedication')}"
 							th:errors="*{dateMedication}"></div>
-						
-						
+
 									
 						<label for="estadomedicamento">ESTADO DE MEDICAMENTO:</label>
     					<select class="form-control" th:field="*{medicinestatus.idEDLM}">

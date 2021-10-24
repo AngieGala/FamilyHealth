@@ -16,14 +16,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sun.el.parser.ParseException;
 
-import pe.edu.upc.spring.model.Patient;
-import pe.edu.upc.spring.service.IPatientService;
+import pe.edu.upc.spring.model.Medication;
+import pe.edu.upc.spring.service.IMedicationService;
 
 @Controller
-@RequestMapping("/patient")
-public class PatientController {
+@RequestMapping("/medication")
+public class MedicationController {
 	@Autowired
-	private IPatientService pService;
+	private IMedicationService mService;
 	
 	@RequestMapping("/bienvenido")
 	public String irPaginaBienvenida() {
@@ -31,30 +31,30 @@ public class PatientController {
 	}
 	
 	@RequestMapping("/")
-	public String irPaginaListadoPacientes(Map<String, Object> model) {
-		model.put("listaPacientes", pService.listar());
-		return "listPatient"; // "listPatient" es una pagina del frontEnd para listar
+	public String irPaginaListadoMedicamentos(Map<String, Object> model) {
+		model.put("listaMedicamentos", mService.listar());
+		return "listMedication"; // "listPatient" es una pagina del frontEnd para listar
 	}
 	
 	@RequestMapping("/irRegistrar")
 	public String irPaginaRegistrar (Model model) {
-		model.addAttribute("patient", new Patient());
-		return "patient"; // "patient" es una pagina del frontend para insertar y/o modificar
+		model.addAttribute("medication", new Medication());
+		return "medication"; // "patient" es una pagina del frontend para insertar y/o modificar
 	}
 	
 	@RequestMapping("/registrar")
-	public String registrar(@ModelAttribute Patient objPatient, BindingResult binRes, Model model)
+	public String registrar(@ModelAttribute Medication objMedication, BindingResult binRes, Model model)
 		throws ParseException
 	{
 		if(binRes.hasErrors())
-			return "patient";
+			return "medication";
 		else {
-			boolean flag = pService.grabar(objPatient);
+			boolean flag = mService.grabar(objMedication);
 			if(flag)
-				return "redirect:/patient/listar";
+				return "redirect:/medication/listar";
 			else {
 				model.addAttribute("mensaje", "F, Ocurrio algo, LUZ ROJA xD");
-				return "redirect:/patient/irRegistrar";
+				return "redirect:/medication/irRegistrar";
 			}
 		}
 	}
@@ -63,14 +63,14 @@ public class PatientController {
 	public String modificar(@PathVariable int id, Model model, RedirectAttributes objRedir)
 		throws ParseException
 	{
-		Optional<Patient> objPatient = pService.listarId(id);
-		if(objPatient == null) {
+		Optional<Medication> objMedication = mService.listarId(id);
+		if(objMedication == null) {
 			objRedir.addFlashAttribute("mensaje", "F, Ocurrio algo, LUZ ROJA xD");
-			return "redirect:/patient/listar";
+			return "redirect:/medication/listar";
 		}
 		else {
-			model.addAttribute("patient", objPatient);
-			return "patient";
+			model.addAttribute("medication", objMedication);
+			return "medication";
 		}
 	}
 	
@@ -78,64 +78,53 @@ public class PatientController {
 	public String eliminar(Map<String, Object> model, @RequestParam(value="id") Integer id) {
 		try {
 			if(id!=null && id>0) {
-				pService.eliminar(id);
-				model.put("listaPacientes", pService.listar());
+				mService.eliminar(id);
+				model.put("listaMedicamentos", mService.listar());
 			}
 		}
 		catch(Exception ex) {
 			System.out.println(ex.getMessage());
 			model.put("mensaje", "Ocurrio un error");
-			model.put("listaPacientes", pService.listar());
+			model.put("listaMedicamentos", mService.listar());
 		}
-		return "listPatient";
+		return "listMedication";
 	}
 	
 	@RequestMapping("/listar")
 	public String listar(Map<String, Object> model) {
-		model.put("listaPacientes", pService.listar());
-		return "listPatient";
+		model.put("listaMedicamentos", mService.listar());
+		return "listMedication";
 	}
 	
 	@RequestMapping("/listarId")
-	public String listarId(Map<String, Object> model, @ModelAttribute Patient patient ) 
+	public String listarId(Map<String, Object> model, @ModelAttribute Medication medication ) 
 		throws ParseException
 	{
-		pService.listarId(patient.getIdPatient());
-		return "listPatient";
+		mService.listarId(medication.getIdMedication());
+		return "listMedication";
 	}
 	
 	@RequestMapping("/irBuscar")
 	public String irBuscar(Model model ) {
-		model.addAttribute("patient", new Patient());
+		model.addAttribute("medication", new Medication());
 		return "buscar";
 	}
 	
 	@RequestMapping("/buscar")
-	public String buscar(Map<String, Object> model, @ModelAttribute Patient patient ) throws ParseException
+	public String buscar(Map<String, Object> model, @ModelAttribute Medication medication ) throws ParseException
 	{
 		//vamos a buscar por nombre, apellido, dni, o numero de cama
 		
-		List<Patient> listaPacientes;
-		patient.setNamePatient(patient.getNamePatient());//capturo lo de la caja de texto
-		listaPacientes = pService.buscarNombre(patient.getNamePatient()); //buscando 1
+		List<Medication> listaMedicamentos;
+		medication.setPatient(medication.getPatient());//capturo lo de la caja de texto
+		listaMedicamentos = mService.buscarPaciente(medication.getPatient().getNamePatient()); //buscando 1
 		
-		if(listaPacientes.isEmpty()) {
-			listaPacientes = pService.buscarApellido(patient.getNamePatient());
-		}
 		
-		if(listaPacientes.isEmpty()) {
-			listaPacientes = pService.buscarDNI(patient.getNamePatient());
-		}
-		
-		if(listaPacientes.isEmpty()) {
-			listaPacientes = pService.buscarCama(Integer.parseInt(patient.getNamePatient()));
-		}
-		
-		if(listaPacientes.isEmpty()) {
+		if(listaMedicamentos.isEmpty()) {
 			model.put("mensaje", "No existen coincidencias");
 		}
 		
-		model.put("listaPacientes", listaPacientes);
+		model.put("listaMedicamentos", listaMedicamentos);
 		return "buscar";
 	}
 	

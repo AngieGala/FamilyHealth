@@ -13,4 +13,5 @@ import pe.edu.upc.spring.model.VitalSigns;
 public interface IVitalSignsRepository extends JpaRepository<VitalSigns, Integer>{
 	@Query("from VitalSigns vs where vs.patient.namePatient like %:namePatient%")
 	List<VitalSigns> buscarPaciente(@Param("namePatient") String namePatient);
+	
 }

@@ -38,6 +38,12 @@ public class VitalSignsServiceImpl implements IVitalSignsService{
 	public Optional<VitalSigns> listarId(int idSV) {
 		return dVitalSigns.findById(idSV);
 	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public Optional<VitalSigns> buscarId(int idSV) {
+		return dVitalSigns.findById(idSV);
+	}
 
 	@Override
 	@Transactional(readOnly = true)
@@ -50,5 +56,6 @@ public class VitalSignsServiceImpl implements IVitalSignsService{
 	public List<VitalSigns> buscarPaciente(String namePatient) {
 		return dVitalSigns.buscarPaciente(namePatient);
 	}
+
 	
 }
