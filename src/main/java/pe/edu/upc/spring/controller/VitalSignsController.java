@@ -114,25 +114,25 @@ public class VitalSignsController {
 
 	@RequestMapping("/irBuscar")
 	public String irBuscar(Model model) {
-		model.addAttribute("vitalsigns", new VitalSigns());
-		return "buscar";
+		model.addAttribute("patient", new Patient());
+		return "buscarvs";
 	}
 
 	@RequestMapping("/buscar")
-	public String buscar(Map<String, Object> model, @ModelAttribute VitalSigns vitalsigns) 
+	public String buscar(Map<String, Object> model, @ModelAttribute Patient patient) 
 		throws ParseException
 	{
 		//vamos a buscar por nombre de paciente
 		
 		List<VitalSigns> listaSignosVitales;
-		vitalsigns.setPatient(vitalsigns.getPatient());
-		listaSignosVitales = vsService.buscarPaciente(vitalsigns.getPatient().getNamePatient());
+		patient.setNamePatient(patient.getNamePatient());
+		listaSignosVitales = vsService.buscarPaciente(patient.getNamePatient());
 
 		if (listaSignosVitales.isEmpty()) {
 			model.put("mensaje", "No se encontro");
 		}
 		model.put("listaSignosVitales", listaSignosVitales);
-		return "buscar";
+		return "buscarvs";
 	}
 
 	
