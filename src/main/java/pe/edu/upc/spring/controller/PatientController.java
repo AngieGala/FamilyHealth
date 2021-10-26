@@ -1,5 +1,6 @@
 package pe.edu.upc.spring.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -111,7 +112,7 @@ public class PatientController {
 	}
 	
 	@RequestMapping("/buscar")
-	public String buscar(Map<String, Object> model, @ModelAttribute Patient patient ) throws ParseException
+	public String buscar(Map<String, Object> model, @ModelAttribute Patient patient ) throws ParseException, java.text.ParseException
 	{
 		//vamos a buscar por nombre, apellido, dni, o numero de cama
 		
@@ -131,6 +132,30 @@ public class PatientController {
 			listaPacientes = pService.buscarCama(Integer.parseInt(patient.getNamePatient()));
 		}
 		
+		if(listaPacientes.isEmpty()) {
+			model.put("mensaje", "No existen coincidencias");
+		}
+		
+		model.put("listaPacientes", listaPacientes);
+		return "buscar";
+	}
+	
+	@RequestMapping("/buscarFecha")
+	public String buscarfecha(Map<String, Object> model, @ModelAttribute Patient patient ) throws ParseException, java.text.ParseException
+	{
+		//vamos a buscar por nombre, apellido, dni, o numero de cama
+		
+		List<Patient> listaPacientes;
+		
+		patient.setDatePatient(patient.getDatePatient()); // capturo la fecha de la caja de texto
+		listaPacientes = pService.findByDatePatient(patient.getDatePatient()); // buscando
+		
+		/*
+		if(listaPacientes.isEmpty()) {
+			SimpleDateFormat formatter=new SimpleDateFormat("dd-MM-yyyy");
+			listaPacientes = pService.findByDatePatient(formatter.parse(patient.getNamePatient()));
+		}
+		*/
 		if(listaPacientes.isEmpty()) {
 			model.put("mensaje", "No existen coincidencias");
 		}

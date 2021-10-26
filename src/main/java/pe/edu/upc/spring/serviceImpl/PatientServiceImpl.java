@@ -1,5 +1,6 @@
 package pe.edu.upc.spring.serviceImpl;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -77,6 +78,11 @@ public class PatientServiceImpl implements IPatientService{
 	@Transactional(readOnly = true)
 	public List<Patient> buscarCama(int bednumberPatient) {
 		return dPatient.buscarCama(bednumberPatient);
+	}
+
+	@Override
+	public List<Patient> findByDatePatient(Date datePatient) {
+		return dPatient.findByDatePatient(datePatient);
 	}
 	
 }

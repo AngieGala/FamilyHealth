@@ -26,24 +26,41 @@
 	<div class="container-fluid">
 		<div class="row clearfix">
 			<h1 class="btn btn-primary btn-md left-block">Busquedas</h1>
+			
 			<form th:action="@{/patient/buscar}" method="post" th:object="${patient}">
 				<div class="form-group">
 					<div class="col-sm-12">
 						<input type="text" class="form-control" th:field="*{namePatient}"
 							id="nombre"
-							placeholder="Ingrese dato a buscar por Nombre, Apellido, DNI o Numero de cama">
+							placeholder="Ingrese dato a buscar por Nombre, Apellido, DNI o Numero de cama del Paciente">
 						</input>
 
 						<div align="left">
 							<button type="submit" class="btn btn-primary">Buscar</button>
-							<a href="/patient/listar" class="btn btn-dark">Cancelar</a>
+							<a href="/patient/listar" class="btn btn-danger">Cancelar</a>
 
 						</div>
 					</div>
 
 				</div>
+				<br/>
+			</form>
+			
+			<form th:action="@{/patient/buscarFecha}" method="post" th:object="${patient}">
+				<div class="form-group">
+					<div class="col-sm-12">
+						<input type="date" class="form-control" th:field="*{datePatient}"
+							id="fecha"
+							placeholder="Ingrese dato a buscar por Fecha de ingreso del Paciente">
+						</input>
 
+						<div align="left">
+							<button type="submit" class="btn btn-primary">Buscar</button>
+							<a href="/patient/listar" class="btn btn-danger">Cancelar</a>
+				</div>
+					</div>
 
+				</div>
 			</form>
 		</div>
 
