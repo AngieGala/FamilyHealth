@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.sun.el.parser.ParseException;
 
 import pe.edu.upc.spring.model.Medication;
+import pe.edu.upc.spring.model.Patient;
 import pe.edu.upc.spring.service.IMedicationService;
 
 @Controller
@@ -106,18 +107,18 @@ public class MedicationController {
 	
 	@RequestMapping("/irBuscar")
 	public String irBuscar(Model model ) {
-		model.addAttribute("medication", new Medication());
-		return "buscar";
+		model.addAttribute("patient", new Patient());
+		return "buscarm";
 	}
 	
 	@RequestMapping("/buscar")
-	public String buscar(Map<String, Object> model, @ModelAttribute Medication medication ) throws ParseException
+	public String buscar(Map<String, Object> model, @ModelAttribute Patient patient ) throws ParseException
 	{
-		//vamos a buscar por nombre, apellido, dni, o numero de cama
+		//vamos a buscar por nombre del paciente
 		
 		List<Medication> listaMedicamentos;
-		medication.setPatient(medication.getPatient());//capturo lo de la caja de texto
-		listaMedicamentos = mService.buscarPaciente(medication.getPatient().getNamePatient()); //buscando 1
+		patient.setNamePatient(patient.getNamePatient());//capturo lo de la caja de texto
+		listaMedicamentos = mService.buscarPaciente(patient.getNamePatient()); //buscando 1
 		
 		
 		if(listaMedicamentos.isEmpty()) {
@@ -125,7 +126,7 @@ public class MedicationController {
 		}
 		
 		model.put("listaMedicamentos", listaMedicamentos);
-		return "buscar";
+		return "buscarm";
 	}
 	
 }

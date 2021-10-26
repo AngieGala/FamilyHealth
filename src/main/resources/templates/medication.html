@@ -34,8 +34,10 @@
     				
     				<div class="form-group">
     				
-    		
-    					<label for="medicamento">NOMBRE DE MEDICAMENTO:</label>
+
+    					
+								
+						<label for="medicamento">NOMBRE DE MEDICAMENTO:</label>
     					<select class="form-control" th:field="*{medicine.idMedicine}">
     					<option th:each="medic: ${listaMedicinas}"
     							th:value="${medic.idMedicine}"
@@ -43,8 +45,8 @@
     							th:selected="(${medic.idMedicine} == *{medicine.idMedicine})">
     							</option>
     					</select>
-    					
-    					
+								
+
 						
 						
 						<label for="fechaMedicacion">FECHA MEDICACION </label> <input
@@ -54,10 +56,8 @@
 						<div class="alert alert-danger"
 							th:if="${#fields.hasErrors('dateMedication')}"
 							th:errors="*{dateMedication}"></div>
-						
-						
-						
-						
+
+									
 						<label for="estadomedicamento">ESTADO DE MEDICAMENTO:</label>
     					<select class="form-control" th:field="*{medicinestatus.idEDLM}">
     					<option th:each="estatus: ${listaEstadoMedicina}"
@@ -66,11 +66,10 @@
     							th:selected="(${estatus.idEDLM} == *{medicinestatus.idEDLM})">
     							</option>
     					</select>	
-    					
-    					
 								
 						
-    					<label for="personalmedico">PERSONAL MEDICO:</label>
+								
+								<label for="personalmedico">PERSONAL MEDICO:</label>
     					<select class="form-control" th:field="*{medicalstaff.idPM}">
     					<option th:each="personal: ${listaPersonalMedico}"
     							th:value="${personal.idPM}"
@@ -78,11 +77,11 @@
     							th:selected="(${personal.idPM} == *{medicalstaff.idPM})">
     							</option>
     					</select>	
-    					
-    					
 								
 						
-						<label for="paciente">PACIENTE:</label>
+					
+						
+							<label for="paciente">PACIENTE:</label>
     					<select class="form-control" th:field="*{patient.idPatient}">
     					<option th:each="pat: ${listaPacientes}"
     							th:value="${pat.idPatient}"
@@ -90,8 +89,6 @@
     							th:selected="(${pat.idPatient} == *{patient.idPatient})">
     							</option>
     					</select>	
-    					
-    					
 						
 					
     				</div>
