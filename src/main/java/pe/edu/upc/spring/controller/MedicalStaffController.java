@@ -20,6 +20,7 @@ import pe.edu.upc.spring.model.Patient;
 import pe.edu.upc.spring.model.TypeMedicalStaff;
 import pe.edu.upc.spring.model.VitalSigns;
 import pe.edu.upc.spring.service.IMedicalStaffService;
+import pe.edu.upc.spring.service.ITypeMedicalStaffService;
 
 @Controller
 @RequestMapping("/medicalstaff")
@@ -28,6 +29,9 @@ public class MedicalStaffController {
 	@Autowired
 	private IMedicalStaffService msService;
 	
+
+	@Autowired
+	private ITypeMedicalStaffService tmsService;
 	
 	@RequestMapping("/bienvenido")
 	public String irSVBienvenido() {
@@ -43,7 +47,7 @@ public class MedicalStaffController {
 	@RequestMapping("/irRegistrar")
 	public String irRegistrar(Model model) {
 		
-		model.addAttribute("listaPacientes", msService.listar());
+		model.addAttribute("listaTipoPersonalMedico", tmsService.listar());
 		
 		model.addAttribute("medicalstaff", new MedicalStaff());
 		model.addAttribute("typemedical", new TypeMedicalStaff());
@@ -54,7 +58,7 @@ public class MedicalStaffController {
 	@RequestMapping("/registrar")
 	public String registrar(@ModelAttribute MedicalStaff objMedicalStaff, BindingResult binRes, Model model) throws ParseException {
 		if (binRes.hasErrors()) {
-			model.addAttribute("listaPacientes", msService.listar());
+			model.addAttribute("listaTipoPersonalMedico", tmsService.listar());
 			return "medicalstaff";
 		} 
 		else {
