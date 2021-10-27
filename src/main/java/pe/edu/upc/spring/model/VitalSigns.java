@@ -37,7 +37,7 @@ public class VitalSigns implements Serializable{
 	private Date dateSV;
 	
 	@ManyToOne
-	@JoinColumn(name="idpPatient", nullable=false)
+	@JoinColumn(name="idPatient", nullable=false)
 	private Patient patient;
 
 	public VitalSigns() {
@@ -102,5 +102,8 @@ public class VitalSigns implements Serializable{
 	public void setPatient(Patient patient) {
 		this.patient = patient;
 	}
+
+	
+	
 	
 }

@@ -43,6 +43,7 @@ public class Patient implements Serializable{
 
 	public Patient() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public Patient(int idPatient, String namePatient, String lastnamePatient, String dniPatient, int agePatient,
@@ -112,5 +113,7 @@ public class Patient implements Serializable{
 	public void setDatePatient(Date datePatient) {
 		this.datePatient = datePatient;
 	}
+
+	
 	
 }
