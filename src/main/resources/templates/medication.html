@@ -37,7 +37,7 @@
 
     					
 								
-						<label for="medicamento">NOMBRE DE MEDICAMENTO:</label>
+						<label for="medicamento">NOMBRE DE MEDICINA:</label>
     					<select class="form-control" th:field="*{medicine.idMedicine}">
     					<option th:each="medic: ${listaMedicinas}"
     							th:value="${medic.idMedicine}"
@@ -60,26 +60,22 @@
 									
 						<label for="estadomedicamento">ESTADO DE MEDICAMENTO:</label>
     					<select class="form-control" th:field="*{medicinestatus.idEDLM}">
-    					<option th:each="estatus: ${listaEstadoMedicina}"
+    					<option th:each="estatus: ${listaEstadoMedicinas}"
     							th:value="${estatus.idEDLM}"
-    							th:text="${estatus.nameEDLM}"
+    							th:text="${estatus.nameEDLMA}"
     							th:selected="(${estatus.idEDLM} == *{medicinestatus.idEDLM})">
     							</option>
     					</select>	
-								
-						
-								
+							
 								<label for="personalmedico">PERSONAL MEDICO:</label>
     					<select class="form-control" th:field="*{medicalstaff.idPM}">
-    					<option th:each="personal: ${listaPersonalMedico}"
+    					<option th:each="personal: ${listaPersonalMedicos}"
     							th:value="${personal.idPM}"
     							th:text="${personal.namePM}"
     							th:selected="(${personal.idPM} == *{medicalstaff.idPM})">
     							</option>
     					</select>	
 								
-						
-					
 						
 							<label for="paciente">PACIENTE:</label>
     					<select class="form-control" th:field="*{patient.idPatient}">

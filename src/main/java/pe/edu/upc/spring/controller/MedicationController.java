@@ -16,15 +16,35 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sun.el.parser.ParseException;
 
+import pe.edu.upc.spring.model.MedicalStaff;
 import pe.edu.upc.spring.model.Medication;
+import pe.edu.upc.spring.model.Medicine;
+import pe.edu.upc.spring.model.MedicineStatus;
 import pe.edu.upc.spring.model.Patient;
+import pe.edu.upc.spring.service.IMedicalStaffService;
 import pe.edu.upc.spring.service.IMedicationService;
+import pe.edu.upc.spring.service.IMedicineService;
+import pe.edu.upc.spring.service.IMedicineStatusService;
+import pe.edu.upc.spring.service.IPatientService;
 
 @Controller
 @RequestMapping("/medication")
 public class MedicationController {
 	@Autowired
 	private IMedicationService mService;
+	
+	@Autowired
+	private IMedicineStatusService estService;
+	
+	@Autowired
+	private IPatientService pService;
+	
+	@Autowired
+	private IMedicineService medService;
+	
+	@Autowired
+	private IMedicalStaffService pmService;
+	
 	
 	@RequestMapping("/bienvenido")
 	public String irPaginaBienvenida() {
@@ -39,7 +59,17 @@ public class MedicationController {
 	
 	@RequestMapping("/irRegistrar")
 	public String irPaginaRegistrar (Model model) {
+		
+		model.addAttribute("listaMedicinas", medService.listar());
+		model.addAttribute("listaEstadoMedicinas", estService.listar());
+		model.addAttribute("listaPacientes", pService.listar());
+		model.addAttribute("listaPersonalMedicos", pmService.listar());
+		
+		model.addAttribute("medicine", new Medicine());
 		model.addAttribute("medication", new Medication());
+		model.addAttribute("medicinestatus", new MedicineStatus());
+		model.addAttribute("patient", new Patient());
+		model.addAttribute("medicalstaff", new MedicalStaff());
 		return "medication"; // "patient" es una pagina del frontend para insertar y/o modificar
 	}
 	
@@ -47,8 +77,13 @@ public class MedicationController {
 	public String registrar(@ModelAttribute Medication objMedication, BindingResult binRes, Model model)
 		throws ParseException
 	{
-		if(binRes.hasErrors())
-			return "medication";
+		if(binRes.hasErrors()) {
+			model.addAttribute("listaMedicinas", medService.listar());
+			model.addAttribute("listaEstadoMedicinas", estService.listar());
+			model.addAttribute("listaPacientes", pService.listar());
+			model.addAttribute("listaPersonalMedicos", pmService.listar());
+			return "medication";}
+		
 		else {
 			boolean flag = mService.grabar(objMedication);
 			if(flag)
