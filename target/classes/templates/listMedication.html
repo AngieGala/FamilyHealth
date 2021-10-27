@@ -59,15 +59,15 @@
     						<tbody>
     							<tr th:each="med: ${listaMedicaciones}">
     								<td th:text="${med.idMedication}"></td>
-    								<td th:text="${med.nameMedication}"></td>
+    								<td th:text="${med.medicine.nameMedicine}"></td>
     								<td th:text="${med.dateMedication}"></td>
-    								<td th:text="${med.nameEDLMA}"></td>
-    								<td th:text="${med.nameTDPM}"></td>
-    								<td th:text="${med.namePatient}"></td>
+    								<td th:text="${med.medicinestatus.nameEDLMA}"></td>
+    								<td th:text="${med.medicalstaff.namePM}"></td>
+    								<td th:text="${med.patient.namePatient}"></td>
     				
-    								<td th:text="${#dates.format(pat.dateMedication,'dd/MM/yyyy')}"></td>
-    								<td><a th:href="@{/medication/eliminar?id=}+${pat.idMedication}">Eliminar</a></td>    								
-    								<td><a th:href="@{'/medication/modificar/'}+${pat.idMedication}">Modificar</a></td>
+    								<td th:text="${#dates.format(med.dateMedication,'dd/MM/yyyy')}"></td>
+    								<td><a th:href="@{/medication/eliminar?id=}+${med.idMedication}">Eliminar</a></td>    								
+    								<td><a th:href="@{'/medication/modificar/'}+${med.idMedication}">Modificar</a></td>
     							</tr>
     						</tbody>
     					</table> 

@@ -80,6 +80,7 @@ public class MedicalStaffController {
 			return "redirect:/medicalstaff/listar";
 		} else {
 			model.addAttribute("listaPacientes", msService.listar());
+			model.addAttribute("listaTipoPersonalMedico", tmsService.listar());
 			if (objMedicalStaff.isPresent())
 				objMedicalStaff.ifPresent(o -> model.addAttribute("medicalstaff", o));
 			return "medicalstaff";
