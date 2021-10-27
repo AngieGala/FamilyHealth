@@ -15,7 +15,8 @@
 
 <script
 	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
-		</script>
+	
+</script>
 
 <script type="text/javascript" th:src="@{/js/vitalsigns.js}"></script>
 
@@ -26,7 +27,9 @@
 	<div class="container-fluid">
 		<div class="row clearfix">
 			<h1 class="btn btn-primary btn-md left-block">Busquedas</h1>
-			<form th:action="@{/vitalsigns/buscar}" method="post" th:object="${patient}">
+
+			<form th:action="@{/vitalsigns/buscar}" method="post"
+				th:object="${patient}">
 				<div class="form-group">
 					<div class="col-sm-12">
 						<input type="text" class="form-control" th:field="*{namePatient}"
@@ -36,15 +39,32 @@
 
 						<div align="left">
 							<button type="submit" class="btn btn-primary">Buscar</button>
-							<a href="/vitalsigns/listar" class="btn btn-dark">Cancelar</a>
+							<a href="/vitalsigns/listar" class="btn btn-danger">Cancelar</a>
 
+						</div>
+						<br /> <br />
+					</div>
+
+				</div>
+			</form>
+			<br>
+			<form th:action="@{/vitalsigns/buscarFecha}" method="post"
+				th:object="${patient}">
+				<div class="form-group">
+					<div class="col-sm-12">
+						<input type="date" class="form-control" th:field="*{datePatient}"
+							id="fecha" placeholder="Ingrese dato a buscar por Fecha">
+						</input>
+
+						<div align="left">
+							<button type="submit" class="btn btn-primary">Buscar</button>
+							<a href="/vitalsigns/listar" class="btn btn-danger">Cancelar</a>
 						</div>
 					</div>
 
 				</div>
-
-
 			</form>
+
 		</div>
 
 
@@ -55,22 +75,22 @@
 			<thead>
 				<tr>
 					<th class="text-center">CODIGO</th>
-    				<th class="text-center">SATURACION</th>
-    				<th class="text-center">PRESION</th>
-    				<th class="text-center">TEMPERATURA</th>
-    				<th class="text-center">FECHA</th>
-    				<th class="text-center">PACIENTE</th>
+					<th class="text-center">SATURACION</th>
+					<th class="text-center">PRESION</th>
+					<th class="text-center">TEMPERATURA</th>
+					<th class="text-center">FECHA</th>
+					<th class="text-center">PACIENTE</th>
 
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="vs: ${listaSignosVitales}">
 					<td th:text="${vs.idSV}"></td>
-    				<td th:text="${vs.saturationSV}"></td>
-    				<td th:text="${vs.pressureSV}"></td>
-    				<td th:text="${vs.temperatureSV}"></td>
-    				<td th:text="${#dates.format(vs.dateSV,'dd/MM/yyyy')}"></td>
-    				<td th:text="${vs.patient.namePatient}"></td>
+					<td th:text="${vs.saturationSV}"></td>
+					<td th:text="${vs.pressureSV}"></td>
+					<td th:text="${vs.temperatureSV}"></td>
+					<td th:text="${#dates.format(vs.dateSV,'dd/MM/yyyy')}"></td>
+					<td th:text="${vs.patient.namePatient}"></td>
 
 				</tr>
 			</tbody>

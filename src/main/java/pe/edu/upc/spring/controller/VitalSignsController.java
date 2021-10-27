@@ -24,42 +24,42 @@ import pe.edu.upc.spring.service.IVitalSignsService;
 @Controller
 @RequestMapping("/vitalsigns")
 public class VitalSignsController {
-	
+
 	@Autowired
 	private IVitalSignsService vsService;
-	
+
 	@Autowired
 	private IPatientService pService;
-	
+
 	@RequestMapping("/bienvenido")
 	public String irSVBienvenido() {
 		return "bienvenido";
 	}
-	
+
 	@RequestMapping("/")
 	public String irSV(Map<String, Object> model) {
 		model.put("listaSignosVitales", vsService.listar());
 		return "listVitalSigns";
 	}
-	
+
 	@RequestMapping("/irRegistrar")
 	public String irRegistrar(Model model) {
-		
+
 		model.addAttribute("listaPacientes", pService.listar());
-		
+
 		model.addAttribute("vitalsigns", new VitalSigns());
 		model.addAttribute("patient", new Patient());
-		
+
 		return "vitalsigns";
 	}
-	
+
 	@RequestMapping("/registrar")
-	public String registrar(@ModelAttribute VitalSigns objVitalSigns, BindingResult binRes, Model model) throws ParseException {
+	public String registrar(@ModelAttribute VitalSigns objVitalSigns, BindingResult binRes, Model model)
+			throws ParseException {
 		if (binRes.hasErrors()) {
 			model.addAttribute("listaPacientes", pService.listar());
 			return "vitalsigns";
-		} 
-		else {
+		} else {
 			boolean flag = vsService.grabar(objVitalSigns);
 			if (flag) {
 				return "redirect:/vitalsigns/listar";
@@ -69,7 +69,7 @@ public class VitalSignsController {
 			}
 		}
 	}
-	
+
 	@RequestMapping("/modificar/{id}")
 	public String modificar(@PathVariable int id, Model model, RedirectAttributes objRedir) throws ParseException {
 		Optional<VitalSigns> objVitalSigns = vsService.listarId(id);
@@ -83,7 +83,7 @@ public class VitalSignsController {
 			return "vitalsigns";
 		}
 	}
-	
+
 	@RequestMapping("/eliminar")
 	public String eliminar(Map<String, Object> model, @RequestParam(value = "id") Integer id) {
 		try {
@@ -98,32 +98,30 @@ public class VitalSignsController {
 		}
 		return "listVitalSigns";
 	}
-	
+
 	@RequestMapping("/listar")
 	public String listar(Map<String, Object> model) {
 		model.put("listaSignosVitales", vsService.listar());
 		return "listVitalSigns";
 	}
-	
+
 	@RequestMapping("/listarId")
 	public String listar(Map<String, Object> model, @ModelAttribute VitalSigns vitalsigns) throws ParseException {
 		vsService.listarId(vitalsigns.getIdSV());
 		return "listVitalSigns";
 	}
-	
 
 	@RequestMapping("/irBuscar")
 	public String irBuscar(Model model) {
 		model.addAttribute("patient", new Patient());
+		model.addAttribute("vitalsigns", new VitalSigns());
 		return "buscarvs";
 	}
 
 	@RequestMapping("/buscar")
-	public String buscar(Map<String, Object> model, @ModelAttribute Patient patient) 
-		throws ParseException
-	{
-		//vamos a buscar por nombre de paciente
-		
+	public String buscar(Map<String, Object> model, @ModelAttribute("patient") Patient patient) throws ParseException {
+		// vamos a buscar por nombre de paciente
+
 		List<VitalSigns> listaSignosVitales;
 		patient.setNamePatient(patient.getNamePatient());
 		listaSignosVitales = vsService.buscarPaciente(patient.getNamePatient());
@@ -135,5 +133,21 @@ public class VitalSignsController {
 		return "buscarvs";
 	}
 
-	
+	@RequestMapping("/buscarFecha")
+	public String buscarfecha(Map<String, Object> model, @ModelAttribute("patient") Patient patient)
+			throws ParseException {
+		// vamos a buscar por fecha en cual se hizo el control
+
+		List<VitalSigns> listaSignosVitales;
+
+		patient.setDatePatient(patient.getDatePatient()); // capturo la fecha del control
+		listaSignosVitales = vsService.findByDateSV(patient.getDatePatient()); // buscando uwu
+
+		if (listaSignosVitales.isEmpty()) {
+			model.put("mensaje", "No se encontro");
+		}
+		model.put("listaSignosVitales", listaSignosVitales);
+		return "buscarvs";
+	}
+
 }

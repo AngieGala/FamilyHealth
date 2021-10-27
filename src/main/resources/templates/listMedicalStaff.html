@@ -4,7 +4,7 @@
 	<head>
 	
 		<meta charset="UTF-8"></meta>
-		<title>Medicacion</title>
+		<title>Personal Medico</title>
 		
 		<script type="text/javascript"
 				src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
@@ -30,44 +30,41 @@
     			<div class="row clearfix">
     				<div class="col-md-12 column">
     					
-
-    					<a 	style="border-bottom-color: green" th:href="@{/medication/irRegistrar}"
+    					<a 	style="border-bottom-color: green" th:href="@{/medicalstaff/irRegistrar}"
     						id="add-row" type="button" class="btn btn-primary btn-md left-block">
-    						<span class="glyphicon glyphicon-plus"></span> Medicacion
+    						<span class="glyphicon glyphicon-plus"></span> Personal Medico
     					</a>
-
     					
-                        <a 	style="border-bottom-color: green" th:href="@{/medication/irBuscar}"
+						<a 	style="border-bottom-color: green" th:href="@{/medicalstaff/irBuscar}"
     						id="add-row" type="button" class="btn btn-primary btn-md left-block">
     						<span class="glyphicon glyphicon-search"></span> Buscar
     					</a>
-						
     					
     					<table class="table table-bordered table-hover table-striped" id="tab_logic">
     						<thead>
     							<tr>
     								<th class="text-center">CODIGO</th>
-    								<th class="text-center">NOMBRE DE MEDICACION</th>
-    								<th class="text-center">FECHA DE MEDICACION</th>
-    								<th class="text-center">ESTADO DE MEDICACION</th>
-    								<th class="text-center">PERSONAL MEDICO</th>
-    								<th class="text-center">PACIENTE</th>
-    							
+    								<th class="text-center">NOMBRE</th>
+    								<th class="text-center">APELLIDO</th>
+    								<th class="text-center">NUMERO</th>
+    								<th class="text-center">DNI</th>
+    								<th class="text-center">TIPO DE PERSONA</th>
+    								<th class="text-center">OPERACION</th>
+    								<th class="text-center">OPERACION</th>
     							</tr>
     						</thead>
     						
     						<tbody>
-    							<tr th:each="med: ${listaMedicaciones}">
-    								<td th:text="${med.idMedication}"></td>
-    								<td th:text="${med.nameMedication}"></td>
-    								<td th:text="${med.dateMedication}"></td>
-    								<td th:text="${med.nameEDLMA}"></td>
-    								<td th:text="${med.nameTDPM}"></td>
-    								<td th:text="${med.namePatient}"></td>
-    				
-    								<td th:text="${#dates.format(pat.dateMedication,'dd/MM/yyyy')}"></td>
-    								<td><a th:href="@{/medication/eliminar?id=}+${pat.idMedication}">Eliminar</a></td>    								
-    								<td><a th:href="@{'/medication/modificar/'}+${pat.idMedication}">Modificar</a></td>
+    							<tr th:each="ms: ${listaPersonalMedico}">
+    								<td th:text="${ms.idPM}"></td>
+    								<td th:text="${ms.namePM}"></td>
+    								<td th:text="${ms.lastnamePM}"></td>
+    								<td th:text="${ms.numberPM}"></td>
+    								<td th:text="${ms.dniPMe}"></td>
+     								<td th:text="${ms.typemedical.nameTDPM}"></td>
+    								
+    								<td><a th:href="@{/medicalstaff/eliminar?id=}+${ms.idPM}">Eliminar</a></td>    								
+    								<td><a th:href="@{'/medicalstaff/modificar/'}+${ms.idPM}">Modificar</a></td>
     							</tr>
     						</tbody>
     					</table> 

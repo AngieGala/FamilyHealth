@@ -1,5 +1,6 @@
 package pe.edu.upc.spring.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,4 +17,5 @@ public interface IPatientService {
 	public List<Patient> buscarApellido(String lastnamePatient);
 	public List<Patient> buscarDNI(String dniPatient);
 	public List<Patient> buscarCama(int bednumberPatient);
+	public List<Patient> findByDatePatient(Date datePatient);
 }
