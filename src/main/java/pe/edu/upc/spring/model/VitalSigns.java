@@ -37,7 +37,7 @@ public class VitalSigns implements Serializable{
 	private Date dateSV;
 	
 	@ManyToOne
-	@JoinColumn(name="idPatient", nullable=false)
+	@JoinColumn(name="idpPatient", nullable=false)
 	private Patient patient;
 
 	public VitalSigns() {

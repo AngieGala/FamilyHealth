@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+	
+		<meta charset="ISO-8859-1"></meta>
+		<title>	Alimentación</title>
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		
+		<link 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+				rel="stylesheet" id="bootstrap-css">
+		</link>
+
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+		
+		<script type="text/javascript" th:src="@{/js/feeding.js}"></script>
+				
+	</head>
+
+	<body>
+    	<div th:replace="fragments/header :: header"></div>
+    	<div class="container">
+    	
+    		<form th:action="@{/feeding/registrar}" method="post" th:object="${feeding}" 
+    			
+    			enctype="multipart/form-data">
+    			<div class="form-group">
+    			
+    				<label for="idFeeding">ID:</label> <input type="text" 
+    					class="form-control" th:field="*{idFeeding}"></input>
+    				
+    				<div class="form-group">
+    				
+    				
+    					<label for="saturacion">SATURACION:</label> <input type="text" 
+    						class="form-control" th:field="*{saturationSV}" id="saturacion"></input>
+
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('saturationSV')}" 
+								th:errors="*{saturationSV}"></div>
+						
+						
+						
+						
+						<label for="presion">PRESION:</label> <input type="text" 
+    						class="form-control" th:field="*{pressureSV}" id="presion"></input>
+
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('pressureSV')}" 
+								th:errors="*{pressureSV}"></div>
+								
+						
+						
+						
+						<label for="temperatura">TEMPERATURA:</label> <input type="text" 
+    						class="form-control" th:field="*{temperatureSV}" id="temperatura"></input>
+
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('temperatureSV')}" 
+								th:errors="*{temperatureSV}"></div>
+						
+										
+						
+						
+						<label for="fecha">FECHA:</label> <input
+							type="date" th:field="*{dateFeeding}" class="form-control"
+							id="fecha"></input>
+
+						<div class="alert alert-danger"
+							th:if="${#fields.hasErrors('dateFeeding')}"
+							th:errors="*{dateFeeding}"></div>
+						
+    					
+						
+						
+						<label for="nombre">PACIENTE:</label>
+    					<select class="form-control" th:field="*{patient.idPatient}">
+    					<option th:each="sigvi: ${listaPacientes}"
+    							th:value="${sigvi.idPatient}"
+    							th:text="${sigvi.namePatient}"
+    							th:selected="(${sigvi.idPatient} == *{patient.idPatient})">
+    							</option>
+    					
+    					</select>
+						
+							
+							
+								
+    				</div>
+    				
+    				
+    				
+    			</div>
+    			<button type="submit" class="btn btn-primary">Aceptar</button>
+    			<a href="/feeding/listar" class="btn btn-danger">Cancelar</a>
+    		</form>
+    	</div>
+    	<div th:replace="fragments/footer :: footer"></div>
+	</body>
+
+</html>
