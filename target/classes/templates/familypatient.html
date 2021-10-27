@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+	
+		<meta charset="ISO-8859-1"></meta>
+		<title>Familiar</title>
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		
+		<link 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+				rel="stylesheet" id="bootstrap-css">
+		</link>
+
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+		
+		<script type="text/javascript" th:src="@{/js/familypatient.js}"></script>
+				
+	</head>
+
+	<body>
+    	<div th:replace="fragments/header :: header"></div>
+    	<div class="container">
+    	
+    		<form th:action="@{/familypatient/registrar}" method="post" th:object="${familypatient}" 
+    			
+    			enctype="multipart/form-data">
+    			<div class="form-group">
+    			
+    				<label for="idFDP">ID:</label> <input type="text" 
+    					class="form-control" th:field="*{idFDP}"></input>
+    				
+    				<div class="form-group">
+    				
+    				
+    				
+    				
+    					<label for="nombre">NOMBRE:</label> <input type="text" 
+    						class="form-control" th:field="*{namePM}" id="nombre"></input>
+
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('namePM')}" 
+								th:errors="*{namePM}"></div>
+						
+						
+						
+						
+						<label for="apellido">APELLIDO:</label> <input type="text" 
+    						class="form-control" th:field="*{lastnameFDP}" id="apellido"></input>
+
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('lastnameFDP')}" 
+								th:errors="*{lastnameFDP}"></div>
+								
+								
+								
+						
+						<label for="apellido">NUMERO DE CELULAR:</label> <input type="text" 
+    						class="form-control" th:field="*{numberFDP}" id="apellido"></input>
+
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('numberFDP')}" 
+								th:errors="*{numberFDP}"></div>
+						
+						
+						
+						<label for="dni">DNI:</label> <input type="text" 
+    						class="form-control" th:field="*{dniFDP}" id="dni"></input>
+
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('dniFDP')}" 
+								th:errors="*{dniFDP}"></div>
+						
+    					
+    					
+    					
+    				</div>
+    				
+    				
+    				
+    			</div>
+    			<button type="submit" class="btn btn-primary">Aceptar</button>
+    			<a href="/familypatient/listar" class="btn btn-danger">Cancelar</a>
+    		</form>
+    	</div>
+    	<div th:replace="fragments/footer :: footer"></div>
+	</body>
+
+</html>

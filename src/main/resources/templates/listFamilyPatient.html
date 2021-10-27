@@ -4,7 +4,7 @@
 	<head>
 	
 		<meta charset="UTF-8"></meta>
-		<title>Alimentacion</title>
+		<title>Familiar</title>
 		
 		<script type="text/javascript"
 				src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
@@ -30,41 +30,38 @@
     			<div class="row clearfix">
     				<div class="col-md-12 column">
     					
-
-    					<a 	style="border-bottom-color: green" th:href="@{/feeding/irRegistrar}"
+    					<a 	style="border-bottom-color: green" th:href="@{/familypatient/irRegistrar}"
     						id="add-row" type="button" class="btn btn-primary btn-md left-block">
-    						<span class="glyphicon glyphicon-plus"></span> Alimentacion
+    						<span class="glyphicon glyphicon-plus"></span> Familiar
     					</a>
-
     					
-                        <a 	style="border-bottom-color: green" th:href="@{/feeding/irBuscar}"
+						<a 	style="border-bottom-color: green" th:href="@{/familypatient/irBuscar}"
     						id="add-row" type="button" class="btn btn-primary btn-md left-block">
     						<span class="glyphicon glyphicon-search"></span> Buscar
     					</a>
-						
     					
     					<table class="table table-bordered table-hover table-striped" id="tab_logic">
     						<thead>
     							<tr>
     								<th class="text-center">CODIGO</th>
-    								<th class="text-center">TIPO DE ALIMENTACION</th>
-    								<th class="text-center">TURNO DE ALIMENTACION</th>
-    								<th class="text-center">FECHA DE MEDICACION</th>
-    								<th class="text-center">PACIENTE</th>
-    							
+    								<th class="text-center">NOMBRE</th>
+    								<th class="text-center">APELLIDO</th>
+    								<th class="text-center">NUMERO DE CELULAR</th>
+    								<th class="text-center">DNI</th>
+    								<th class="text-center">OPERACION</th>
+    								<th class="text-center">OPERACION</th>
     							</tr>
     						</thead>
     						
     						<tbody>
-    							<tr th:each="alim: ${listaAlimentacion}">
-    								<td th:text="${alim.idFeeding}"></td>
-    								<td th:text="${alim.feedingtype}"></td>
-    								<td th:text="${alim.feedingshift}"></td>
-    								<td th:text="${alim.dateFeeding}"></td>
-    								<td th:text="${alim.namePatient}"></td>
-    								<td th:text="${#dates.format(alim.dateFeeding,'dd/MM/yyyy')}"></td>
-    								<td><a th:href="@{/feeding/eliminar?id=}+${alim.idFeeding}">Eliminar</a></td>    								
-    								<td><a th:href="@{'/feeding/modificar/'}+${alim.idFeeding}">Modificar</a></td>
+    							<tr th:each="fam: ${listaFamiliar}">
+    								<td th:text="${fam.idFDP}"></td>
+    								<td th:text="${fam.namePM}"></td>
+    								<td th:text="${fam.lastnameFDP}"></td>
+    								<td th:text="${fam.numberFDP}"></td>
+    								<td th:text="${fam.dniFDP}"></td>
+    								<td><a th:href="@{/familypatient/eliminar?id=}+${fam.idFDP}">Eliminar</a></td>    								
+    								<td><a th:href="@{'/familypatient/modificar/'}+${fam.idFDP}">Modificar</a></td>
     							</tr>
     						</tbody>
     					</table> 

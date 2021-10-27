@@ -4,7 +4,7 @@
 	<head>
 	
 		<meta charset="ISO-8859-1"></meta>
-		<title>	Alimentación</title>
+		<title>Alimentación</title>
 		
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		
@@ -29,65 +29,56 @@
     			enctype="multipart/form-data">
     			<div class="form-group">
     			
-    				<label for="idFeeding">ID:</label> <input type="text" 
+    				<label for="idfeeding">ID:</label> <input type="text" 
     					class="form-control" th:field="*{idFeeding}"></input>
     				
     				<div class="form-group">
     				
-    				
-    					<label for="saturacion">SATURACION:</label> <input type="text" 
-    						class="form-control" th:field="*{saturationSV}" id="saturacion"></input>
 
-						<div class="alert alert-danger" th:if="${#fields.hasErrors('saturationSV')}" 
-								th:errors="*{saturationSV}"></div>
-						
-						
-						
-						
-						<label for="presion">PRESION:</label> <input type="text" 
-    						class="form-control" th:field="*{pressureSV}" id="presion"></input>
-
-						<div class="alert alert-danger" th:if="${#fields.hasErrors('pressureSV')}" 
-								th:errors="*{pressureSV}"></div>
+    					
 								
-						
-						
-						
-						<label for="temperatura">TEMPERATURA:</label> <input type="text" 
-    						class="form-control" th:field="*{temperatureSV}" id="temperatura"></input>
+						<label for="tipoalimentacion">TIPO DE ALIMENTACION:</label>
+    					<select class="form-control" th:field="*{feedingtype.idTDA}">
+    					<option th:each="tip: ${listaTipoAlimentacion}"
+    							th:value="${tip.idTDA}"
+    							th:text="${tip.feedingtype}"
+    							th:selected="(${tip.idTDA} == *{feedingtype.idTDA})">
+    							</option>
+    					</select>
+								
 
-						<div class="alert alert-danger" th:if="${#fields.hasErrors('temperatureSV')}" 
-								th:errors="*{temperatureSV}"></div>
+						<label for="turnoalimentacion">TURNO DE ALIMENTACION:</label>
+    					<select class="form-control" th:field="*{feedingshift.idTRDA}">
+    					<option th:each="tur: ${listaTurnoAlimentacion}"
+    							th:value="${tur.idTRDA}"
+    							th:text="${tip.feedingshift}"
+    							th:selected="(${tur.idTRDA} == *{feedingshift.idTRDA})">
+    							</option>
+    					</select>
+
 						
-										
 						
-						
-						<label for="fecha">FECHA:</label> <input
+						<label for="fechaAlimentacion">FECHA ALIMENTACION </label> <input
 							type="date" th:field="*{dateFeeding}" class="form-control"
-							id="fecha"></input>
+							id="fechaAlimentacion"></input>
 
 						<div class="alert alert-danger"
 							th:if="${#fields.hasErrors('dateFeeding')}"
 							th:errors="*{dateFeeding}"></div>
+	
+					
 						
-    					
-						
-						
-						<label for="nombre">PACIENTE:</label>
+							<label for="paciente">PACIENTE:</label>
     					<select class="form-control" th:field="*{patient.idPatient}">
-    					<option th:each="sigvi: ${listaPacientes}"
-    							th:value="${sigvi.idPatient}"
-    							th:text="${sigvi.namePatient}"
-    							th:selected="(${sigvi.idPatient} == *{patient.idPatient})">
+    					<option th:each="pat: ${listaPacientes}"
+    							th:value="${pat.idPatient}"
+    							th:text="${pat.namePatient}"
+    							th:selected="(${pat.idPatient} == *{patient.idPatient})">
     							</option>
-    					
-    					</select>
+    					</select>	
 						
-							
-							
-								
+					
     				</div>
-    				
     				
     				
     			</div>
