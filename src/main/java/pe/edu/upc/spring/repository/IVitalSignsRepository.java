@@ -1,5 +1,6 @@
 package pe.edu.upc.spring.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,4 +15,5 @@ public interface IVitalSignsRepository extends JpaRepository<VitalSigns, Integer
 	@Query("from VitalSigns vs where vs.patient.namePatient like %:namePatient%")
 	List<VitalSigns> buscarPaciente(@Param("namePatient") String namePatient);
 	
+	List<VitalSigns> findByDateSV(Date dateDV);
 }

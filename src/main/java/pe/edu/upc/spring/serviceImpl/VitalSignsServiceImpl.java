@@ -1,5 +1,6 @@
 package pe.edu.upc.spring.serviceImpl;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,6 +56,11 @@ public class VitalSignsServiceImpl implements IVitalSignsService{
 	@Transactional(readOnly = true)
 	public List<VitalSigns> buscarPaciente(String namePatient) {
 		return dVitalSigns.buscarPaciente(namePatient);
+	}
+
+	@Override
+	public List<VitalSigns> findByDateSV(Date dateSV) {
+		return dVitalSigns.findByDateSV(dateSV);
 	}
 
 	
