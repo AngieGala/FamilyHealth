@@ -4,7 +4,7 @@
 	<head>
 	
 		<meta charset="ISO-8859-1"></meta>
-		<title>Alimentación</title>
+		<title>Alimentacion</title>
 		
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		
@@ -41,8 +41,7 @@
     					<select class="form-control" th:field="*{feedingtype.idTDA}">
     					<option th:each="tip: ${listaTipoAlimentacion}"
     							th:value="${tip.idTDA}"
-    							th:text="${tip.feedingtype}"
-    							th:selected="(${tip.idTDA} == *{feedingtype.idTDA})">
+    							th:text="${tip.nameTDA}">
     							</option>
     					</select>
 								
