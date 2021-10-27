@@ -53,7 +53,7 @@ public class MedicationController {
 	
 	@RequestMapping("/")
 	public String irPaginaListadoMedicamentos(Map<String, Object> model) {
-		model.put("listaMedicamentos", mService.listar());
+		model.put("listaMedicaciones", mService.listar());
 		return "listMedication"; // "listPatient" es una pagina del frontEnd para listar
 	}
 	
@@ -105,7 +105,13 @@ public class MedicationController {
 			return "redirect:/medication/listar";
 		}
 		else {
-			model.addAttribute("medication", objMedication);
+			model.addAttribute("listaMedicinas", medService.listar());
+			model.addAttribute("listaEstadoMedicinas", estService.listar());
+			model.addAttribute("listaPacientes", pService.listar());
+			model.addAttribute("listaPersonalMedicos", pmService.listar());
+			if (objMedication.isPresent())
+                objMedication.ifPresent(o -> model.addAttribute("medication", o));
+			
 			return "medication";
 		}
 	}
@@ -115,21 +121,22 @@ public class MedicationController {
 		try {
 			if(id!=null && id>0) {
 				mService.eliminar(id);
-				model.put("listaMedicamentos", mService.listar());
+				model.put("listaMedicaciones", mService.listar());
 			}
 		}
 		catch(Exception ex) {
 			System.out.println(ex.getMessage());
 			model.put("mensaje", "Ocurrio un error");
-			model.put("listaMedicamentos", mService.listar());
+			model.put("listaMedicaciones", mService.listar());
 		}
 		return "listMedication";
 	}
 	
 	@RequestMapping("/listar")
 	public String listar(Map<String, Object> model) {
-		model.put("listaMedicamentos", mService.listar());
+		model.put("listaMedicaciones", mService.listar());
 		return "listMedication";
+		
 	}
 	
 	@RequestMapping("/listarId")
@@ -151,16 +158,16 @@ public class MedicationController {
 	{
 		//vamos a buscar por nombre del paciente
 		
-		List<Medication> listaMedicamentos;
+		List<Medication> listaMedicaciones;
 		patient.setNamePatient(patient.getNamePatient());//capturo lo de la caja de texto
-		listaMedicamentos = mService.buscarPaciente(patient.getNamePatient()); //buscando 1
+		listaMedicaciones = mService.buscarPaciente(patient.getNamePatient()); //buscando 1
 		
 		
-		if(listaMedicamentos.isEmpty()) {
+		if(listaMedicaciones.isEmpty()) {
 			model.put("mensaje", "No existen coincidencias");
 		}
 		
-		model.put("listaMedicamentos", listaMedicamentos);
+		model.put("listaMedicamentos", listaMedicaciones);
 		return "buscarm";
 	}
 	
