@@ -9,6 +9,7 @@ public interface IMedicationService {
 	public boolean grabar(Medication medication);
 	public void eliminar(int idMedication);
 	public Optional<Medication> listarId(int idMedication);
+	
 	public List<Medication> listar();
 	public List<Medication> buscarPaciente(String namePaciente);
 }
