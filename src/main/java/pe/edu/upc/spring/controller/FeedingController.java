@@ -18,8 +18,10 @@ import com.sun.el.parser.ParseException;
 
 import pe.edu.upc.spring.model.Patient;
 import pe.edu.upc.spring.model.Feeding;
+import pe.edu.upc.spring.model.FeedingType;
 import pe.edu.upc.spring.service.IPatientService;
 import pe.edu.upc.spring.service.IFeedingService;
+import pe.edu.upc.spring.service.IFeedingTypeService;
 
 @Controller
 @RequestMapping("/feeding")
@@ -31,6 +33,9 @@ public class FeedingController {
 	@Autowired
 	private IPatientService pService;
 	
+	@Autowired
+	private IFeedingTypeService ftService;
+	
 	@RequestMapping("/bienvenido")
 	public String irFeedingBienvenido() {
 		return "bienvenido";
@@ -38,7 +43,7 @@ public class FeedingController {
 	
 	@RequestMapping("/")
 	public String irFeeding(Map<String, Object> model) {
-		model.put("listaFeeding", fService.listar());
+		model.put("listaAlimentos", fService.listar());
 		return "listFeeding";
 	}
 	
@@ -46,9 +51,11 @@ public class FeedingController {
 	public String irRegistrar(Model model) {
 		
 		model.addAttribute("listaPacientes", pService.listar());
-		
+		model.addAttribute("listaTipoAlimentacion", ftService.listar());
+				
 		model.addAttribute("feeding", new Feeding());
 		model.addAttribute("patient", new Patient());
+		model.addAttribute("feedingtype", new FeedingType());
 		
 		return "feeding";
 	}
@@ -57,6 +64,7 @@ public class FeedingController {
 	public String registrar(@ModelAttribute Feeding objFeeding, BindingResult binRes, Model model) throws ParseException {
 		if (binRes.hasErrors()) {
 			model.addAttribute("listaPacientes", pService.listar());
+			model.addAttribute("listaTipoAlimentacion", ftService.listar());
 			return "feeding";
 		} 
 		else {
@@ -76,10 +84,9 @@ public class FeedingController {
 		if (objFeeding == null) {
 			objRedir.addAttribute("mensaje", "Ocurrió un error");
 			return "redirect:/feeding/listar";
-		} else {
-			model.addAttribute("listaPacientes", pService.listar());
-			if (objFeeding.isPresent())
-				objFeeding.ifPresent(o -> model.addAttribute("feeding", o));
+		}
+		else {
+			model.addAttribute("feeding", objFeeding);
 			return "feeding";
 		}
 	}
@@ -115,7 +122,7 @@ public class FeedingController {
 	@RequestMapping("/irBuscar")
 	public String irBuscar(Model model) {
 		model.addAttribute("patient", new Patient());
-		return "buscarfeed";
+		return "buscarf";
 	}
 
 	@RequestMapping("/buscar")
@@ -132,7 +139,7 @@ public class FeedingController {
 			model.put("mensaje", "No se encontro");
 		}
 		model.put("listaAlimentacion", listaAlimentacion);
-		return "buscarfeed";
+		return "buscarf";
 	}
 
 	

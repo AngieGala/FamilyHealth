@@ -16,9 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sun.el.parser.ParseException;
 import pe.edu.upc.spring.model.MedicalStaff;
-import pe.edu.upc.spring.model.Patient;
 import pe.edu.upc.spring.model.TypeMedicalStaff;
-import pe.edu.upc.spring.model.VitalSigns;
 import pe.edu.upc.spring.service.IMedicalStaffService;
 import pe.edu.upc.spring.service.ITypeMedicalStaffService;
 
