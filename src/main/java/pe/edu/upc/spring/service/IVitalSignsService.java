@@ -1,5 +1,6 @@
 package pe.edu.upc.spring.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,4 +14,5 @@ public interface IVitalSignsService {
 	
 	public List<VitalSigns> listar();
 	public List<VitalSigns> buscarPaciente(String namePatient);
+	public List<VitalSigns> findByDateSV(Date dateSV);
 }

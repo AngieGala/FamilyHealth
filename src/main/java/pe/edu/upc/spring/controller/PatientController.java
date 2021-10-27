@@ -143,7 +143,7 @@ public class PatientController {
 	@RequestMapping("/buscarFecha")
 	public String buscarfecha(Map<String, Object> model, @ModelAttribute Patient patient ) throws ParseException, java.text.ParseException
 	{
-		//vamos a buscar por nombre, apellido, dni, o numero de cama
+		//vamos a buscar por fecha de ingreso del paciente
 		
 		List<Patient> listaPacientes;
 		
