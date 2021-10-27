@@ -50,8 +50,7 @@
     					<select class="form-control" th:field="*{feedingshift.idTRDA}">
     					<option th:each="tur: ${listaTurnoAlimentacion}"
     							th:value="${tur.idTRDA}"
-    							th:text="${tip.feedingshift}"
-    							th:selected="(${tur.idTRDA} == *{feedingshift.idTRDA})">
+    							th:text="${tur.nameTRDA}">
     							</option>
     					</select>
 

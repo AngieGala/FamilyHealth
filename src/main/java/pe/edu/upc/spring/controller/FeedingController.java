@@ -18,9 +18,11 @@ import com.sun.el.parser.ParseException;
 
 import pe.edu.upc.spring.model.Patient;
 import pe.edu.upc.spring.model.Feeding;
+import pe.edu.upc.spring.model.FeedingShift;
 import pe.edu.upc.spring.model.FeedingType;
 import pe.edu.upc.spring.service.IPatientService;
 import pe.edu.upc.spring.service.IFeedingService;
+import pe.edu.upc.spring.service.IFeedingShiftService;
 import pe.edu.upc.spring.service.IFeedingTypeService;
 
 @Controller
@@ -35,6 +37,9 @@ public class FeedingController {
 	
 	@Autowired
 	private IFeedingTypeService ftService;
+	
+	@Autowired
+	private IFeedingShiftService fsService;
 	
 	@RequestMapping("/bienvenido")
 	public String irFeedingBienvenido() {
@@ -52,10 +57,12 @@ public class FeedingController {
 		
 		model.addAttribute("listaPacientes", pService.listar());
 		model.addAttribute("listaTipoAlimentacion", ftService.listar());
+		model.addAttribute("listaTurnoAlimentacion", fsService.listar());
 				
 		model.addAttribute("feeding", new Feeding());
 		model.addAttribute("patient", new Patient());
 		model.addAttribute("feedingtype", new FeedingType());
+		model.addAttribute("feedingshift", new FeedingShift());
 		
 		return "feeding";
 	}
@@ -65,6 +72,7 @@ public class FeedingController {
 		if (binRes.hasErrors()) {
 			model.addAttribute("listaPacientes", pService.listar());
 			model.addAttribute("listaTipoAlimentacion", ftService.listar());
+			model.addAttribute("listaTurnoAlimentacion", fsService.listar());
 			return "feeding";
 		} 
 		else {
@@ -86,7 +94,12 @@ public class FeedingController {
 			return "redirect:/feeding/listar";
 		}
 		else {
-			model.addAttribute("feeding", objFeeding);
+			model.addAttribute("listaPacientes", pService.listar());
+			model.addAttribute("listaTipoAlimentacion", ftService.listar());
+			model.addAttribute("listaTurnoAlimentacion", fsService.listar());
+			
+			if (objFeeding.isPresent())
+				objFeeding.ifPresent(o -> model.addAttribute("feeding", o));
 			return "feeding";
 		}
 	}
