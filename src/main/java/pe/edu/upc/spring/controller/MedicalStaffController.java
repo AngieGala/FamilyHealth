@@ -16,7 +16,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sun.el.parser.ParseException;
 import pe.edu.upc.spring.model.MedicalStaff;
+import pe.edu.upc.spring.model.Patient;
 import pe.edu.upc.spring.model.TypeMedicalStaff;
+import pe.edu.upc.spring.model.VitalSigns;
 import pe.edu.upc.spring.service.IMedicalStaffService;
 
 @Controller
@@ -110,16 +112,26 @@ public class MedicalStaffController {
 
 	@RequestMapping("/irBuscar")
 	public String irBuscar(Model model) {
-		
+		model.addAttribute("medicalstaff", new MedicalStaff());
 		return "buscarms";
 	}
 
 	@RequestMapping("/buscar")
-	public String buscar(Map<String, Object> model, @ModelAttribute TypeMedicalStaff typemedical) 
+	public String buscar(Map<String, Object> model, @ModelAttribute MedicalStaff medicalstaff) 
 		throws ParseException
 	{
+		List<MedicalStaff> listaPersonalMedicos;
+		medicalstaff.setNamePM(medicalstaff.getNamePM());//capturo lo de la caja de texto
+		//listaPersonalMedicos = msService.(medicalstaff.getNamePM()); //buscando 1
 		
-		return null;
+		
+		//if(listaPersonalMedicos.isEmpty()) {
+			//model.put("mensaje", "No existen coincidencias");
+		//}
+		
+		//model.put("listaPersonaledicos", listaPersonalMedicos);
+		return "buscarpm";
+		
 	}
 
 	

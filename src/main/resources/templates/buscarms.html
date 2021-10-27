@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="ISO-8859-1"></meta>
+<title>Busqueda de personal medico</title>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+</link>
+
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+	
+</script>
+
+<script type="text/javascript" th:src="@{/js/medicalstaff.js}"></script>
+
+</head>
+
+<body>
+	<div th:replace="fragments/header :: header"></div>
+	<div class="container-fluid">
+		<div class="row clearfix">
+			<h1 class="btn btn-primary btn-md left-block">Busquedas</h1>
+
+			<form th:action="@{/medicalstaff/buscar}" method="post"
+				th:object="${medicalstaff}">
+				<div class="form-group">
+					<div class="col-sm-12">
+						<input type="text" class="form-control" th:field="*{namePM}"
+							id="nombre"
+							placeholder="Ingrese dato a buscar por Nombre del personal medico">
+						</input>
+
+						<div align="left">
+							<button type="submit" class="btn btn-primary">Buscar</button>
+							<a href="/medicalstaff/listar" class="btn btn-danger">Cancelar</a>
+
+						</div>
+					
+					</div>
+
+				</div>
+			</form>
+		
+		</div>
+
+
+		<hr class="sidebar-divider">
+
+		<table class="table table-bordered table-hover table-striped"
+			id="tab_logic">
+			<thead>
+				<tr>
+						<th class="text-center">CODIGO</th>
+    					<th class="text-center">NOMBRE</th>
+    					<th class="text-center">APELLIDO</th>
+    					<th class="text-center">NUMERO</th>
+    					<th class="text-center">DNI</th>
+    					<th class="text-center">TIPO DE PERSONA</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="ms: ${listaPersonalMedico}">
+    					<td th:text="${ms.idPM}"></td>
+    					<td th:text="${ms.namePM}"></td>
+    					<td th:text="${ms.lastnamePM}"></td>
+    					<td th:text="${ms.numberPM}"></td>
+    					<td th:text="${ms.dniPMe}"></td>
+     					<td th:text="${ms.typemedical.nameTDPM}"></td>
+
+				</tr>
+			</tbody>
+		</table>
+
+
+		<p th:text="${mensaje}" class="form-text text-dark"></p>
+	</div>
+	<div th:replace="fragments/footer :: footer"></div>
+</body>
+
+</html>
