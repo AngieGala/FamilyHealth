@@ -39,13 +39,17 @@ public class VitalSigns implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="idPatient", nullable=false)
 	private Patient patient;
+	
+	@ManyToOne
+	@JoinColumn(name="idPM", nullable=false)
+	private MedicalStaff medicalstaff;
 
 	public VitalSigns() {
 		super();
 	}
 
 	public VitalSigns(int idSV, Double saturationSV, Double pressureSV, Double temperatureSV, Date dateSV,
-			Patient patient) {
+			Patient patient, MedicalStaff medicalstaff) {
 		super();
 		this.idSV = idSV;
 		this.saturationSV = saturationSV;
@@ -53,6 +57,7 @@ public class VitalSigns implements Serializable{
 		this.temperatureSV = temperatureSV;
 		this.dateSV = dateSV;
 		this.patient = patient;
+		this.medicalstaff = medicalstaff;
 	}
 
 	public int getIdSV() {
@@ -103,7 +108,12 @@ public class VitalSigns implements Serializable{
 		this.patient = patient;
 	}
 
-	
-	
+	public MedicalStaff getMedicalstaff() {
+		return medicalstaff;
+	}
+
+	public void setMedicalstaff(MedicalStaff medicalstaff) {
+		this.medicalstaff = medicalstaff;
+	}
 	
 }

@@ -16,8 +16,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sun.el.parser.ParseException;
 
+import pe.edu.upc.spring.model.MedicalStaff;
 import pe.edu.upc.spring.model.Patient;
 import pe.edu.upc.spring.model.VitalSigns;
+import pe.edu.upc.spring.service.IMedicalStaffService;
 import pe.edu.upc.spring.service.IPatientService;
 import pe.edu.upc.spring.service.IVitalSignsService;
 
@@ -30,6 +32,9 @@ public class VitalSignsController {
 
 	@Autowired
 	private IPatientService pService;
+	
+	@Autowired
+	private IMedicalStaffService pmService;
 
 	@RequestMapping("/bienvenido")
 	public String irSVBienvenido() {
@@ -46,9 +51,11 @@ public class VitalSignsController {
 	public String irRegistrar(Model model) {
 
 		model.addAttribute("listaPacientes", pService.listar());
+		model.addAttribute("listaPersonalMedicos", pmService.listar());
 
 		model.addAttribute("vitalsigns", new VitalSigns());
 		model.addAttribute("patient", new Patient());
+		model.addAttribute("medicalstaff", new MedicalStaff());
 
 		return "vitalsigns";
 	}
@@ -58,6 +65,7 @@ public class VitalSignsController {
 			throws ParseException {
 		if (binRes.hasErrors()) {
 			model.addAttribute("listaPacientes", pService.listar());
+			model.addAttribute("listaPersonalMedicos", pmService.listar());
 			return "vitalsigns";
 		} else {
 			boolean flag = vsService.grabar(objVitalSigns);
@@ -78,6 +86,7 @@ public class VitalSignsController {
 			return "redirect:/vitalsigns/listar";
 		} else {
 			model.addAttribute("listaPacientes", pService.listar());
+			model.addAttribute("listaPersonalMedicos", pmService.listar());
 			if (objVitalSigns.isPresent())
 				objVitalSigns.ifPresent(o -> model.addAttribute("vitalsigns", o));
 			return "vitalsigns";
