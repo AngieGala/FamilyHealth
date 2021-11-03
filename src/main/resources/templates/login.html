@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <title>Login</title>
+	
+	  <!-- Google Font: Source Sans Pro -->
+	  <link 
+	  		rel="stylesheet" 
+	  		href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+	  
+	  <!-- Font Awesome -->
+	  <link 
+	  		rel="stylesheet" 
+	  		th:href="@{/plugins/fontawesome-free/css/all.min.css}">
+	  
+	  <!-- icheck bootstrap -->
+	  <link 
+	  		rel="stylesheet" 
+	  		th:href="@{/plugins/icheck-bootstrap/icheck-bootstrap.min.css}">
+	  
+	  <!-- Theme style -->
+	  <link 
+	  		rel="stylesheet" 
+	  		href="@{/dist/css/adminlte.min.css}">
+	  
+	</head>
+
+	<body class="hold-transition login-page">
+		<div class="login-box">
+		  <!-- /.login-logo -->
+		  <div class="card card-outline card-primary">
+		    <div class="card-header text-center">
+		      <a href="../index.html" class="h1"><b>Family</b>Health</a>
+		    </div>
+		    <div class="card-body">
+		      <p class="login-box-msg">Iniciar sesion</p>
+		
+		      <form action="../index3.html" method="post">
+		        <div class="input-group mb-3">
+		          <input type="email" class="form-control" placeholder="Email">
+		          <div class="input-group-append">
+		            <div class="input-group-text">
+		              <span class="fas fa-envelope"></span>
+		            </div>
+		          </div>
+		        </div>
+		        <div class="input-group mb-3">
+		          <input type="password" class="form-control" placeholder="Contraseña">
+		          <div class="input-group-append">
+		            <div class="input-group-text">
+		              <span class="fas fa-lock"></span>
+		            </div>
+		          </div>
+		        </div>
+		        <div class="row">
+		          <div class="col-8">
+		            <div class="icheck-primary">
+		              <input type="checkbox" id="remember">
+		              <label for="remember">
+		                Recordarme
+		              </label>
+		            </div>
+		          </div>
+		        
+		        </div>
+		      </form>
+		
+		      <div class="text-center mt-2 mb-3">
+		
+		        <!-- este boton se descomenta en caso de trabajar con form
+		        <button type="submit" class="btn btn-primary btn-block">Login</button>
+		       -->
+		
+		
+		        <!-- Normalmente seria un solo boton Login que mediante programacion backend se validaria
+		          si se trata de un familiar o de un doctor de esa manera se redirige lo que se va a mostrar en este caso
+		          estoy dejando dos botones por que solo sera maqueta de cada vista 
+		       -->
+		        <a href="../panel/busqueda.html" class="btn btn-primary btn-block">Login para familiar</a>
+		        
+		        <a href="../panel/profesionales/index.html" class="btn btn-primary btn-block">Login para doctor</a>
+		
+		      </div>
+		   
+		
+		      <p class="mb-1">
+		        <a href="#">¿Olvidaste tu contraseña?</a>
+		      </p>
+		      <p class="mb-0">
+		        <a href="../registro/registro.html" class="text-center">Registrarme</a>
+		      </p>
+		    </div>
+		    <!-- /.card-body -->
+		  </div>
+		  <!-- /.card -->
+		</div>
+		<!-- /.login-box -->
+		
+		<!-- jQuery -->
+		<script th:src="@{/plugins/jquery/jquery.min.js}"></script>
+		<!-- Bootstrap 4 -->
+		<script th:src="@{/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+		<!-- AdminLTE App -->
+		<script th:src="@{/dist/js/adminlte.min.js}"></script>
+	</body>
+</html>
