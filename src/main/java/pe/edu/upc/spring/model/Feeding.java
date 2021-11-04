@@ -38,19 +38,25 @@ public class Feeding implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="idPatient", nullable=false)
 	private Patient patient;
+	
+	@ManyToOne
+	@JoinColumn(name="idPM", nullable=false)
+	private MedicalStaff medicalstaff;
 
 	public Feeding() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public Feeding(int idFeeding, FeedingType feedingtype, FeedingShift feedingshift, Date dateFeeding,
-			Patient patient) {
+	public Feeding(int idFeeding, FeedingType feedingtype, FeedingShift feedingshift, Date dateFeeding, Patient patient,
+			MedicalStaff medicalstaff) {
 		super();
 		this.idFeeding = idFeeding;
 		this.feedingtype = feedingtype;
 		this.feedingshift = feedingshift;
 		this.dateFeeding = dateFeeding;
 		this.patient = patient;
+		this.medicalstaff = medicalstaff;
 	}
 
 	public int getIdFeeding() {
@@ -92,6 +98,16 @@ public class Feeding implements Serializable{
 	public void setPatient(Patient patient) {
 		this.patient = patient;
 	}
+
+	public MedicalStaff getMedicalstaff() {
+		return medicalstaff;
+	}
+
+	public void setMedicalstaff(MedicalStaff medicalstaff) {
+		this.medicalstaff = medicalstaff;
+	}
+
+	
 	
 }
 

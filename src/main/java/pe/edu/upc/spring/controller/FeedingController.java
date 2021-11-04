@@ -20,10 +20,12 @@ import pe.edu.upc.spring.model.Patient;
 import pe.edu.upc.spring.model.Feeding;
 import pe.edu.upc.spring.model.FeedingShift;
 import pe.edu.upc.spring.model.FeedingType;
+import pe.edu.upc.spring.model.MedicalStaff;
 import pe.edu.upc.spring.service.IPatientService;
 import pe.edu.upc.spring.service.IFeedingService;
 import pe.edu.upc.spring.service.IFeedingShiftService;
 import pe.edu.upc.spring.service.IFeedingTypeService;
+import pe.edu.upc.spring.service.IMedicalStaffService;
 
 @Controller
 @RequestMapping("/feeding")
@@ -41,9 +43,12 @@ public class FeedingController {
 	@Autowired
 	private IFeedingShiftService fsService;
 	
+	@Autowired
+	private IMedicalStaffService pmService;
+	
 	@RequestMapping("/bienvenido")
 	public String irFeedingBienvenido() {
-		return "bienvenido";
+		return "index";
 	}
 	
 	@RequestMapping("/")
@@ -56,6 +61,7 @@ public class FeedingController {
 	public String irRegistrar(Model model) {
 		
 		model.addAttribute("listaPacientes", pService.listar());
+		model.addAttribute("listaPersonalMedicos", pmService.listar());
 		model.addAttribute("listaTipoAlimentacion", ftService.listar());
 		model.addAttribute("listaTurnoAlimentacion", fsService.listar());
 				
@@ -63,6 +69,7 @@ public class FeedingController {
 		model.addAttribute("patient", new Patient());
 		model.addAttribute("feedingtype", new FeedingType());
 		model.addAttribute("feedingshift", new FeedingShift());
+		model.addAttribute("medicalstaff", new MedicalStaff());
 		
 		return "feeding";
 	}
@@ -73,6 +80,7 @@ public class FeedingController {
 			model.addAttribute("listaPacientes", pService.listar());
 			model.addAttribute("listaTipoAlimentacion", ftService.listar());
 			model.addAttribute("listaTurnoAlimentacion", fsService.listar());
+			model.addAttribute("listaPersonalMedicos", pmService.listar());
 			return "feeding";
 		} 
 		else {
@@ -97,6 +105,7 @@ public class FeedingController {
 			model.addAttribute("listaPacientes", pService.listar());
 			model.addAttribute("listaTipoAlimentacion", ftService.listar());
 			model.addAttribute("listaTurnoAlimentacion", fsService.listar());
+			model.addAttribute("listaPersonalMedicos", pmService.listar());
 			
 			if (objFeeding.isPresent())
 				objFeeding.ifPresent(o -> model.addAttribute("feeding", o));
