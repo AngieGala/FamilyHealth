@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="ISO-8859-1"></meta>
+<title>Busqueda de Paciente</title>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+</link>
+
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+	
+</script>
+
+<script type="text/javascript" th:src="@{/js/vitalsigns.js}"></script>
+
+</head>
+
+<body>
+	<div th:replace="fragments/header :: header"></div>
+	<div class="container-fluid">
+		<div class="row clearfix">
+			<h1 class="btn btn-primary btn-md left-block">Busquedas</h1>
+
+			<form th:action="@{/feeding/buscar}" method="post"
+				th:object="${patient}">
+				<div class="form-group">
+					<div class="col-sm-12">
+						<input type="text" class="form-control" th:field="*{namePatient}"
+							id="nombre"
+							placeholder="Ingrese dato a buscar por Nombre del paciente">
+						</input>
+
+						<div align="left">
+							<button type="submit" class="btn btn-primary">Buscar</button>
+							<a href="/feeding/listar" class="btn btn-danger">Cancelar</a>
+
+						</div>
+						<br /> <br />
+					</div>
+
+				</div>
+			</form>
+			<br>
+			<form th:action="@{/feeding/buscarFecha}" method="post"
+				th:object="${patient}">
+				<div class="form-group">
+					<div class="col-sm-12">
+						<input type="date" class="form-control" th:field="*{datePatient}"
+							id="fecha" placeholder="Ingrese dato a buscar por Fecha">
+						</input>
+
+						<div align="left">
+							<button type="submit" class="btn btn-primary">Buscar</button>
+							<a href="/feeding/listar" class="btn btn-danger">Cancelar</a>
+						</div>
+					</div>
+
+				</div>
+			</form>
+
+		</div>
+
+
+		<hr class="sidebar-divider">
+
+		<table class="table table-bordered table-hover table-striped"
+			id="tab_logic">
+			<thead>
+				<tr>
+					<th class="text-center">CODIGO</th>
+					<th class="text-center">TIPO DE ALIMENTACION</th>
+					<th class="text-center">TURNO DE ALIMENTACION</th>
+					<th class="text-center">FECHA DE ALIMENTACION</th>
+					<th class="text-center">PACIENTE</th>
+					<th class="text-center">PERSONAL MEDICO</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="alim: ${listaAlimentacion}">
+    				<td th:text="${alim.idFeeding}"></td>
+    				<td th:text="${alim.feedingtype.nameTDA}"></td>
+    				<td th:text="${alim.feedingshift.nameTRDA}"></td>
+    				<td th:text="${#dates.format(alim.dateFeeding,'dd/MM/yyyy')}"></td>
+    				<td th:text="${alim.patient.namePatient}"></td>
+    				<td th:text="${alim.medicalstaff.namePM}"></td>
+				</tr>
+			</tbody>
+		</table>
+
+
+		<p th:text="${mensaje}" class="form-text text-dark"></p>
+	</div>
+	<div th:replace="fragments/footer :: footer"></div>
+</body>
+
+</html>
