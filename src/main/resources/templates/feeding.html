@@ -75,6 +75,18 @@
     							</option>
     					</select>	
 						
+						
+						
+						<label for="personal">PERSONAL MEDICO:</label>
+    					<select class="form-control" th:field="*{medicalstaff.idPM}">
+    					<option th:each="personal: ${listaPersonalMedicos}"
+    							th:value="${personal.idPM}"
+    							th:text="${personal.namePM}"
+    							th:selected="(${personal.idPM} == *{medicalstaff.idPM})">
+    							</option>
+    					
+    					</select>
+						
 					
     				</div>
     				
