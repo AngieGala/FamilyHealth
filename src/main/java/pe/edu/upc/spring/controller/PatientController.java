@@ -28,7 +28,7 @@ public class PatientController {
 	
 	@RequestMapping("/bienvenido")
 	public String irPaginaBienvenida() {
-		return "bienvenido"; // bienvenido es una pagina del frontend, pagina de Inicio
+		return "index"; // bienvenido es una pagina del frontend, pagina de Inicio
 	}
 	
 	@RequestMapping("/")
@@ -149,13 +149,7 @@ public class PatientController {
 		
 		patient.setDatePatient(patient.getDatePatient()); // capturo la fecha de la caja de texto
 		listaPacientes = pService.findByDatePatient(patient.getDatePatient()); // buscando
-		
-		/*
-		if(listaPacientes.isEmpty()) {
-			SimpleDateFormat formatter=new SimpleDateFormat("dd-MM-yyyy");
-			listaPacientes = pService.findByDatePatient(formatter.parse(patient.getNamePatient()));
-		}
-		*/
+
 		if(listaPacientes.isEmpty()) {
 			model.put("mensaje", "No existen coincidencias");
 		}

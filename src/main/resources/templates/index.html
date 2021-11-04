@@ -1,824 +1,729 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-	<head>
-		<meta charset="utf-8">
-		<meta content="width=device-width, initial-scale=1.0" name="viewport">
-		
-		<title>Family Health</title>
-		<meta content="" name="description">
-		<meta content="" name="keywords">
-		
-		<!-- Favicons -->
-		<link th:href="@{/assets/img/family-health.png}"
-			rel="icon">
-		<link
-			th:href="@{assets/img/family-health.png}"
-			rel="apple-touch-icon">
-		
-		<!-- Google Fonts -->
-		<link
-			href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-			rel="stylesheet">
-		
-		<!-- Vendor CSS Files -->
-		
-		<link rel="stylesheet"
-			th:href="@{/assets/vendor/animate.css/animate.min.css}" />
-		
-		<link rel="stylesheet"
-			th:href="@{/assets/vendor/bootstrap/css/bootstrap.min.css}" />
-		
-		<link rel="stylesheet"
-			th:href="@{/assets/vendor/bootstrap-icons/bootstrap-icons.css}" />
-		
-		<link rel="stylesheet"
-			th:href="@{/assets/vendor/boxicons/css/boxicons.min.css}" />
-		
-		<link rel="stylesheet"
-			th:href="@{/assets/vendor/fontawesome-free/css/all.min.css}" />
-		
-		<link rel="stylesheet"
-			th:href="@{/assets/vendor/glightbox/css/glightbox.min.css}" />
-		
-		<link rel="stylesheet" th:href="@{/assets/vendor/remixicon/remixicon.css}" />
-		
-		<link rel="stylesheet"
-			th:href="@{/assets/vendor/swiper/swiper-bundle.min.css}" />
-		
-		<!-- Template Main CSS File -->
-		
-		<link rel="stylesheet" th:href="@{/assets/css/style.css}" />
-		
-	
-	</head>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-	<body>
-	
-		<!-- ======= Top Bar ======= -->
-		<div id="topbar" class="d-flex align-items-center fixed-top">
-			<div class="container d-flex justify-content-between">
-				<div class="contact-info d-flex align-items-center">
-					<i class="bi bi-envelope"></i> <a
-						href="mailto:contacto@familyhealth.com">contacto@familyhealth.com</a>
-					<i class="bi bi-phone"></i> +51 959 078 554
+<title>Family Health</title>
+<meta content="" name="description">
+<meta content="" name="keywords">
+
+<!-- Favicons -->
+<link th:href="@{/assets/img/family-health.png}" rel="icon">
+<link th:href="@{assets/img/family-health.png}" rel="apple-touch-icon">
+
+<!-- Google Fonts -->
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+	rel="stylesheet">
+
+<!-- Vendor CSS Files -->
+
+<link rel="stylesheet"
+	th:href="@{/assets/vendor/animate.css/animate.min.css}" />
+
+<link rel="stylesheet"
+	th:href="@{/assets/vendor/bootstrap/css/bootstrap.min.css}" />
+
+<link rel="stylesheet"
+	th:href="@{/assets/vendor/bootstrap-icons/bootstrap-icons.css}" />
+
+<link rel="stylesheet"
+	th:href="@{/assets/vendor/boxicons/css/boxicons.min.css}" />
+
+<link rel="stylesheet"
+	th:href="@{/assets/vendor/fontawesome-free/css/all.min.css}" />
+
+<link rel="stylesheet"
+	th:href="@{/assets/vendor/glightbox/css/glightbox.min.css}" />
+
+<link rel="stylesheet"
+	th:href="@{/assets/vendor/remixicon/remixicon.css}" />
+
+<link rel="stylesheet"
+	th:href="@{/assets/vendor/swiper/swiper-bundle.min.css}" />
+
+<!-- Template Main CSS File -->
+
+<link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+
+
+</head>
+
+<body>
+
+	<!-- ======= Top Bar ======= -->
+	<div id="topbar" class="d-flex align-items-center fixed-top">
+		<div class="container d-flex justify-content-between">
+			<div class="contact-info d-flex align-items-center">
+				<i class="bi bi-envelope"></i> <a
+					href="mailto:contacto@familyhealth.com">contacto@familyhealth.com</a>
+				<i class="bi bi-phone"></i> +51 959 078 554
+			</div>
+			<div class="d-none d-lg-flex social-links align-items-center">
+				<a href="#" class="twitter"><i class="bi bi-twitter"></i></a> <a
+					href="#" class="facebook"><i class="bi bi-facebook"></i></a> <a
+					href="#" class="instagram"><i class="bi bi-instagram"></i></a> <a
+					href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+			</div>
+		</div>
+	</div>
+
+	<!-- ======= Header ======= -->
+	<header id="header" class="fixed-top">
+		<div class="container d-flex align-items-center">
+
+			<h1 class="logo me-auto">
+				<a href="index.html">Family Health</a>
+			</h1>
+			<!-- Uncomment below if you prefer to use an image logo -->
+			<!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+			<nav id="navbar" class="navbar order-last order-lg-0">
+				<ul>
+					<li><a class="nav-link scrollto active" href="#hero">Inicio</a></li>
+
+					<li><a class="nav-link scrollto" href="#services">Servicio</a></li>
+
+					<li><a class="nav-link scrollto" href="#doctors">Doctores</a></li>
+
+					<li><a class="nav-link scrollto" href="#contact">Contacto</a></li>
+				</ul>
+				<i class="bi bi-list mobile-nav-toggle"></i>
+			</nav>
+			<!-- .navbar -->
+
+			<a href="#hero" class="appointment-btn scrollto"><span
+				class="d-none d-md-inline">Comience </span> Ya!</a>
+
+		</div>
+	</header>
+	<!-- End Header -->
+
+	<!-- ======= Hero Section ======= -->
+	<section id="hero" class="d-flex align-items-center">
+		<div class="container">
+			<h1>Bienvenido a Family Health</h1>
+			<h2>Realiza el seguimiento a tus parientes, entérate de su
+				estado y brindale seguridad a tu familia!</h2>
+
+			<a th:href="@{/vitalsigns/bienvenido}"
+				class="btn-get-started scrollto">Personal de salud</a> <a
+				th:href="@{/vitalsigns/bienvenido}" class="btn-get-started scrollto">Familiar
+				del paciente</a>
+
+		</div>
+	</section>
+	<!-- End Hero -->
+
+	<main id="main">
+
+		<!-- ======= Why Us Section ======= -->
+		<section id="why-us" class="why-us">
+			<div class="container">
+
+				<div class="row">
+					<div class="col-lg-4 d-flex align-items-stretch">
+						<div class="content">
+							<h3>¿Por qué elegir Family Health?</h3>
+							<p>Somos un grupo de profesionales de la salud, brindándote
+								información detallada, procesos y estado de tu familiar,
+								mejorando la calidad de atención y manteniéndolo siempre
+								enterado a cualquier tipo de necesidades que se requiera.</p>
+							<div class="text-center">
+								<a href="#" class="more-btn">Leer más <i
+									class="bx bx-chevron-right"></i></a>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-8 d-flex align-items-stretch">
+						<div class="icon-boxes d-flex flex-column justify-content-center">
+							<div class="row">
+								<div class="col-xl-4 d-flex align-items-stretch">
+									<div class="icon-box mt-4 mt-xl-0">
+										<i class="bx bx-receipt"></i>
+										<h4>Información actualizada</h4>
+										<p>Información a tiempo real del paciente.</p>
+									</div>
+								</div>
+								<div class="col-xl-4 d-flex align-items-stretch">
+									<div class="icon-box mt-4 mt-xl-0">
+										<i class="bx bx-cube-alt"></i>
+										<h4>Profesionales comprometidos</h4>
+										<p>Personal de salud comprometidos con la salud del
+											paciente, siguiendo a detalle cada proceso.</p>
+									</div>
+								</div>
+								<div class="col-xl-4 d-flex align-items-stretch">
+									<div class="icon-box mt-4 mt-xl-0">
+										<i class="bx bx-images"></i>
+										<h4>Calidad de atención</h4>
+										<p>Se brinda mejor calidad de atención a los pacientes.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- End .content-->
+					</div>
 				</div>
-				<div class="d-none d-lg-flex social-links align-items-center">
-					<a href="#" class="twitter"><i class="bi bi-twitter"></i></a> <a
-						href="#" class="facebook"><i class="bi bi-facebook"></i></a> <a
-						href="#" class="instagram"><i class="bi bi-instagram"></i></a> <a
-						href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+
+			</div>
+		</section>
+		<!-- End Why Us Section -->
+
+
+
+		<!-- ======= Counts Section ======= -->
+		<section id="counts" class="counts">
+			<div class="container">
+
+				<div class="row">
+
+					<div class="col-lg-4 col-md-6">
+						<div class="count-box">
+							<i class="fas fa-user-md"></i> <span data-purecounter-start="0"
+								data-purecounter-end="85" data-purecounter-duration="1"
+								class="purecounter"></span>
+							<p>Doctores(as) y Enfermeros(as)</p>
+						</div>
+					</div>
+
+					<div class="col-lg-4 col-md-6 mt-5 mt-md-0">
+						<div class="count-box">
+							<i class="far fa-hospital"></i> <span data-purecounter-start="0"
+								data-purecounter-end="18" data-purecounter-duration="1"
+								class="purecounter"></span>
+							<p>Hospitales</p>
+						</div>
+					</div>
+
+
+
+					<div class="col-lg-4 col-md-6 mt-5 mt-lg-0">
+						<div class="count-box">
+							<i class="fas fa-award"></i> <span data-purecounter-start="0"
+								data-purecounter-end="3" data-purecounter-duration="1"
+								class="purecounter"></span>
+							<p>Reconocimientos</p>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</section>
+		<!-- End Counts Section -->
+
+		<!-- ======= Services Section ======= -->
+		<section id="services" class="services">
+			<div class="container">
+
+				<div class="section-title">
+					<h2>Servicios</h2>
+					<p>Atención dedicada, actualización de información y brindar
+						detalles acerca de familiar.</p>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-6 col-md-6 d-flex align-items-stretch">
+						<div class="icon-box">
+							<div class="icon">
+								<i class="fas fa-heartbeat"></i>
+							</div>
+							<h4>
+								<a href="">Atención dedicada</a>
+							</h4>
+							<p>Atención de calidad en manos de excelentes profesionales
+								de la salud del paciente.</p>
+						</div>
+					</div>
+
+					<div
+						class="col-lg-6 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+						<div class="icon-box">
+							<div class="icon">
+								<i class="fas fa-hospital-user"></i>
+							</div>
+							<h4>
+								<a href="">Información actualizada</a>
+							</h4>
+							<p>Información a tiempo real, procesos, estado y detalles del
+								paciente.</p>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</section>
+		<!-- End Services Section -->
+
+
+		<!-- ======= Doctors Section ======= -->
+		<section id="doctors" class="doctors">
+			<div class="container">
+
+				<div class="section-title">
+					<h2>Doctores</h2>
+					<p>Nuestro personal de salud esta totalmente capacitado para
+						cualquier tipo de contingencia, brindando calidad de atención y
+						garantizando la seguridad de su paciente.</p>
+				</div>
+
+				<div class="row">
+
+					<div class="col-lg-6">
+						<div class="member d-flex align-items-start">
+							<div class="pic">
+								<img th:src="@{/assets/img/doctors/doctors-1.jpg}"
+									class="img-fluid" alt="">
+							</div>
+							<div class="member-info">
+								<h4>Walter Sanchez</h4>
+								<span>Médico</span>
+								<p>Especialidad en cardiología</p>
+								<div class="social">
+									<a href=""><i class="ri-twitter-fill"></i></a> <a href=""><i
+										class="ri-facebook-fill"></i></a> <a href=""><i
+										class="ri-instagram-fill"></i></a> <a href=""> <i
+										class="ri-linkedin-box-fill"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-6 mt-4 mt-lg-0">
+						<div class="member d-flex align-items-start">
+							<div class="pic">
+								<img th:src="@{/assets/img/doctors/doctors-2.jpg}"
+									class="img-fluid" alt="">
+							</div>
+							<div class="member-info">
+								<h4>Sara Mendoza</h4>
+								<span>Anestesióloga</span>
+								<p>Especialidad en otorrinolaringología</p>
+								<div class="social">
+									<a href=""><i class="ri-twitter-fill"></i></a> <a href=""><i
+										class="ri-facebook-fill"></i></a> <a href=""><i
+										class="ri-instagram-fill"></i></a> <a href=""> <i
+										class="ri-linkedin-box-fill"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-6 mt-4">
+						<div class="member d-flex align-items-start">
+							<div class="pic">
+								<img th:src="@{/assets/img/doctors/doctors-3.jpg}"
+									class="img-fluid" alt="">
+							</div>
+							<div class="member-info">
+								<h4>Pedro Castillo</h4>
+								<span>Neumología</span>
+								<p>Especialidad en neumología</p>
+								<div class="social">
+									<a href=""><i class="ri-twitter-fill"></i></a> <a href=""><i
+										class="ri-facebook-fill"></i></a> <a href=""><i
+										class="ri-instagram-fill"></i></a> <a href=""> <i
+										class="ri-linkedin-box-fill"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-6 mt-4">
+						<div class="member d-flex align-items-start">
+							<div class="pic">
+								<img th:src="@{/assets/img/doctors/doctors-4.jpg}"
+									class="img-fluid" alt="">
+							</div>
+							<div class="member-info">
+								<h4>Yesica Torres</h4>
+								<span>Neurología</span>
+								<p>Especalidad en neurología</p>
+								<div class="social">
+									<a href=""><i class="ri-twitter-fill"></i></a> <a href=""><i
+										class="ri-facebook-fill"></i></a> <a href=""><i
+										class="ri-instagram-fill"></i></a> <a href=""> <i
+										class="ri-linkedin-box-fill"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</section>
+		<!-- End Doctors Section -->
+
+		<!-- ======= Frequently Asked Questions Section ======= -->
+		<section id="faq" class="faq section-bg">
+			<div class="container">
+
+				<div class="section-title">
+					<h2>Preguntas frecuentes</h2>
+					<p>En esta seccion resolvemos las preguntas frecuentes</p>
+				</div>
+
+				<div class="faq-list">
+					<ul>
+						<li data-aos="fade-up"><i class="bx bx-help-circle icon-help"></i>
+							<a data-bs-toggle="collapse" class="collapse"
+							data-bs-target="#faq-list-1">¿Qué es Family Health? <i
+								class="bx bx-chevron-down icon-show"></i><i
+								class="bx bx-chevron-up icon-close"></i></a>
+							<div id="faq-list-1" class="collapse show"
+								data-bs-parent=".faq-list">
+								<p>Family Health es un portal virtual por donde mantenemos
+									información actualizada de tu familiar, desde signos vitales,
+									exámenes hasta su alimentación. La salud de tu familiar es
+									importante y la salud mental de la familia.</p>
+							</div></li>
+
+						<li data-aos="fade-up" data-aos-delay="400"><i
+							class="bx bx-help-circle icon-help"></i> <a
+							data-bs-toggle="collapse" data-bs-target="#faq-list-5"
+							class="collapsed">¿Cómo funciona Family Health? <i
+								class="bx bx-chevron-down icon-show"></i><i
+								class="bx bx-chevron-up icon-close"></i></a>
+							<div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
+								<p>Para ser parte de Family Health, solo necesitas
+									registrarte con tus datos personales. En caso de ser personal
+									médico deberá ingresar su cargo dentro del área.</p>
+							</div></li>
+
+					</ul>
+				</div>
+
+			</div>
+		</section>
+		<!-- End Frequently Asked Questions Section -->
+
+		<!-- ======= Testimonials Section ======= -->
+		<section id="testimonials" class="testimonials">
+			<div class="container">
+
+				<div class="testimonials-slider swiper-container" data-aos="fade-up"
+					data-aos-delay="100">
+					<div class="swiper-wrapper">
+
+						<div class="swiper-slide">
+							<div class="testimonial-wrap">
+								<div class="testimonial-item">
+									<img th:src="@{/assets/img/testimonials/testimonials-1.jpg}"
+										class="testimonial-img" alt="">
+									<h3>Juan Contreras</h3>
+									<h4>Familiar del Paciente</h4>
+									<p>
+										<i class="bx bxs-quote-alt-left quote-icon-left"></i> Una gran
+										experiencia el servicio que brinda Family Health. Me mantenía
+										informado al 100% del estado de mi familiar internado debido
+										al covid. <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+									</p>
+								</div>
+							</div>
+						</div>
+						<!-- End testimonial item -->
+
+						<div class="swiper-slide">
+							<div class="testimonial-wrap">
+								<div class="testimonial-item">
+									<img th:src="@{/assets/img/testimonials/testimonials-2.jpg}"
+										class="testimonial-img" alt="">
+									<h3>Patricia Melgar</h3>
+									<h4>Familiar del Paciente</h4>
+									<p>
+										<i class="bx bxs-quote-alt-left quote-icon-left"></i> 100%
+										recomendado, gracias a Family Health pude estar al tanto de lo
+										que necesitaba mi familiar y su condición dentro del plantel
+										médico. <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+									</p>
+								</div>
+							</div>
+						</div>
+						<!-- End testimonial item -->
+
+					</div>
+					<div class="swiper-pagination"></div>
+				</div>
+
+			</div>
+		</section>
+		<!-- End Testimonials Section -->
+
+		<!-- ======= Gallery Section ======= -->
+		<section id="gallery" class="gallery">
+			<div class="container">
+
+				<div class="section-title">
+					<h2>Galería</h2>
+					<p>Algunas fotos capturando los momentos con nuestros
+						pacientes.</p>
+				</div>
+			</div>
+
+			<div class="container-fluid">
+				<div class="row no-gutters">
+
+					<div class="col-lg-3 col-md-4">
+						<div class="gallery-item">
+							<a th:href="@{/assets/img/gallery/gallery-1.jpg}"
+								class="galelry-lightbox"> <img
+								th:src="@{/assets/img/gallery/gallery-1.jpg}" alt=""
+								class="img-fluid">
+							</a>
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-4">
+						<div class="gallery-item">
+							<a th:href="@{/assets/img/gallery/gallery-2.jpg}"
+								class="galelry-lightbox"> <img
+								th:src="@{/assets/img/gallery/gallery-2.jpg}" alt=""
+								class="img-fluid">
+							</a>
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-4">
+						<div class="gallery-item">
+							<a th:href="@{/assets/img/gallery/gallery-3.jpg}"
+								class="galelry-lightbox"> <img
+								th:src="@{/assets/img/gallery/gallery-3.jpg}" alt=""
+								class="img-fluid">
+							</a>
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-4">
+						<div class="gallery-item">
+							<a th:href="@{/assets/img/gallery/gallery-4.jpg}"
+								class="galelry-lightbox"> <img
+								th:src="@{/assets/img/gallery/gallery-4.jpg}" alt=""
+								class="img-fluid">
+							</a>
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-4">
+						<div class="gallery-item">
+							<a th:href="@{/assets/img/gallery/gallery-5.jpg}"
+								class="galelry-lightbox"> <img
+								th:src="@{/assets/img/gallery/gallery-5.jpg}" alt=""
+								class="img-fluid">
+							</a>
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-4">
+						<div class="gallery-item">
+							<a th:href="@{/assets/img/gallery/gallery-6.jpg}"
+								class="galelry-lightbox"> <img
+								th:src="@{/assets/img/gallery/gallery-6.jpg}" alt=""
+								class="img-fluid">
+							</a>
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-4">
+						<div class="gallery-item">
+							<a th:href="@{/assets/img/gallery/gallery-7.jpg}"
+								class="galelry-lightbox"> <img
+								th:src="@{/assets/img/gallery/gallery-7.jpg}" alt=""
+								class="img-fluid">
+							</a>
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-4">
+						<div class="gallery-item">
+							<a th:href="@{/assets/img/gallery/gallery-8.jpg}"
+								class="galelry-lightbox"> <img
+								th:src="@{/assets/img/gallery/gallery-8.jpg}" alt=""
+								class="img-fluid">
+							</a>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</section>
+		<!-- End Gallery Section -->
+
+		<!-- ======= Contact Section ======= -->
+		<section id="contact" class="contact">
+			<div class="container">
+
+				<div class="section-title">
+					<h2>Contacto</h2>
+
+				</div>
+			</div>
+
+			<div>
+				<!--En el atributo src de la etiqueta iframe deben colocar el iframe de googlemaps de la direccion de su negocio-->
+				<iframe style="border: 0; width: 100%; height: 350px;"
+					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31209.867894994553!2d-77.01269787902892!3d-12.09616190179358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c7d19478c6bf%3A0xb53809bf8f8b06c8!2sSan%20Borja!5e0!3m2!1ses!2spe!4v1632026449304!5m2!1ses!2spe"
+					frameborder="0" allowfullscreen></iframe>
+
+
+			</div>
+
+			<div class="container">
+				<div class="row mt-5">
+
+					<div class="col-lg-4">
+						<div class="info">
+							<div class="address">
+								<i class="bi bi-geo-alt"></i>
+								<h4>Ubicación:</h4>
+								<p>Av.las avellanas - San borja, Lima,Peru</p>
+							</div>
+
+							<div class="email">
+								<i class="bi bi-envelope"></i>
+								<h4>Email:</h4>
+								<p>contacto@familyhealth.com</p>
+							</div>
+
+							<div class="phone">
+								<i class="bi bi-phone"></i>
+								<h4>Telefono:</h4>
+								<p>+51 959 078 554</p>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="col-lg-8 mt-5 mt-lg-0">
+
+						<form action="" method="post" role="form" class="">
+							<div class="row">
+								<div class="col-md-6 form-group">
+									<input type="text" name="name" class="form-control" id="name"
+										placeholder="Nombre" required>
+								</div>
+								<div class="col-md-6 form-group mt-3 mt-md-0">
+									<input type="email" class="form-control" name="email"
+										id="email" placeholder="Correo electrónico" required>
+								</div>
+							</div>
+							<div class="form-group mt-3">
+								<input type="text" class="form-control" name="subject"
+									id="subject" placeholder="Asunto" required>
+							</div>
+							<div class="form-group mt-3">
+								<textarea class="form-control" name="message" rows="5"
+									placeholder="Mensaje" required></textarea>
+							</div>
+							<div class="my-3"></div>
+							<div class="text-center">
+								<button class="appointment-btn" style="border: none;"
+									type="submit">Enviar mensaje</button>
+							</div>
+						</form>
+
+					</div>
+
+				</div>
+
+			</div>
+		</section>
+		<!-- End Contact Section -->
+
+	</main>
+	<!-- End #main -->
+
+	<!-- ======= Footer ======= -->
+	<footer id="footer">
+
+		<div class="footer-top">
+			<div class="container">
+				<div class="row">
+
+					<div class="col-lg-3 col-md-6 footer-contact">
+						<h3>Family Health</h3>
+						<p>
+							Av.Las Avellanas<br> San Borja, Lima<br> Perú <br>
+							<br> <strong>Teléfono:</strong> +51 959 078 554<br> <strong>Email:</strong>
+							contacto@familyhealth.com<br>
+						</p>
+					</div>
+
+					<div class="col-lg-4 col-md-6 footer-links">
+						<h4>Links</h4>
+						<ul>
+							<li><i class="bx bx-chevron-right"></i> <a href="#">Inicio</a></li>
+
+							<li><i class="bx bx-chevron-right"></i> <a href="#">Servicios</a></li>
+							<li><i class="bx bx-chevron-right"></i> <a href="#">Términos
+									y condiciones</a></li>
+							<li><i class="bx bx-chevron-right"></i> <a href="#">Políticas
+									de privacidad</a></li>
+						</ul>
+					</div>
+
+
+
+					<div class="col-lg-4 col-md-6 footer-newsletter">
+						<h4>Únete a Family Health</h4>
+						<p>Únete para estar 100% informados de la condición de tu
+							familiar.</p>
+						<form action="" method="post">
+							<input type="email" name="email"><input type="submit"
+								value="Suscribete">
+						</form>
+					</div>
+
 				</div>
 			</div>
 		</div>
-	
-		<!-- ======= Header ======= -->
-		<header id="header" class="fixed-top">
-			<div class="container d-flex align-items-center">
-	
-				<h1 class="logo me-auto">
-					<a href="index.html">Family Health</a>
-				</h1>
-				<!-- Uncomment below if you prefer to use an image logo -->
-				<!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-	
-				<nav id="navbar" class="navbar order-last order-lg-0">
-					<ul>
-						<li><a class="nav-link scrollto active" href="#hero">Inicio</a></li>
-	
-						<li><a class="nav-link scrollto" href="#services">Servicio</a></li>
-	
-						<li><a class="nav-link scrollto" href="#doctors">Doctores</a></li>
-						
-						<li><a class="nav-link scrollto" href="#contact">Contacto</a></li>
-					</ul>
-					<i class="bi bi-list mobile-nav-toggle"></i>
-				</nav>
-				<!-- .navbar -->
-	
-				<a href="#hero" class="appointment-btn scrollto"><span
-					class="d-none d-md-inline">Comience </span> Ya!</a>
-	
+
+		<div class="container d-md-flex py-4">
+
+			<div class="me-md-auto text-center text-md-start">
+				<div class="copyright">
+					&copy; Copyright <strong><span>Family Health</span></strong>. Todos
+					los derechos reservados
+				</div>
+
 			</div>
-		</header>
-		<!-- End Header -->
-	
-		<!-- ======= Hero Section ======= -->
-		<section id="hero" class="d-flex align-items-center">
-			<div class="container">
-				<h1>Bienvenido a Family Health</h1>
-				<h2>Realiza el seguimiento a tus parientes, entérate de su estado
-					y brindale seguridad a tu familia!</h2>
-					
-				<a href="login/login.html" class="btn-get-started scrollto">Personal
-					de salud</a> 
-					
-				<a href="login/login.html" class="btn-get-started scrollto">Familiar
-					del paciente</a>
-					
+			<div class="social-links text-center text-md-right pt-3 pt-md-0">
+				<a href="#" class="twitter"><i class="bx bxl-twitter"></i></a> <a
+					href="#" class="facebook"><i class="bx bxl-facebook"></i></a> <a
+					href="#" class="instagram"><i class="bx bxl-instagram"></i></a> <a
+					href="#" class="google-plus"><i class="bx bxl-skype"></i></a> <a
+					href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
 			</div>
-		</section>
-		<!-- End Hero -->
-	
-		<main id="main">
-	
-			<!-- ======= Why Us Section ======= -->
-			<section id="why-us" class="why-us">
-				<div class="container">
-	
-					<div class="row">
-						<div class="col-lg-4 d-flex align-items-stretch">
-							<div class="content">
-								<h3>¿Por qué elegir Family Health?</h3>
-								<p>Somos un grupo de profesionales de la salud, brindándote
-									información detallada, procesos y estado de tu familiar,
-									mejorando la calidad de atención y manteniéndolo siempre
-									enterado a cualquier tipo de necesidades que se requiera.</p>
-								<div class="text-center">
-									<a href="#" class="more-btn">Leer más <i
-										class="bx bx-chevron-right"></i></a>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-8 d-flex align-items-stretch">
-							<div class="icon-boxes d-flex flex-column justify-content-center">
-								<div class="row">
-									<div class="col-xl-4 d-flex align-items-stretch">
-										<div class="icon-box mt-4 mt-xl-0">
-											<i class="bx bx-receipt"></i>
-											<h4>Información actualizada</h4>
-											<p>Información a tiempo real del paciente.</p>
-										</div>
-									</div>
-									<div class="col-xl-4 d-flex align-items-stretch">
-										<div class="icon-box mt-4 mt-xl-0">
-											<i class="bx bx-cube-alt"></i>
-											<h4>Profesionales comprometidos</h4>
-											<p>Personal de salud comprometidos con la salud del
-												paciente, siguiendo a detalle cada proceso.</p>
-										</div>
-									</div>
-									<div class="col-xl-4 d-flex align-items-stretch">
-										<div class="icon-box mt-4 mt-xl-0">
-											<i class="bx bx-images"></i>
-											<h4>Calidad de atención</h4>
-											<p>Se brinda mejor calidad de atención a los pacientes.</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!-- End .content-->
-						</div>
-					</div>
-	
-				</div>
-			</section>
-			<!-- End Why Us Section -->
-	
-	
-	
-			<!-- ======= Counts Section ======= -->
-			<section id="counts" class="counts">
-				<div class="container">
-	
-					<div class="row">
-	
-						<div class="col-lg-4 col-md-6">
-							<div class="count-box">
-								<i class="fas fa-user-md"></i> <span data-purecounter-start="0"
-									data-purecounter-end="85" data-purecounter-duration="1"
-									class="purecounter"></span>
-								<p>Doctores(as) y Enfermeros(as)</p>
-							</div>
-						</div>
-	
-						<div class="col-lg-4 col-md-6 mt-5 mt-md-0">
-							<div class="count-box">
-								<i class="far fa-hospital"></i> <span data-purecounter-start="0"
-									data-purecounter-end="18" data-purecounter-duration="1"
-									class="purecounter"></span>
-								<p>Hospitales</p>
-							</div>
-						</div>
-	
-	
-	
-						<div class="col-lg-4 col-md-6 mt-5 mt-lg-0">
-							<div class="count-box">
-								<i class="fas fa-award"></i> <span data-purecounter-start="0"
-									data-purecounter-end="3" data-purecounter-duration="1"
-									class="purecounter"></span>
-								<p>Reconocimientos</p>
-							</div>
-						</div>
-	
-					</div>
-	
-				</div>
-			</section>
-			<!-- End Counts Section -->
-	
-			<!-- ======= Services Section ======= -->
-			<section id="services" class="services">
-				<div class="container">
-	
-					<div class="section-title">
-						<h2>Servicios</h2>
-						<p>Atención dedicada, actualización de información y
-							brindar detalles acerca de familiar.</p>
-					</div>
-	
-					<div class="row">
-						<div class="col-lg-6 col-md-6 d-flex align-items-stretch">
-							<div class="icon-box">
-								<div class="icon">
-									<i class="fas fa-heartbeat"></i>
-								</div>
-								<h4>
-									<a href="">Atención dedicada</a>
-								</h4>
-								<p>Atención de calidad en manos de excelentes profesionales
-									de la salud del paciente.</p>
-							</div>
-						</div>
-	
-	
-	
-						<div
-							class="col-lg-6 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
-							<div class="icon-box">
-								<div class="icon">
-									<i class="fas fa-hospital-user"></i>
-								</div>
-								<h4>
-									<a href="">Información actualizada</a>
-								</h4>
-								<p>Información a tiempo real, procesos, estado y detalles del
-									paciente.</p>
-							</div>
-						</div>
-	
-	
-	
-	
-					</div>
-	
-				</div>
-			</section>
-			<!-- End Services Section -->
-	
-			<!-- ======= Appointment Section ======= -->
-			<section id="appointment" class="appointment section-bg">
-				<div class="container">
-	
-					<div class="section-title">
-						<h2>Registrate si tienes un familiar internado con covid y te gustaría
-							información actualizada. No esperes más!</h2>
-						<p>.</p>
-					</div>
-	
-					<form action="forms/appointment.php" method="post" role="form"
-						class="php-email-form">
-						<div class="row">
-							<div class="col-md-4 form-group">
-								<input type="text" name="name" class="form-control" id="name"
-									placeholder="Nombres" data-rule="minlen:4"
-									data-msg="Please enter at least 4 chars">
-								<div class="validate"></div>
-							</div>
-							<div class="col-md-4 form-group mt-3 mt-md-0">
-								<input type="text" class="form-control" name="apellidos"
-									id="apellidos" placeholder="Apellidos" data-rule="apellidos"
-									data-msg="Please enter a valid email">
-								<div class="validate"></div>
-							</div>
-	
-							<div class="col-md-4 form-group mt-3 mt-md-0">
-								<input type="email" class="form-control" name="email" id="email"
-									placeholder="Correo electrónico" data-rule="email"
-									data-msg="Please enter a valid email">
-								<div class="validate"></div>
-							</div>
-	
-						</div>
-						<div class="row">
-							<div class="col-md-4 form-group mt-3 ">
-								<input type="tel" class="form-control" name="phone" id="phone"
-									placeholder="Teléfono" data-rule="minlen:4"
-									data-msg="Please enter at least 4 chars">
-								<div class="validate"></div>
-							</div>
-	
-							<div class="col-md-4 form-group mt-3">
-								<select name="department" id="department" class="form-select">
-									<option value="">Seleccionar departamento</option>
-									<option value="Lima">Lima</option>
-									<option value="Arequipa">Arequipa</option>
-									<option value="La libertad">La libertad</option>
-								</select>
-								<div class="validate"></div>
-							</div>
-							<div class="col-md-4 form-group mt-3">
-								<select name="doctor" id="doctor" class="form-select">
-									<option value="">Seleccionar hospital</option>
-									<option value="Hospital Cayetano Heredia">Hospital
-										Cayetano Heredia</option>
-									<option value="Hospital Arzobispo Loayza">Hospital
-										Arzobispo Loayza</option>
-	
-								</select>
-								<div class="validate"></div>
-							</div>
-						</div>
-	
-						<div class="form-group mt-3">
-							<textarea class="form-control" name="mensaje" rows="5"
-								placeholder="Mensaje (Opcional)"></textarea>
-							<div class="validate"></div>
-						</div>
-						<div class="mb-3">
-							<div class="loading">Cargando</div>
-							<div class="error-message">Error al enviar mensaje</div>
-							<div class="sent-message">El registro fue exitoso. Muchas
-								gracias!</div>
-						</div>
-						<div class="text-center">
-							<button type="submit">Registrarse</button>
-						</div>
-					</form>
-	
-				</div>
-			</section>
-			<!-- End Appointment Section -->
-	
-	
-	
-			<!-- ======= Doctors Section ======= -->
-			<section id="doctors" class="doctors">
-				<div class="container">
-	
-					<div class="section-title">
-						<h2>Doctores</h2>
-						<p>Nuestro personal de salud esta totalmente capacitado para
-							cualquier tipo de contingencia, brindando calidad de atención y
-							garantizando la seguridad de su paciente.</p>
-					</div>
-	
-					<div class="row">
-	
-						<div class="col-lg-6">
-							<div class="member d-flex align-items-start">
-								<div class="pic">
-									<img th:src="@{/assets/img/doctors/doctors-1.jpg}" class="img-fluid"
-										alt="">
-								</div>
-								<div class="member-info">
-									<h4>Walter Sanchez</h4>
-									<span>Médico</span>
-									<p>Especialidad en cardiología</p>
-									<div class="social">
-										<a href=""><i class="ri-twitter-fill"></i></a> <a href=""><i
-											class="ri-facebook-fill"></i></a> <a href=""><i
-											class="ri-instagram-fill"></i></a> <a href=""> <i
-											class="ri-linkedin-box-fill"></i>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-	
-						<div class="col-lg-6 mt-4 mt-lg-0">
-							<div class="member d-flex align-items-start">
-								<div class="pic">
-									<img th:src="@{/assets/img/doctors/doctors-2.jpg}" class="img-fluid"
-										alt="">
-								</div>
-								<div class="member-info">
-									<h4>Sara Mendoza</h4>
-									<span>Anestesióloga</span>
-									<p>Especialidad en otorrinolaringología</p>
-									<div class="social">
-										<a href=""><i class="ri-twitter-fill"></i></a> <a href=""><i
-											class="ri-facebook-fill"></i></a> <a href=""><i
-											class="ri-instagram-fill"></i></a> <a href=""> <i
-											class="ri-linkedin-box-fill"></i>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-	
-						<div class="col-lg-6 mt-4">
-							<div class="member d-flex align-items-start">
-								<div class="pic">
-									<img th:src="@{/assets/img/doctors/doctors-3.jpg}" class="img-fluid"
-										alt="">
-								</div>
-								<div class="member-info">
-									<h4>Pedro Castillo</h4>
-									<span>Neumología</span>
-									<p>Especialidad en neumología</p>
-									<div class="social">
-										<a href=""><i class="ri-twitter-fill"></i></a> <a href=""><i
-											class="ri-facebook-fill"></i></a> <a href=""><i
-											class="ri-instagram-fill"></i></a> <a href=""> <i
-											class="ri-linkedin-box-fill"></i>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-	
-						<div class="col-lg-6 mt-4">
-							<div class="member d-flex align-items-start">
-								<div class="pic">
-									<img th:src="@{/assets/img/doctors/doctors-4.jpg}" class="img-fluid"
-										alt="">
-								</div>
-								<div class="member-info">
-									<h4>Yesica Torres</h4>
-									<span>Neurología</span>
-									<p>Especalidad en neurología</p>
-									<div class="social">
-										<a href=""><i class="ri-twitter-fill"></i></a> <a href=""><i
-											class="ri-facebook-fill"></i></a> <a href=""><i
-											class="ri-instagram-fill"></i></a> <a href=""> <i
-											class="ri-linkedin-box-fill"></i>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-	
-					</div>
-	
-				</div>
-			</section>
-			<!-- End Doctors Section -->
-	
-			<!-- ======= Frequently Asked Questions Section ======= -->
-			<section id="faq" class="faq section-bg">
-				<div class="container">
-	
-					<div class="section-title">
-						<h2>Preguntas frecuentes</h2>
-						<p>En esta seccion resolvemos las preguntas frecuentes</p>
-					</div>
-	
-					<div class="faq-list">
-						<ul>
-							<li data-aos="fade-up"><i class="bx bx-help-circle icon-help"></i>
-								<a data-bs-toggle="collapse" class="collapse"
-								data-bs-target="#faq-list-1">¿Qué es Family Health? <i
-									class="bx bx-chevron-down icon-show"></i><i
-									class="bx bx-chevron-up icon-close"></i></a>
-								<div id="faq-list-1" class="collapse show"
-									data-bs-parent=".faq-list">
-									<p>Family Health es un portal virtual por donde mantenemos información
-									   actualizada de tu familiar, desde signos vitales, exámenes hasta su
-									   alimentación. La salud de tu familiar es importante y la salud mental
-									   de la familia.
-									</p>
-								</div></li>
-	
-	
-	
-							<li data-aos="fade-up" data-aos-delay="400"><i
-								class="bx bx-help-circle icon-help"></i> <a
-								data-bs-toggle="collapse" data-bs-target="#faq-list-5"
-								class="collapsed">¿Cómo funciona Family Health? <i
-									class="bx bx-chevron-down icon-show"></i><i
-									class="bx bx-chevron-up icon-close"></i></a>
-								<div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
-									<p>Para ser parte de Family Health, solo necesitas registrarte con
-									   tus datos personales. En caso de ser personal médico deberá 
-									   ingresar su cargo dentro del área.
-									</p>
-								</div></li>
-	
-						</ul>
-					</div>
-	
-				</div>
-			</section>
-			<!-- End Frequently Asked Questions Section -->
-	
-			<!-- ======= Testimonials Section ======= -->
-			<section id="testimonials" class="testimonials">
-				<div class="container">
-	
-					<div class="testimonials-slider swiper-container" data-aos="fade-up"
-						data-aos-delay="100">
-						<div class="swiper-wrapper">
-	
-							<div class="swiper-slide">
-								<div class="testimonial-wrap">
-									<div class="testimonial-item">
-										<img th:src="@{/assets/img/testimonials/testimonials-1.jpg}"
-											class="testimonial-img" alt="">
-										<h3>Juan Contreras</h3>
-										<h4>Cliente</h4>
-										<p>
-											<i class="bx bxs-quote-alt-left quote-icon-left"></i> 
-											Una gran experiencia el servicio que brinda Family Health. Me mantenía
-											informado al 100% del estado de mi familiar internado debido al
-											covid. <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-										</p>
-									</div>
-								</div>
-							</div>
-							<!-- End testimonial item -->
-	
-							<div class="swiper-slide">
-								<div class="testimonial-wrap">
-									<div class="testimonial-item">
-										<img th:src="@{/assets/img/testimonials/testimonials-2.jpg}"
-											class="testimonial-img" alt="">
-										<h3>Patricia Melgar</h3>
-										<h4>Cliente</h4>
-										<p>
-											<i class="bx bxs-quote-alt-left quote-icon-left"></i>
-											100% recomendado, gracias a Family Health pude
-											estar al tanto de lo que necesitaba mi familiar
-											y su condición dentro del plantel médico. <i
-												class="bx bxs-quote-alt-right quote-icon-right"></i>
-										</p>
-									</div>
-								</div>
-							</div>
-							<!-- End testimonial item -->
-	
-	
-	
-	
-	
-	
-	
-						</div>
-						<div class="swiper-pagination"></div>
-					</div>
-	
-				</div>
-			</section>
-			<!-- End Testimonials Section -->
-	
-			<!-- ======= Gallery Section ======= -->
-			<section id="gallery" class="gallery">
-				<div class="container">
-	
-					<div class="section-title">
-						<h2>Galería</h2>
-						<p>Algunas fotos capturando los momentos con nuestros
-							pacientes.</p>
-					</div>
-				</div>
-	
-				<div class="container-fluid">
-					<div class="row no-gutters">
-	
-						<div class="col-lg-3 col-md-4">
-							<div class="gallery-item">
-								<a th:href="@{/assets/img/gallery/gallery-1.jpg}"
-									class="galelry-lightbox"> <img
-									th:src="@{/assets/img/gallery/gallery-1.jpg}" alt="" class="img-fluid">
-								</a>
-							</div>
-						</div>
-	
-						<div class="col-lg-3 col-md-4">
-							<div class="gallery-item">
-								<a th:href="@{/assets/img/gallery/gallery-2.jpg}"
-									class="galelry-lightbox"> <img
-									th:src="@{/assets/img/gallery/gallery-2.jpg}" alt="" class="img-fluid">
-								</a>
-							</div>
-						</div>
-	
-						<div class="col-lg-3 col-md-4">
-							<div class="gallery-item">
-								<a th:href="@{/assets/img/gallery/gallery-3.jpg}"
-									class="galelry-lightbox"> <img
-									th:src="@{/assets/img/gallery/gallery-3.jpg}" alt="" class="img-fluid">
-								</a>
-							</div>
-						</div>
-	
-						<div class="col-lg-3 col-md-4">
-							<div class="gallery-item">
-								<a th:href="@{/assets/img/gallery/gallery-4.jpg}"
-									class="galelry-lightbox"> <img
-									th:src="@{/assets/img/gallery/gallery-4.jpg}" alt="" class="img-fluid">
-								</a>
-							</div>
-						</div>
-	
-						<div class="col-lg-3 col-md-4">
-							<div class="gallery-item">
-								<a th:href="@{/assets/img/gallery/gallery-5.jpg}"
-									class="galelry-lightbox"> <img
-									th:src="@{/assets/img/gallery/gallery-5.jpg}" alt="" class="img-fluid">
-								</a>
-							</div>
-						</div>
-	
-						<div class="col-lg-3 col-md-4">
-							<div class="gallery-item">
-								<a th:href="@{/assets/img/gallery/gallery-6.jpg}"
-									class="galelry-lightbox"> <img
-									th:src="@{/assets/img/gallery/gallery-6.jpg}" alt="" class="img-fluid">
-								</a>
-							</div>
-						</div>
-	
-						<div class="col-lg-3 col-md-4">
-							<div class="gallery-item">
-								<a th:href="@{/assets/img/gallery/gallery-7.jpg}"
-									class="galelry-lightbox"> <img
-									th:src="@{/assets/img/gallery/gallery-7.jpg}" alt="" class="img-fluid">
-								</a>
-							</div>
-						</div>
-	
-						<div class="col-lg-3 col-md-4">
-							<div class="gallery-item">
-								<a th:href="@{/assets/img/gallery/gallery-8.jpg}"
-									class="galelry-lightbox"> <img
-									th:src="@{/assets/img/gallery/gallery-8.jpg}" alt="" class="img-fluid">
-								</a>
-							</div>
-						</div>
-	
-					</div>
-	
-				</div>
-			</section>
-			<!-- End Gallery Section -->
-	
-			<!-- ======= Contact Section ======= -->
-			<section id="contact" class="contact">
-				<div class="container">
-	
-					<div class="section-title">
-						<h2>Contacto</h2>
-	
-					</div>
-				</div>
-	
-				<div>
-					<!--En el atributo src de la etiqueta iframe deben colocar el iframe de googlemaps de la direccion de su negocio-->
-					<iframe style="border: 0; width: 100%; height: 350px;"
-						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31209.867894994553!2d-77.01269787902892!3d-12.09616190179358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c7d19478c6bf%3A0xb53809bf8f8b06c8!2sSan%20Borja!5e0!3m2!1ses!2spe!4v1632026449304!5m2!1ses!2spe"
-						frameborder="0" allowfullscreen></iframe>
-	
-	
-				</div>
-	
-				<div class="container">
-					<div class="row mt-5">
-	
-						<div class="col-lg-4">
-							<div class="info">
-								<div class="address">
-									<i class="bi bi-geo-alt"></i>
-									<h4>Ubicación:</h4>
-									<p>Av.las avellanas - San borja, Lima,Peru</p>
-								</div>
-	
-								<div class="email">
-									<i class="bi bi-envelope"></i>
-									<h4>Email:</h4>
-									<p>contacto@familyhealth.com</p>
-								</div>
-	
-								<div class="phone">
-									<i class="bi bi-phone"></i>
-									<h4>Telefono:</h4>
-									<p>+51 959 078 554</p>
-								</div>
-	
-							</div>
-	
-						</div>
-	
-						<div class="col-lg-8 mt-5 mt-lg-0">
-	
-							<form action="" method="post" role="form" class="">
-								<div class="row">
-									<div class="col-md-6 form-group">
-										<input type="text" name="name" class="form-control" id="name"
-											placeholder="Nombre" required>
-									</div>
-									<div class="col-md-6 form-group mt-3 mt-md-0">
-										<input type="email" class="form-control" name="email"
-											id="email" placeholder="Correo electrónico" required>
-									</div>
-								</div>
-								<div class="form-group mt-3">
-									<input type="text" class="form-control" name="subject"
-										id="subject" placeholder="Asunto" required>
-								</div>
-								<div class="form-group mt-3">
-									<textarea class="form-control" name="message" rows="5"
-										placeholder="Mensaje" required></textarea>
-								</div>
-								<div class="my-3"></div>
-								<div class="text-center">
-									<button class="appointment-btn" style="border: none;"
-										type="submit">Enviar mensaje</button>
-								</div>
-							</form>
-	
-						</div>
-	
-					</div>
-	
-				</div>
-			</section>
-			<!-- End Contact Section -->
-	
-		</main>
-		<!-- End #main -->
-	
-		<!-- ======= Footer ======= -->
-		<footer id="footer">
-	
-			<div class="footer-top">
-				<div class="container">
-					<div class="row">
-	
-						<div class="col-lg-3 col-md-6 footer-contact">
-							<h3>Family Health</h3>
-							<p>
-								Av.Las Avellanas<br> San Borja, Lima<br> Perú <br>
-								<br> <strong>Teléfono:</strong> +51 959 078 554<br> <strong>Email:</strong>
-								contacto@familyhealth.com<br>
-							</p>
-						</div>
-	
-						<div class="col-lg-4 col-md-6 footer-links">
-							<h4>Links</h4>
-							<ul>
-								<li><i class="bx bx-chevron-right"></i> <a href="#">Inicio</a></li>
-	
-								<li><i class="bx bx-chevron-right"></i> <a href="#">Servicios</a></li>
-								<li><i class="bx bx-chevron-right"></i> <a href="#">Términos
-										y condiciones</a></li>
-								<li><i class="bx bx-chevron-right"></i> <a href="#">Políticas
-										de privacidad</a></li>
-							</ul>
-						</div>
-	
-	
-	
-						<div class="col-lg-4 col-md-6 footer-newsletter">
-							<h4>Únete a Family Health</h4>
-							<p>Únete para estar 100% informados de la condición de tu familiar.</p>
-							<form action="" method="post">
-								<input type="email" name="email"><input type="submit"
-									value="Suscribete">
-							</form>
-						</div>
-	
-					</div>
-				</div>
-			</div>
-	
-			<div class="container d-md-flex py-4">
-	
-				<div class="me-md-auto text-center text-md-start">
-					<div class="copyright">
-						&copy; Copyright <strong><span>Family Health</span></strong>. Todos
-						los derechos reservados
-					</div>
-	
-				</div>
-				<div class="social-links text-center text-md-right pt-3 pt-md-0">
-					<a href="#" class="twitter"><i class="bx bxl-twitter"></i></a> <a
-						href="#" class="facebook"><i class="bx bxl-facebook"></i></a> <a
-						href="#" class="instagram"><i class="bx bxl-instagram"></i></a> <a
-						href="#" class="google-plus"><i class="bx bxl-skype"></i></a> <a
-						href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-				</div>
-			</div>
-			
-		</footer>
-		<!-- End Footer -->
-	
-		<div id="preloader"></div>
-		<a href="#"
-			class="back-to-top d-flex align-items-center justify-content-center"><i
-			class="bi bi-arrow-up-short"></i></a>
-	
-		<!-- Vendor JS Files -->
-		<script th:src="@{/assets/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
-		<script th:src="@{/assets/vendor/glightbox/js/glightbox.min.js}"></script>
-		<script th:src="@{/assets/vendor/php-email-form/validate.js}"></script>
-		<script th:src="@{/assets/vendor/purecounter/purecounter.js}"></script>
-		<script th:src="@{/assets/vendor/swiper/swiper-bundle.min.js}"></script>
-	
-		<!-- Template Main JS File -->
-		<script th:src="@{/assets/js/main.js}"></script>
-	
-	</body>
+		</div>
+
+	</footer>
+	<!-- End Footer -->
+
+	<div id="preloader"></div>
+	<a href="#"
+		class="back-to-top d-flex align-items-center justify-content-center"><i
+		class="bi bi-arrow-up-short"></i></a>
+
+	<!-- Vendor JS Files -->
+	<script th:src="@{/assets/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/assets/vendor/glightbox/js/glightbox.min.js}"></script>
+	<script th:src="@{/assets/vendor/php-email-form/validate.js}"></script>
+	<script th:src="@{/assets/vendor/purecounter/purecounter.js}"></script>
+	<script th:src="@{/assets/vendor/swiper/swiper-bundle.min.js}"></script>
+
+	<!-- Template Main JS File -->
+	<script th:src="@{/assets/js/main.js}"></script>
+
+</body>
 
 </html>
