@@ -38,7 +38,7 @@ public class VitalSignsController {
 
 	@RequestMapping("/bienvenido")
 	public String irSVBienvenido() {
-		return "index";
+		return "login";
 	}
 
 	@RequestMapping("/")
