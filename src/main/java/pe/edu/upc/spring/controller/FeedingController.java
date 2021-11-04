@@ -144,6 +144,7 @@ public class FeedingController {
 	@RequestMapping("/irBuscar")
 	public String irBuscar(Model model) {
 		model.addAttribute("patient", new Patient());
+		model.addAttribute("feeding",new Feeding());
 		return "buscarf";
 	}
 
