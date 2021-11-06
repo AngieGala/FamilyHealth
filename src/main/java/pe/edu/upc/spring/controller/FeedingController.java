@@ -164,6 +164,23 @@ public class FeedingController {
 		model.put("listaAlimentacion", listaAlimentacion);
 		return "buscarf";
 	}
+	
+	@RequestMapping("/buscarFecha")
+	public String buscarfecha(Map<String, Object> model, @ModelAttribute("patient") Patient patient)
+			throws ParseException {
+		// vamos a buscar por fecha en cual se hizo el control
+
+		List<Feeding> listaAlimentacion;
+
+		patient.setDatePatient(patient.getDatePatient()); // capturo la fecha del control
+		listaAlimentacion = fService.findBydateFeeding(patient.getDatePatient()); // buscando uwu
+
+		if (listaAlimentacion.isEmpty()) {
+			model.put("mensaje", "No se encontro");
+		}
+		model.put("listaAlimentacion", listaAlimentacion);
+		return "buscarf";
+	}
 
 	
 }
