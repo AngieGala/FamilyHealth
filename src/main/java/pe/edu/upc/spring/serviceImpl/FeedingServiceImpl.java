@@ -1,5 +1,6 @@
 package pe.edu.upc.spring.serviceImpl;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,6 +56,11 @@ public class FeedingServiceImpl implements IFeedingService{
 	@Transactional(readOnly = true)
 	public List<Feeding> buscarPaciente(String namePatient) {
 		return dFeeding.buscarPaciente(namePatient);
+	}
+	
+	@Override
+	public List<Feeding> findBydateFeeding(Date dateFeeding) {
+		return dFeeding.findBydateFeeding(dateFeeding);
 	}
 
 	
