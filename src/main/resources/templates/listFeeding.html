@@ -64,8 +64,8 @@
     								<td th:text="${alim.feedingtype.nameTDA}"></td>
     								<td th:text="${alim.feedingshift.nameTRDA}"></td>
     								<td th:text="${#dates.format(alim.dateFeeding,'dd/MM/yyyy')}"></td>
-    								<td th:text="${alim.patient.namePatient}"></td>
-    								<td th:text="${alim.medicalstaff.namePM}"></td>
+    								<td th:text="${alim.patient.namePatient + ' ' + alim.patient.lastnamePatient}"></td>
+    								<td th:text="${alim.medicalstaff.namePM + ' ' + alim.medicalstaff.lastnamePM}"></td>
     								<td><a th:href="@{/feeding/eliminar?id=}+${alim.idFeeding}">Eliminar</a></td>    								
     								<td><a th:href="@{'/feeding/modificar/'}+${alim.idFeeding}">Modificar</a></td>
     							</tr>

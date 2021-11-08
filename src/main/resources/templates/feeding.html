@@ -70,11 +70,10 @@
     					<select class="form-control" th:field="*{patient.idPatient}">
     					<option th:each="pat: ${listaPacientes}"
     							th:value="${pat.idPatient}"
-    							th:text="${pat.namePatient}"
+    							th:text="${pat.namePatient + ' ' + pat.lastnamePatient}"
     							th:selected="(${pat.idPatient} == *{patient.idPatient})">
     							</option>
     					</select>	
-						
 						
 						
 						<label for="personal">PERSONAL MEDICO:</label>
