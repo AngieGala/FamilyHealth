@@ -32,10 +32,17 @@
 				th:object="${patient}">
 				<div class="form-group">
 					<div class="col-sm-12">
-						<input type="text" class="form-control" th:field="*{namePatient}"
-							id="nombre"
-							placeholder="Ingrese dato a buscar por Nombre del paciente">
-						</input>
+						<select class="form-control" th:field="*{namePatient}">
+    					<option th:each="pat: ${listaPacientes}"
+    							th:value="${pat.namePatient}"
+    							th:text="${pat.namePatient + ' ' + pat.lastnamePatient}"
+    							th:selected="(${pat.idPatient} == *{idPatient})">
+    							</option>
+    					</select>
+						
+						
+						
+						
 
 						<div align="left">
 							<button type="submit" class="btn btn-primary">Buscar</button>

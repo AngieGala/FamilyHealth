@@ -145,6 +145,7 @@ public class FeedingController {
 	public String irBuscar(Model model) {
 		model.addAttribute("patient", new Patient());
 		model.addAttribute("feeding",new Feeding());
+		model.addAttribute("listaPacientes",pService.listar());
 		return "buscarf";
 	}
 
@@ -161,6 +162,7 @@ public class FeedingController {
 		if (listaAlimentacion.isEmpty()) {
 			model.put("mensaje", "No se encontro");
 		}
+		model.put("listaPacientes",pService.listar());
 		model.put("listaAlimentacion", listaAlimentacion);
 		return "buscarf";
 	}
@@ -179,6 +181,7 @@ public class FeedingController {
 			model.put("mensaje", "No se encontro");
 		}
 		model.put("listaAlimentacion", listaAlimentacion);
+		model.put("listaPacientes",pService.listar());
 		return "buscarf";
 	}
 
