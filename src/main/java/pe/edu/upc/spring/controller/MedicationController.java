@@ -153,9 +153,15 @@ public class MedicationController {
 		model.addAttribute("medication", new Medication());
 		model.addAttribute("medicalstaff",new MedicalStaff());
 		
+		model.addAttribute("medicinestatus", new MedicineStatus());
+		model.addAttribute("medicine", new Medicine());
+		
 		model.addAttribute("listaPersonalMedicos",pmService.listar());
 		model.addAttribute("listaPacientes",pService.listar());
 		model.addAttribute("listaMedicaciones",mService.listar());
+		
+		model.addAttribute("listaMedicinas", medService.listar());
+		model.addAttribute("listaEstadoMedicinas", estService.listar());
 		return "buscarm";
 	}
 	
@@ -168,6 +174,9 @@ public class MedicationController {
 		patient.setNamePatient(patient.getNamePatient());//capturo lo de la caja de texto
 		listaMedicaciones = mService.buscarPaciente(patient.getNamePatient()); //buscando 1
 		
+		if(listaMedicaciones.isEmpty()) {
+			listaMedicaciones = mService.buscarApellido(patient.getNamePatient());
+		}
 		
 		if(listaMedicaciones.isEmpty()) {
 			model.put("mensaje", "No existen coincidencias");
@@ -175,10 +184,16 @@ public class MedicationController {
 		model.put("listaPacientes",pService.listar());
 		model.put("listaMedicaciones", listaMedicaciones);
 		model.put("listaPersonalMedicos",pmService.listar());
+		model.put("listaMedicinas", medService.listar());
+		model.put("listaEstadoMedicinas", estService.listar());
 		
 		model.put("patient", new Patient());
 		model.put("medication", new Medication());
 		model.put("medicalstaff",new MedicalStaff());
+		model.put("medicinestatus", new MedicineStatus());
+		model.put("medicine", new Medicine());
+		
+		
 		return "buscarm";
 	}
 	
@@ -199,10 +214,14 @@ public class MedicationController {
 		model.put("listaPacientes",pService.listar());
 		model.put("listaMedicaciones", listaMedicaciones);
 		model.put("listaPersonalMedicos",pmService.listar());
+		model.put("listaMedicinas", medService.listar());
+		model.put("listaEstadoMedicinas", estService.listar());
 		
 		model.put("patient", new Patient());
 		model.put("medication", new Medication());
 		model.put("medicalstaff",new MedicalStaff());
+		model.put("medicinestatus", new MedicineStatus());
+		model.put("medicine", new Medicine());
 		
 		return "buscarm";
 	}
@@ -223,10 +242,69 @@ public class MedicationController {
 		model.put("listaPersonalMedicos",pmService.listar());
 		model.put("listaMedicaciones", listaMedicaciones);
 		model.put("listaPacientes",pService.listar());
+		model.put("listaMedicinas", medService.listar());
+		model.put("listaEstadoMedicinas", estService.listar());
 		
 		model.put("patient", new Patient());
 		model.put("medication",new Medication());
 		model.put("medicalstaff",new MedicalStaff());
+		model.put("medicinestatus", new MedicineStatus());
+		model.put("medicine", new Medicine());
+		
+		return "buscarm";
+	}
+	
+	@RequestMapping("/buscarStatus")
+	public String buscarEstado(Map<String, Object> model, @ModelAttribute MedicineStatus medicinestatus) 
+		throws ParseException
+	{
+		
+		List<Medication> listaMedicaciones;
+		medicinestatus.setNameEDLMA(medicinestatus.getNameEDLMA());
+		listaMedicaciones = mService.buscarEstado(medicinestatus.getNameEDLMA());
+
+		if (listaMedicaciones.isEmpty()) {
+			model.put("mensaje", "No se encontro");
+		}
+		model.put("listaPersonalMedicos",pmService.listar());
+		model.put("listaMedicaciones", listaMedicaciones);
+		model.put("listaPacientes",pService.listar());
+		model.put("listaMedicinas", medService.listar());
+		model.put("listaEstadoMedicinas", estService.listar());
+		
+		model.put("patient", new Patient());
+		model.put("medication",new Medication());
+		model.put("medicalstaff",new MedicalStaff());
+		model.put("medicinestatus", new MedicineStatus());
+		model.put("medicine", new Medicine());
+		
+		return "buscarm";
+	}
+	
+	@RequestMapping("/buscarMedicine")
+	public String buscarMedicina(Map<String, Object> model, @ModelAttribute Medicine medicine) 
+		throws ParseException
+	{
+		
+		List<Medication> listaMedicaciones;
+		medicine.setNameMedicine(medicine.getNameMedicine());
+		listaMedicaciones = mService.buscarMedicina(medicine.getNameMedicine());
+
+		if (listaMedicaciones.isEmpty()) {
+			model.put("mensaje", "No se encontro");
+		}
+		model.put("listaPersonalMedicos",pmService.listar());
+		model.put("listaMedicaciones", listaMedicaciones);
+		model.put("listaPacientes",pService.listar());
+		model.put("listaMedicinas", medService.listar());
+		model.put("listaEstadoMedicinas", estService.listar());
+		
+		model.put("patient", new Patient());
+		model.put("medication",new Medication());
+		model.put("medicalstaff",new MedicalStaff());
+		model.put("medicinestatus", new MedicineStatus());
+		model.put("medicine", new Medicine());
+		
 		return "buscarm";
 	}
 }

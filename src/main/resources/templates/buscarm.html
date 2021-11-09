@@ -32,13 +32,11 @@
 				th:object="${patient}">
 				<div class="form-group">
 					<div class="col-sm-12">
-					<select class="form-control" th:field="*{namePatient}">
-    					<option th:each="pat: ${listaPacientes}"
-    							th:value="${pat.namePatient}"
-    							th:text="${pat.namePatient + ' ' + pat.lastnamePatient}"
-    							th:selected="(${pat.idPatient} == *{idPatient})">
-    							</option>
-    					</select>
+					
+					<input type="text" class="form-control"
+								th:field="*{namePatient}" id="nombre"
+								placeholder="Ingrese dato a buscar por Nombre y Apellido">
+						</input>
 
 						<div align="left">
 							<button type="submit" class="btn btn-primary">Buscar</button>
@@ -99,9 +97,62 @@
 			
 			</div>
 
+             <div class="row clearfix">
+			<form th:action="@{/medication/buscarStatus}" method="post"
+				th:object="${medicinestatus}">
+				<div class="form-group">
+					<div class="col-sm-12">
+						<select class="form-control" th:field="*{nameEDLMA}">
+    					<option th:each="est: ${listaEstadoMedicinas}"
+    							th:value="${est.nameEDLMA}"
+    							th:text="${est.nameEDLMA}"
+    							>
+    							</option>
+    					</select>
+						
+						
+						<div align="left">
+							<button type="submit" class="btn btn-primary">Buscar</button>
+							<a href="/medication/listar" class="btn btn-danger">Cancelar</a>
+
+						</div>
+						<br /> <br />
+					</div>
+
+				</div>
+			</form>
+			
+			</div>
 
 
 
+
+             <div class="row clearfix">
+			<form th:action="@{/medication/buscarMedicine}" method="post"
+				th:object="${medicine}">
+				<div class="form-group">
+					<div class="col-sm-12">
+						<select class="form-control" th:field="*{nameMedicine}">
+    					<option th:each="medic: ${listaMedicinas}"
+    							th:value="${medic.nameMedicine}"
+    							th:text="${medic.nameMedicine}"
+    							>
+    							</option>
+    					</select>
+						
+						
+						<div align="left">
+							<button type="submit" class="btn btn-primary">Buscar</button>
+							<a href="/medication/listar" class="btn btn-danger">Cancelar</a>
+
+						</div>
+						<br /> <br />
+					</div>
+
+				</div>
+			</form>
+			
+			</div>
 
 
 

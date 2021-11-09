@@ -70,5 +70,23 @@ public class MedicationServiceImpl implements IMedicationService{
 		// TODO Auto-generated method stub
 		return dMedication.buscarMedico(namePM);
 	}
+
+	@Override
+	public List<Medication> buscarEstado(String nameEDLMA) {
+		// TODO Auto-generated method stub
+		return dMedication.buscarEstado(nameEDLMA);
+	}
+
+	@Override
+	public List<Medication> buscarMedicina(String nameMedicine) {
+		// TODO Auto-generated method stub
+		return dMedication.buscarMedicina(nameMedicine);
+	}
+
+	@Override
+	public List<Medication> buscarApellido(String lastnamePatient) {
+		// TODO Auto-generated method stub
+		return dMedication.buscarApellido(lastnamePatient);
+	}
 	
 }
