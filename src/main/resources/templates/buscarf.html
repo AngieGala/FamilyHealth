@@ -130,6 +130,32 @@
 			
 			</div>
 
+			<div class="row clearfix">
+
+			<form th:action="@{/feeding/buscarTurno}" method="post"
+				th:object="${feedingshift}">
+				<div class="form-group">
+					<div class="col-sm-12">
+						<select class="form-control" th:field="*{nameTRDA}">
+    					<option th:each="tur: ${listaTurnoAlimentacion}"
+    							th:value="${tur.nameTRDA}"
+    							th:text="${tur.nameTRDA}">
+    							</option>
+    					</select>
+
+
+						<div align="left">
+							<button type="submit" class="btn btn-primary">Buscar</button>
+							<a href="/feeding/listar" class="btn btn-danger">Cancelar</a>
+
+						</div>
+						<br /> <br />
+					</div>
+
+				</div>
+			</form>
+			
+			</div>
 
 			
 
