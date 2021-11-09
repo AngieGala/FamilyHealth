@@ -21,6 +21,9 @@ public interface IFeedingRepository extends JpaRepository<Feeding, Integer>{
 	@Query("from Feeding f where f.feedingtype.nameTDA like %:nameTDA%")
 	List<Feeding> buscarTipo(@Param("nameTDA") String nameTDA);
 	
+	@Query("from Feeding f where f.feedingshift.nameTRDA like %:nameTRDA%")
+	List<Feeding> buscarTurno(@Param("nameTRDA") String nameTRDA);
+	
 	
 	List<Feeding>findBydateFeeding(Date dateFeeding);
 	

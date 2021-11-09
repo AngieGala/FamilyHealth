@@ -74,5 +74,10 @@ public class FeedingServiceImpl implements IFeedingService{
 		return dFeeding.buscarTipo(nameTDA);
 	}
 
+	@Override
+	public List<Feeding> buscarTurno(String nameTRDA) {
+		return dFeeding.buscarTurno(nameTRDA);
+	}
+
 	
 }
