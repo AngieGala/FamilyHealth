@@ -15,7 +15,10 @@ import pe.edu.upc.spring.model.Medication;
 public interface IMedicationRepository extends JpaRepository<Medication, Integer>{
 	@Query("from Medication m where m.patient.namePatient like %:namePatient%")
 	List<Medication> buscarPaciente(@Param("namePatient") String namePatient);
-
+   
+	@Query("from Medication m where m.medicalstaff.namePM like %:namePM%")
+	List<Medication> buscarMedico(@Param("namePM") String namePM);
+	
 	List<Medication>findBydateMedication(Date dateMedication);
 	
 }
