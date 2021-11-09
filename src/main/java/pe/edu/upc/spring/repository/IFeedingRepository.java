@@ -18,6 +18,9 @@ public interface IFeedingRepository extends JpaRepository<Feeding, Integer>{
 	@Query("from Feeding f where f.medicalstaff.namePM like %:namePM%")
 	List<Feeding> buscarMedico(@Param("namePM") String namePM);
 	
+	@Query("from Feeding f where f.patient.lastnamePatient like %:lastnamePatient%")
+	List<Feeding> buscarApellido(@Param("lastnamePatient") String lastnamePatient);
+	
 	@Query("from Feeding f where f.feedingtype.nameTDA like %:nameTDA%")
 	List<Feeding> buscarTipo(@Param("nameTDA") String nameTDA);
 	

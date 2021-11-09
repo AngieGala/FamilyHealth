@@ -79,5 +79,10 @@ public class FeedingServiceImpl implements IFeedingService{
 		return dFeeding.buscarTurno(nameTRDA);
 	}
 
+	@Override
+	public List<Feeding> buscarApellido(String lastnamePatient) {
+		return dFeeding.buscarApellido(lastnamePatient);
+	}
+
 	
 }
