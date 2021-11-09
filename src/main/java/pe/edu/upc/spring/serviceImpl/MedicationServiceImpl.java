@@ -64,5 +64,11 @@ public class MedicationServiceImpl implements IMedicationService{
 		
 		return dMedication.findById(idMedication);
 	}
+
+	@Override
+	public List<Medication> buscarMedico(String namePM) {
+		// TODO Auto-generated method stub
+		return dMedication.buscarMedico(namePM);
+	}
 	
 }

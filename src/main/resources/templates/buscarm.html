@@ -50,7 +50,9 @@
 
 				</div>
 			</form>
-			<br>
+			</div>
+			
+			<div class="row clearflix">
 			<form th:action="@{/medication/buscarFecha}" method="post"
 				th:object="${patient}">
 				<div class="form-group">
@@ -69,6 +71,42 @@
 			</form>
 
 		</div>
+
+       <div class="row clearfix">
+			<form th:action="@{/medication/buscarMedico}" method="post"
+				th:object="${medicalstaff}">
+				<div class="form-group">
+					<div class="col-sm-12">
+						<select class="form-control" th:field="*{namePM}">
+    					<option th:each="med: ${listaPersonalMedicos}"
+    							th:value="${med.namePM}"
+    							th:text="${med.namePM + ' ' + med.lastnamePM}"
+    							th:selected="(${med.idPM} == *{idPM})">
+    							</option>
+    					</select>
+						
+						
+						<div align="left">
+							<button type="submit" class="btn btn-primary">Buscar</button>
+							<a href="/feeding/listar" class="btn btn-danger">Cancelar</a>
+
+						</div>
+						<br /> <br />
+					</div>
+
+				</div>
+			</form>
+			
+			</div>
+
+
+
+
+
+
+
+
+
 
 
 		<hr class="sidebar-divider">

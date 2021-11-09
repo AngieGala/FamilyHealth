@@ -14,6 +14,7 @@ public interface IMedicationService {
 	
 	public List<Medication> listar();
 	public List<Medication> buscarPaciente(String namePatient);
+	public List<Medication> buscarMedico(String namePM);
 	public List<Medication>findBydateMedication(Date dateMedication);
 	
 }
