@@ -15,4 +15,5 @@ public interface IVitalSignsService {
 	public List<VitalSigns> listar();
 	public List<VitalSigns> buscarPaciente(String namePatient);
 	public List<VitalSigns> findByDateSV(Date dateSV);
+	public List<VitalSigns> buscarPersonalMedico(String namePM);
 }

@@ -132,9 +132,10 @@ public class PatientController {
 		}
 		
 		if(listaPacientes.isEmpty()) {
-			model.put("mensaje", "No existen coincidencias");
+			model.put("mensaje", "No se encontro");
 		}
 		
+		model.put("patient", new Patient());
 		model.put("listaPacientes", listaPacientes);
 		return "buscar";
 	}
