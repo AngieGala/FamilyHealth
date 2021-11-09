@@ -1,5 +1,6 @@
 package pe.edu.upc.spring.serviceImpl;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,10 +49,20 @@ public class MedicationServiceImpl implements IMedicationService{
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<Medication> buscarPaciente(String namePaciente) {
-		return dMedication.buscarPaciente(namePaciente);
+	public List<Medication> buscarPaciente(String namePatient) {
+		return dMedication.buscarPaciente(namePatient);
 	}
 	
-	
+	@Override
+	public List<Medication> findBydateMedication(Date dateMedication){
+		return dMedication.findBydateMedication(dateMedication);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Optional<Medication> buscarId(int idMedication) {
+		
+		return dMedication.findById(idMedication);
+	}
 	
 }
