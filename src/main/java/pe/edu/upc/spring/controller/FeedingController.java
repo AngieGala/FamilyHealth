@@ -145,6 +145,10 @@ public class FeedingController {
 	public String irBuscar(Model model) {
 		model.addAttribute("patient", new Patient());
 		model.addAttribute("feeding",new Feeding());
+		model.addAttribute("medicalstaff",new MedicalStaff());
+		
+		model.addAttribute("listaPersonalMedicos",pmService.listar());
+		model.addAttribute("listaPacientes",pService.listar());
 		return "buscarf";
 	}
 
@@ -161,7 +165,12 @@ public class FeedingController {
 		if (listaAlimentacion.isEmpty()) {
 			model.put("mensaje", "No se encontro");
 		}
+		model.put("listaPacientes",pService.listar());
 		model.put("listaAlimentacion", listaAlimentacion);
+		
+		model.put("patient", new Patient());
+		model.put("feeding",new Feeding());
+		model.put("medicalstaff",new MedicalStaff());
 		return "buscarf";
 	}
 	
@@ -179,6 +188,33 @@ public class FeedingController {
 			model.put("mensaje", "No se encontro");
 		}
 		model.put("listaAlimentacion", listaAlimentacion);
+		model.put("listaPacientes",pService.listar());
+		
+		model.put("patient", new Patient());
+		model.put("feeding",new Feeding());
+		model.put("medicalstaff",new MedicalStaff());
+		return "buscarf";
+	}
+	
+	@RequestMapping("/buscarMedico")
+	public String buscarMedico(Map<String, Object> model, @ModelAttribute MedicalStaff medicalstaff) 
+		throws ParseException
+	{
+		//vamos a buscar por nombre de paciente
+		
+		List<Feeding> listaAlimentacion;
+		medicalstaff.setNamePM(medicalstaff.getNamePM());
+		listaAlimentacion = fService.buscarMedico(medicalstaff.getNamePM());
+
+		if (listaAlimentacion.isEmpty()) {
+			model.put("mensaje", "No se encontro");
+		}
+		model.put("listaPersonalMedicos",pmService.listar());
+		model.put("listaAlimentacion", listaAlimentacion);
+		
+		model.put("patient", new Patient());
+		model.put("feeding",new Feeding());
+		model.put("medicalstaff",new MedicalStaff());
 		return "buscarf";
 	}
 

@@ -59,6 +59,12 @@ public class FeedingServiceImpl implements IFeedingService{
 	}
 	
 	@Override
+	@Transactional(readOnly = true)
+	public List<Feeding> buscarMedico(String namePM) {
+		return dFeeding.buscarMedico(namePM);
+	}
+	
+	@Override
 	public List<Feeding> findBydateFeeding(Date dateFeeding) {
 		return dFeeding.findBydateFeeding(dateFeeding);
 	}

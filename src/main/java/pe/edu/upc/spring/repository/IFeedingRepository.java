@@ -14,6 +14,8 @@ import pe.edu.upc.spring.model.Feeding;
 public interface IFeedingRepository extends JpaRepository<Feeding, Integer>{
 	@Query("from Feeding f where f.patient.namePatient like %:namePatient%")
 	List<Feeding> buscarPaciente(@Param("namePatient") String namePatient);
+	@Query("from Feeding f where f.medicalstaff.namePM like %:namePM%")
+	List<Feeding> buscarMedico(@Param("namePM") String namePM);
 	
 	List<Feeding>findBydateFeeding(Date dateFeeding);
 }
