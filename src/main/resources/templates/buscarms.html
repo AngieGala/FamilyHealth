@@ -50,6 +50,40 @@
 		
 		</div>
 
+       
+       <div class="row clearfix">
+
+			<form th:action="@{/medicalstaff/buscartype}" method="post"
+				th:object="${typemedical}">
+				<div class="form-group">
+					<div class="col-sm-12">
+						<select class="form-control" th:field="*{nameTDPM}">
+    					<option th:each="tip: ${listaTipoPersonalMedico}"
+    							th:value="${tip.nameTDPM}"
+    							th:text="${tip.nameTDPM}">
+    							</option>
+    					</select>
+
+
+						<div align="left">
+							<button type="submit" class="btn btn-primary">Buscar</button>
+							<a href="/medicalstaff/listar" class="btn btn-danger">Cancelar</a>
+
+						</div>
+						<br /> <br />
+					</div>
+
+				</div>
+			</form>
+			
+			</div>
+
+
+
+
+
+
+
 
 		<hr class="sidebar-divider">
 
@@ -67,7 +101,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="ms: ${listaPersonalMedico}">
+				<tr th:each="ms: ${listaPersonalMedicos}">
     					<td th:text="${ms.idPM}"></td>
     					<td th:text="${ms.namePM}"></td>
     					<td th:text="${ms.lastnamePM}"></td>
