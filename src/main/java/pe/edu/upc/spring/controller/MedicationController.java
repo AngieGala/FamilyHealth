@@ -155,6 +155,7 @@ public class MedicationController {
 		
 		model.addAttribute("listaPersonalMedicos",pmService.listar());
 		model.addAttribute("listaPacientes",pService.listar());
+		model.addAttribute("listaMedicaciones",mService.listar());
 		return "buscarm";
 	}
 	
@@ -173,6 +174,7 @@ public class MedicationController {
 		}
 		model.put("listaPacientes",pService.listar());
 		model.put("listaMedicaciones", listaMedicaciones);
+		model.put("listaPersonalMedicos",pmService.listar());
 		
 		model.put("patient", new Patient());
 		model.put("medication", new Medication());
@@ -196,6 +198,7 @@ public class MedicationController {
 		
 		model.put("listaPacientes",pService.listar());
 		model.put("listaMedicaciones", listaMedicaciones);
+		model.put("listaPersonalMedicos",pmService.listar());
 		
 		model.put("patient", new Patient());
 		model.put("medication", new Medication());
@@ -219,6 +222,7 @@ public class MedicationController {
 		}
 		model.put("listaPersonalMedicos",pmService.listar());
 		model.put("listaMedicaciones", listaMedicaciones);
+		model.put("listaPacientes",pService.listar());
 		
 		model.put("patient", new Patient());
 		model.put("medication",new Medication());
