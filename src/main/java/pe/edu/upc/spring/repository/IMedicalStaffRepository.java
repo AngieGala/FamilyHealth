@@ -15,4 +15,12 @@ public interface IMedicalStaffRepository extends JpaRepository<MedicalStaff, Int
 	@Query("from MedicalStaff ms where ms.typemedical.nameTDPM like %:nameTDPM%")
 	List<MedicalStaff> buscartype(@Param("nameTDPM") String nameTDPM);
 	
+	@Query("from MedicalStaff ms where ms.namePM like %:namePM%")
+	List<MedicalStaff> buscarNombre(@Param("namePM") String namePM);
+	
+	@Query("from MedicalStaff ms where ms.lastnamePM like %:lastnamePM%")
+	List<MedicalStaff> buscarApellido(@Param("lastnamePM") String lastnamePM);
+	
+	@Query("from MedicalStaff ms where ms.dniPMe like %:dniPMe%")
+	List<MedicalStaff> buscarDNI(@Param("dniPMe") String dniPMe);
 }
