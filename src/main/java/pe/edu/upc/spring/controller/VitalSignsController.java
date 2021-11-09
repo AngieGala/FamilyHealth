@@ -123,6 +123,7 @@ public class VitalSignsController {
 	@RequestMapping("/irBuscar")
 	public String irBuscar(Model model) {
 		model.addAttribute("patient", new Patient());
+		model.addAttribute("medico", new MedicalStaff());
 		model.addAttribute("vitalsigns", new VitalSigns());
 		return "buscarvs";
 	}
@@ -138,6 +139,27 @@ public class VitalSignsController {
 		if (listaSignosVitales.isEmpty()) {
 			model.put("mensaje", "No se encontro");
 		}
+		model.put("patient", new Patient());
+		model.put("medico", new MedicalStaff());
+		model.put("listaSignosVitales", listaSignosVitales);
+		return "buscarvs";
+	}
+	
+	@RequestMapping("/buscarPM")
+	public String buscarpersonalmedico(Map<String, Object> model, @ModelAttribute("medico") MedicalStaff medico, BindingResult binRes)
+			throws ParseException {
+		// vamos a buscar por fecha en cual se hizo el control
+
+		List<VitalSigns> listaSignosVitales;
+
+		medico.setNamePM(medico.getNamePM()); // capturo la fecha del control
+		listaSignosVitales = vsService.buscarPersonalMedico(medico.getNamePM()); // buscando uwu
+
+		if (listaSignosVitales.isEmpty()) {
+			model.put("mensaje", "No se encontro");
+		}
+		model.put("patient", new Patient());
+		model.put("medico", new MedicalStaff());
 		model.put("listaSignosVitales", listaSignosVitales);
 		return "buscarvs";
 	}
@@ -155,8 +177,11 @@ public class VitalSignsController {
 		if (listaSignosVitales.isEmpty()) {
 			model.put("mensaje", "No se encontro");
 		}
+		model.put("patient", new Patient());
+		model.put("medico", new MedicalStaff());
 		model.put("listaSignosVitales", listaSignosVitales);
 		return "buscarvs";
 	}
-
+	
+	
 }

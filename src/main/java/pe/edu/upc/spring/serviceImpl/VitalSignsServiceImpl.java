@@ -64,5 +64,10 @@ public class VitalSignsServiceImpl implements IVitalSignsService{
 		return dVitalSigns.findByDateSV(dateSV);
 	}
 
+	@Override
+	public List<VitalSigns> buscarPersonalMedico(String namePM) {
+		return dVitalSigns.buscarPersonalMedico(namePM);
+	}
+
 	
 }
