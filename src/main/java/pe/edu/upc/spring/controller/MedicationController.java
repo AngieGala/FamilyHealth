@@ -150,6 +150,8 @@ public class MedicationController {
 	@RequestMapping("/irBuscar")
 	public String irBuscar(Model model ) {
 		model.addAttribute("patient", new Patient());
+		model.addAttribute("medication", new Medication());
+		model.addAttribute("listaPacientes",pService.listar());
 		return "buscarm";
 	}
 	
@@ -166,9 +168,28 @@ public class MedicationController {
 		if(listaMedicaciones.isEmpty()) {
 			model.put("mensaje", "No existen coincidencias");
 		}
-		
-		model.put("listaMedicamentos", listaMedicaciones);
+		model.put("listaPacientes",pService.listar());
+		model.put("listaMedicaciones", listaMedicaciones);
+		model.put("patient", new Patient());
+		model.put("medication", new Medication());
 		return "buscarm";
 	}
 	
+	@RequestMapping("/buscarFecha")
+	public String buscarfecha(Map<String, Object> model, @ModelAttribute("patient") Patient patient)
+			throws ParseException {
+		// vamos a buscar por fecha en cual se hizo el control
+
+		List<Medication> listaMedicaciones;
+
+		patient.setDatePatient(patient.getDatePatient()); // capturo la fecha del control
+		listaMedicaciones = mService.findBydateMedication(patient.getDatePatient()); // buscando uwu
+
+		if (listaMedicaciones.isEmpty()) {
+			model.put("mensaje", "No se encontro");
+		}
+		model.put("listaMedicaciones", listaMedicaciones);
+		return "buscarm";
+	}
+
 }

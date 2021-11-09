@@ -1,5 +1,6 @@
 package pe.edu.upc.spring.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,6 +16,6 @@ public interface IMedicationRepository extends JpaRepository<Medication, Integer
 	@Query("from Medication m where m.patient.namePatient like %:namePatient%")
 	List<Medication> buscarPaciente(@Param("namePatient") String namePatient);
 
-	
+	List<Medication>findBydateMedication(Date dateMedication);
 	
 }

@@ -69,7 +69,7 @@
     					<select class="form-control" th:field="*{medicalstaff.idPM}">
     					<option th:each="personal: ${listaPersonalMedicos}"
     							th:value="${personal.idPM}"
-    							th:text="${personal.namePM}"
+    							th:text="${personal.namePM + ' ' + personal.lastnamePM}"
     							th:selected="(${personal.idPM} == *{medicalstaff.idPM})">
     							</option>
     					</select>	
@@ -79,7 +79,7 @@
     					<select class="form-control" th:field="*{patient.idPatient}">
     					<option th:each="pat: ${listaPacientes}"
     							th:value="${pat.idPatient}"
-    							th:text="${pat.namePatient}"
+    							th:text="${pat.namePatient + ' ' + pat.lastnamePatient}"
     							th:selected="(${pat.idPatient} == *{patient.idPatient})">
     							</option>
     					</select>	
