@@ -146,10 +146,12 @@ public class FeedingController {
 		model.addAttribute("patient", new Patient());
 		model.addAttribute("feeding",new Feeding());
 		model.addAttribute("medicalstaff",new MedicalStaff());
+		model.addAttribute("feedingtype",new FeedingType());
 		
 		model.addAttribute("listaPersonalMedicos",pmService.listar());
 		model.addAttribute("listaPacientes",pService.listar());
 		model.addAttribute("listaAlimentacion",fService.listar());
+		model.addAttribute("listaTipoAlimentacion", ftService.listar());
 		return "buscarf";
 	}
 
@@ -169,10 +171,12 @@ public class FeedingController {
 		model.put("listaPacientes",pService.listar());
 		model.put("listaAlimentacion", listaAlimentacion);
 		model.put("listaPersonalMedicos",pmService.listar());
+		model.put("listaTipoAlimentacion", ftService.listar());
 		
 		model.put("patient", new Patient());
 		model.put("feeding",new Feeding());
 		model.put("medicalstaff",new MedicalStaff());
+		model.put("feedingtype",new FeedingType());
 		return "buscarf";
 	}
 	
@@ -192,10 +196,12 @@ public class FeedingController {
 		model.put("listaAlimentacion", listaAlimentacion);
 		model.put("listaPacientes",pService.listar());
 		model.put("listaPersonalMedicos",pmService.listar());
+		model.put("listaTipoAlimentacion", ftService.listar());
 		
 		model.put("patient", new Patient());
 		model.put("feeding",new Feeding());
 		model.put("medicalstaff",new MedicalStaff());
+		model.put("feedingtype",new FeedingType());
 		return "buscarf";
 	}
 	
@@ -215,12 +221,38 @@ public class FeedingController {
 		model.put("listaPersonalMedicos",pmService.listar());
 		model.put("listaAlimentacion", listaAlimentacion);
 		model.put("listaPacientes",pService.listar());
+		model.put("listaTipoAlimentacion", ftService.listar());
 		
 		model.put("patient", new Patient());
 		model.put("feeding",new Feeding());
 		model.put("medicalstaff",new MedicalStaff());
+		model.put("feedingtype",new FeedingType());
 		return "buscarf";
 	}
 
+	@RequestMapping("/buscarTipo")
+	public String buscarTipo(Map<String, Object> model, @ModelAttribute FeedingType feedingtype) 
+		throws ParseException
+	{
+		//vamos a buscar por nombre de paciente
+		
+		List<Feeding> listaAlimentacion;
+		feedingtype.setNameTDA(feedingtype.getNameTDA());
+		listaAlimentacion = fService.buscarTipo(feedingtype.getNameTDA());
+
+		if (listaAlimentacion.isEmpty()) {
+			model.put("mensaje", "No se encontro");
+		}
+		model.put("listaPersonalMedicos",pmService.listar());
+		model.put("listaAlimentacion", listaAlimentacion);
+		model.put("listaPacientes",pService.listar());
+		model.put("listaTipoAlimentacion", ftService.listar());
+		
+		model.put("patient", new Patient());
+		model.put("feeding",new Feeding());
+		model.put("medicalstaff",new MedicalStaff());
+		model.put("feedingtype",new FeedingType());
+		return "buscarf";
+	}
 	
 }

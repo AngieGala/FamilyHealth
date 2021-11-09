@@ -103,6 +103,35 @@
 
 
 
+			<div class="row clearfix">
+
+			<form th:action="@{/feeding/buscarTipo}" method="post"
+				th:object="${feedingtype}">
+				<div class="form-group">
+					<div class="col-sm-12">
+						<select class="form-control" th:field="*{nameTDA}">
+    					<option th:each="tip: ${listaTipoAlimentacion}"
+    							th:value="${tip.nameTDA}"
+    							th:text="${tip.nameTDA}">
+    							</option>
+    					</select>
+
+
+						<div align="left">
+							<button type="submit" class="btn btn-primary">Buscar</button>
+							<a href="/feeding/listar" class="btn btn-danger">Cancelar</a>
+
+						</div>
+						<br /> <br />
+					</div>
+
+				</div>
+			</form>
+			
+			</div>
+
+
+			
 
 
 		<hr class="sidebar-divider">
