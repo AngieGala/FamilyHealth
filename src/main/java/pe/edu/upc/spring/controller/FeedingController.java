@@ -146,9 +146,14 @@ public class FeedingController {
 		model.addAttribute("patient", new Patient());
 		model.addAttribute("feeding",new Feeding());
 		model.addAttribute("medicalstaff",new MedicalStaff());
+		model.addAttribute("feedingtype",new FeedingType());
+		model.addAttribute("feedingshift",new FeedingShift());
 		
 		model.addAttribute("listaPersonalMedicos",pmService.listar());
 		model.addAttribute("listaPacientes",pService.listar());
+		model.addAttribute("listaAlimentacion",fService.listar());
+		model.addAttribute("listaTipoAlimentacion", ftService.listar());
+		model.addAttribute("listaTurnoAlimentacion", fsService.listar());
 		return "buscarf";
 	}
 
@@ -159,18 +164,28 @@ public class FeedingController {
 		//vamos a buscar por nombre de paciente
 		
 		List<Feeding> listaAlimentacion;
-		patient.setNamePatient(patient.getNamePatient());
-		listaAlimentacion = fService.buscarPaciente(patient.getNamePatient());
-
-		if (listaAlimentacion.isEmpty()) {
+		patient.setNamePatient(patient.getNamePatient());//capturo lo de la caja de texto
+		listaAlimentacion = fService.buscarPaciente(patient.getNamePatient()); //buscando 1
+		
+		if(listaAlimentacion.isEmpty()) {
+			listaAlimentacion = fService.buscarApellido(patient.getNamePatient());
+		}
+		
+		if(listaAlimentacion.isEmpty()) {
 			model.put("mensaje", "No se encontro");
 		}
-		model.put("listaPacientes",pService.listar());
-		model.put("listaAlimentacion", listaAlimentacion);
 		
 		model.put("patient", new Patient());
 		model.put("feeding",new Feeding());
 		model.put("medicalstaff",new MedicalStaff());
+		model.put("feedingtype",new FeedingType());
+		model.put("feedingshift",new FeedingShift());
+		
+		model.put("listaAlimentacion", listaAlimentacion);
+		model.put("listaPacientes",pService.listar());
+		model.put("listaPersonalMedicos",pmService.listar());
+		model.put("listaTipoAlimentacion", ftService.listar());
+		model.put("listaTurnoAlimentacion", fsService.listar());
 		return "buscarf";
 	}
 	
@@ -189,10 +204,15 @@ public class FeedingController {
 		}
 		model.put("listaAlimentacion", listaAlimentacion);
 		model.put("listaPacientes",pService.listar());
+		model.put("listaPersonalMedicos",pmService.listar());
+		model.put("listaTipoAlimentacion", ftService.listar());
+		model.put("listaTurnoAlimentacion", fsService.listar());
 		
 		model.put("patient", new Patient());
 		model.put("feeding",new Feeding());
 		model.put("medicalstaff",new MedicalStaff());
+		model.put("feedingtype",new FeedingType());
+		model.put("feedingshift",new FeedingShift());
 		return "buscarf";
 	}
 	
@@ -211,12 +231,69 @@ public class FeedingController {
 		}
 		model.put("listaPersonalMedicos",pmService.listar());
 		model.put("listaAlimentacion", listaAlimentacion);
+		model.put("listaPacientes",pService.listar());
+		model.put("listaTipoAlimentacion", ftService.listar());
+		model.put("listaTurnoAlimentacion", fsService.listar());
 		
 		model.put("patient", new Patient());
 		model.put("feeding",new Feeding());
 		model.put("medicalstaff",new MedicalStaff());
+		model.put("feedingtype",new FeedingType());
+		model.put("feedingshift",new FeedingShift());
 		return "buscarf";
 	}
 
+	@RequestMapping("/buscarTipo")
+	public String buscarTipo(Map<String, Object> model, @ModelAttribute FeedingType feedingtype) 
+		throws ParseException
+	{
+		//vamos a buscar por nombre de paciente
+		
+		List<Feeding> listaAlimentacion;
+		feedingtype.setNameTDA(feedingtype.getNameTDA());
+		listaAlimentacion = fService.buscarTipo(feedingtype.getNameTDA());
+
+		if (listaAlimentacion.isEmpty()) {
+			model.put("mensaje", "No se encontro");
+		}
+		model.put("listaPersonalMedicos",pmService.listar());
+		model.put("listaAlimentacion", listaAlimentacion);
+		model.put("listaPacientes",pService.listar());
+		model.put("listaTipoAlimentacion", ftService.listar());
+		model.put("listaTurnoAlimentacion", fsService.listar());
+		
+		model.put("patient", new Patient());
+		model.put("feeding",new Feeding());
+		model.put("medicalstaff",new MedicalStaff());
+		model.put("feedingtype",new FeedingType());
+		model.put("feedingshift",new FeedingShift());
+		return "buscarf";
+	}
 	
+	@RequestMapping("/buscarTurno")
+	public String buscarTurno(Map<String, Object> model, @ModelAttribute FeedingShift feedingshift) 
+		throws ParseException
+	{
+		//vamos a buscar por nombre de paciente
+		
+		List<Feeding> listaAlimentacion;
+		feedingshift.setNameTRDA(feedingshift.getNameTRDA());
+		listaAlimentacion = fService.buscarTurno(feedingshift.getNameTRDA());
+
+		if (listaAlimentacion.isEmpty()) {
+			model.put("mensaje", "No se encontro");
+		}
+		model.put("listaPersonalMedicos",pmService.listar());
+		model.put("listaAlimentacion", listaAlimentacion);
+		model.put("listaPacientes",pService.listar());
+		model.put("listaTipoAlimentacion", ftService.listar());
+		model.put("listaTurnoAlimentacion", fsService.listar());
+		
+		model.put("patient", new Patient());
+		model.put("feeding",new Feeding());
+		model.put("medicalstaff",new MedicalStaff());
+		model.put("feedingtype",new FeedingType());
+		model.put("feedingshift",new FeedingShift());
+		return "buscarf";
+	}
 }

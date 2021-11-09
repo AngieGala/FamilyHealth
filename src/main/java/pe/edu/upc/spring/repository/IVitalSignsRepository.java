@@ -16,4 +16,7 @@ public interface IVitalSignsRepository extends JpaRepository<VitalSigns, Integer
 	List<VitalSigns> buscarPaciente(@Param("namePatient") String namePatient);
 	
 	List<VitalSigns> findByDateSV(Date dateDV);
+	
+	@Query("from VitalSigns vs where vs.medicalstaff.namePM like %:namePM%")
+	List<VitalSigns> buscarPersonalMedico(@Param("namePM")String namePM);
 }

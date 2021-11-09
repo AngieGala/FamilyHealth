@@ -18,7 +18,7 @@
 	
 </script>
 
-<script type="text/javascript" th:src="@{/js/vitalsigns.js}"></script>
+<script type="text/javascript" th:src="@{/js/feeding.js}"></script>
 
 </head>
 
@@ -32,16 +32,10 @@
 				th:object="${patient}">
 				<div class="form-group">
 					<div class="col-sm-12">
-						<select class="form-control" th:field="*{namePatient}">
-    					<option th:each="pat: ${listaPacientes}"
-    							th:value="${pat.namePatient}"
-    							th:text="${pat.namePatient + ' ' + pat.lastnamePatient}"
-    							th:selected="(${pat.idPatient} == *{idPatient})">
-    							</option>
-    					</select>
-						
-						
-						
+						<input type="text" class="form-control"
+								th:field="*{namePatient}" id="nombre"
+								placeholder="Ingrese dato a buscar por Nombre y Apellido">
+						</input>
 						
 
 						<div align="left">
@@ -90,10 +84,6 @@
     							th:selected="(${med.idPM} == *{idPM})">
     							</option>
     					</select>
-						
-						
-						
-						
 
 						<div align="left">
 							<button type="submit" class="btn btn-primary">Buscar</button>
@@ -110,6 +100,61 @@
 
 
 
+			<div class="row clearfix">
+
+			<form th:action="@{/feeding/buscarTipo}" method="post"
+				th:object="${feedingtype}">
+				<div class="form-group">
+					<div class="col-sm-12">
+						<select class="form-control" th:field="*{nameTDA}">
+    					<option th:each="tip: ${listaTipoAlimentacion}"
+    							th:value="${tip.nameTDA}"
+    							th:text="${tip.nameTDA}">
+    							</option>
+    					</select>
+
+
+						<div align="left">
+							<button type="submit" class="btn btn-primary">Buscar</button>
+							<a href="/feeding/listar" class="btn btn-danger">Cancelar</a>
+
+						</div>
+						<br /> <br />
+					</div>
+
+				</div>
+			</form>
+			
+			</div>
+
+			<div class="row clearfix">
+
+			<form th:action="@{/feeding/buscarTurno}" method="post"
+				th:object="${feedingshift}">
+				<div class="form-group">
+					<div class="col-sm-12">
+						<select class="form-control" th:field="*{nameTRDA}">
+    					<option th:each="tur: ${listaTurnoAlimentacion}"
+    							th:value="${tur.nameTRDA}"
+    							th:text="${tur.nameTRDA}">
+    							</option>
+    					</select>
+
+
+						<div align="left">
+							<button type="submit" class="btn btn-primary">Buscar</button>
+							<a href="/feeding/listar" class="btn btn-danger">Cancelar</a>
+
+						</div>
+						<br /> <br />
+					</div>
+
+				</div>
+			</form>
+			
+			</div>
+
+			
 
 
 		<hr class="sidebar-divider">

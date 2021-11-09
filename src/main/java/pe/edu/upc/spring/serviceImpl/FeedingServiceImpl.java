@@ -69,5 +69,20 @@ public class FeedingServiceImpl implements IFeedingService{
 		return dFeeding.findBydateFeeding(dateFeeding);
 	}
 
+	@Override
+	public List<Feeding> buscarTipo(String nameTDA) {
+		return dFeeding.buscarTipo(nameTDA);
+	}
+
+	@Override
+	public List<Feeding> buscarTurno(String nameTRDA) {
+		return dFeeding.buscarTurno(nameTRDA);
+	}
+
+	@Override
+	public List<Feeding> buscarApellido(String lastnamePatient) {
+		return dFeeding.buscarApellido(lastnamePatient);
+	}
+
 	
 }

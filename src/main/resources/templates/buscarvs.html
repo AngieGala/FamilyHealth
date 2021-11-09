@@ -184,7 +184,7 @@
 								<form th:action="@{/vitalsigns/buscar}" method="post"
 									th:object="${patient}">
 									<div class="form-group">
-										<div class="col-sm-12">
+										<div class="col-sm-24">
 											<input type="text" class="form-control"
 												th:field="*{namePatient}" id="nombre"
 												placeholder="Ingrese dato a buscar por Nombre del paciente">
@@ -195,7 +195,6 @@
 												<a href="/vitalsigns/listar" class="btn btn-danger">Cancelar</a>
 
 											</div>
-											<br /> <br />
 										</div>
 
 									</div>
@@ -210,6 +209,25 @@
 											<input type="date" class="form-control"
 												th:field="*{datePatient}" id="fecha"
 												placeholder="Ingrese dato a buscar por Fecha"> </input>
+
+											<div align="left">
+												<button type="submit" class="btn btn-primary">Buscar</button>
+												<a href="/vitalsigns/listar" class="btn btn-danger">Cancelar</a>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+
+							<div class="row clearfix">
+								<form th:action="@{/vitalsigns/buscarPM}" method="post"
+									th:object="${medico}">
+									<div class="form-group">
+										<div class="col-sm-24">
+											<input type="text" class="form-control" th:field="*{namePM}"
+												id="nombrePM"
+												placeholder="Ingrese dato a buscar por Nombre del Personal Medico">
+											</input>
 
 											<div align="left">
 												<button type="submit" class="btn btn-primary">Buscar</button>
@@ -234,19 +252,21 @@
 										<th class="text-center">TEMPERATURA</th>
 										<th class="text-center">FECHA</th>
 										<th class="text-center">PACIENTE</th>
+										<th class="text-center">PERSONAL MEDICO</th>
 
 									</tr>
 								</thead>
 								<tbody>
 									<tr th:each="vs: ${listaSignosVitales}">
-									<td th:text="${vs.idSV}"></td>
-									<td th:text="${vs.saturationSV}"></td>
-									<td th:text="${vs.pressureSV}"></td>
-									<td th:text="${vs.temperatureSV}"></td>
-									<td th:text="${#dates.format(vs.dateSV,'dd/MM/yyyy')}"></td>
-									<td th:text="${vs.patient.namePatient}"></td>
-				
-								</tr>
+										<td th:text="${vs.idSV}"></td>
+										<td th:text="${vs.saturationSV}"></td>
+										<td th:text="${vs.pressureSV}"></td>
+										<td th:text="${vs.temperatureSV}"></td>
+										<td th:text="${#dates.format(vs.dateSV,'dd/MM/yyyy')}"></td>
+										<td th:text="${vs.patient.namePatient}"></td>
+										<td th:text="${vs.medicalstaff.namePM}"></td>
+
+									</tr>
 								</tbody>
 							</table>
 
