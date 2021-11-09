@@ -51,6 +51,29 @@ public class MedicalStaffServiceImpl implements IMedicalStaffService{
 		return dMedicalStaff.findAll();
 	}
 
+	@Override
+	public List<MedicalStaff> buscartype(String nameTDPM) {
+		return dMedicalStaff.buscartype(nameTDPM);
+	}
+
+	@Override
+	public List<MedicalStaff> buscarNombre(String namePM) {
+		// TODO Auto-generated method stub
+		return dMedicalStaff.buscarNombre(namePM);
+	}
+
+	@Override
+	public List<MedicalStaff> buscarApellido(String lastnamePM) {
+		// TODO Auto-generated method stub
+		return dMedicalStaff.buscarApellido(lastnamePM);
+	}
+
+	@Override
+	public List<MedicalStaff> buscarDNI(String dniPMe) {
+		// TODO Auto-generated method stub
+		return dMedicalStaff.buscarDNI(dniPMe);
+	}
+
 
 	
 }

@@ -116,6 +116,12 @@ public class MedicalStaffController {
 	@RequestMapping("/irBuscar")
 	public String irBuscar(Model model) {
 		model.addAttribute("medicalstaff", new MedicalStaff());
+		
+		model.addAttribute("listaPersonalMedicos",msService.listar());
+        model.addAttribute("listaTipoPersonalMedico", tmsService.listar());
+		
+		model.addAttribute("typemedical", new TypeMedicalStaff());
+		
 		return "buscarms";
 	}
 
@@ -124,18 +130,51 @@ public class MedicalStaffController {
 		throws ParseException
 	{
 		List<MedicalStaff> listaPersonalMedicos;
-		medicalstaff.setNamePM(medicalstaff.getNamePM());//capturo lo de la caja de texto
-		//listaPersonalMedicos = msService.(medicalstaff.getNamePM()); //buscando 1
+		medicalstaff.setNamePM(medicalstaff.getNamePM());
+		listaPersonalMedicos = msService.buscarNombre(medicalstaff.getNamePM()); 
+		
+		if(listaPersonalMedicos.isEmpty()) {
+			listaPersonalMedicos = msService.buscarApellido(medicalstaff.getLastnamePM());
+		}
+		
+		if(listaPersonalMedicos.isEmpty()) {
+			listaPersonalMedicos = msService.buscarDNI(medicalstaff.getDniPMe());
+		}
 		
 		
-		//if(listaPersonalMedicos.isEmpty()) {
-			//model.put("mensaje", "No existen coincidencias");
-		//}
+		if(listaPersonalMedicos.isEmpty()) {
+			model.put("mensaje", "No existen coincidencias");
+		}
 		
-		//model.put("listaPersonaledicos", listaPersonalMedicos);
-		return "buscarpm";
+		model.put("listaPersonalMedicos", listaPersonalMedicos);
+		model.put("listaTipoPersonalMedico", tmsService.listar());
+		
+		model.put("medicalstaff", new MedicalStaff());
+		model.put("typemedical", new TypeMedicalStaff());
+		
+		return "buscarms";
+		
 		
 	}
+	@RequestMapping("/buscartype")
+	public String buscartype(Map<String, Object> model, @ModelAttribute TypeMedicalStaff typemedicalstaff) 
+		throws ParseException
+	{
+		
+		List<MedicalStaff> listaPersonalMedicos;
+		typemedicalstaff.setNameTDPM(typemedicalstaff.getNameTDPM());
+		listaPersonalMedicos = msService.buscartype(typemedicalstaff.getNameTDPM());
 
+		if (listaPersonalMedicos.isEmpty()) {
+			model.put("mensaje", "No se encontro");
+		}
+		
+		model.put("listaPersonalMedicos", listaPersonalMedicos);
+        model.put("listaTipoPersonalMedico", tmsService.listar());
+		
+		model.put("medicalstaff", new MedicalStaff());
+		model.put("typemedical", new TypeMedicalStaff());
+		return "buscarms";
+	}
 	
 }
