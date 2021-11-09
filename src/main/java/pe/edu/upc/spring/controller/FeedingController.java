@@ -149,6 +149,7 @@ public class FeedingController {
 		
 		model.addAttribute("listaPersonalMedicos",pmService.listar());
 		model.addAttribute("listaPacientes",pService.listar());
+		model.addAttribute("listaAlimentacion",fService.listar());
 		return "buscarf";
 	}
 
@@ -167,6 +168,7 @@ public class FeedingController {
 		}
 		model.put("listaPacientes",pService.listar());
 		model.put("listaAlimentacion", listaAlimentacion);
+		model.put("listaPersonalMedicos",pmService.listar());
 		
 		model.put("patient", new Patient());
 		model.put("feeding",new Feeding());
@@ -189,6 +191,7 @@ public class FeedingController {
 		}
 		model.put("listaAlimentacion", listaAlimentacion);
 		model.put("listaPacientes",pService.listar());
+		model.put("listaPersonalMedicos",pmService.listar());
 		
 		model.put("patient", new Patient());
 		model.put("feeding",new Feeding());
@@ -211,6 +214,7 @@ public class FeedingController {
 		}
 		model.put("listaPersonalMedicos",pmService.listar());
 		model.put("listaAlimentacion", listaAlimentacion);
+		model.put("listaPacientes",pService.listar());
 		
 		model.put("patient", new Patient());
 		model.put("feeding",new Feeding());
