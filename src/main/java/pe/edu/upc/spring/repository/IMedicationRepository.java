@@ -19,6 +19,16 @@ public interface IMedicationRepository extends JpaRepository<Medication, Integer
 	@Query("from Medication m where m.medicalstaff.namePM like %:namePM%")
 	List<Medication> buscarMedico(@Param("namePM") String namePM);
 	
+	@Query("from Medication m where m.medicinestatus.nameEDLMA like %:nameEDLMA%")
+	List<Medication> buscarEstado(@Param("nameEDLMA") String nameEDLMA);
+	
+	@Query("from Medication m where m.medicine.nameMedicine like %:nameMedicine%")
+	List<Medication> buscarMedicina(@Param("nameMedicine") String nameMedicine);
+	
+	@Query("from Medication m where m.patient.lastnamePatient like %:lastnamePatient%")
+	List<Medication> buscarApellido(@Param("lastnamePatient") String lastnamePatient);
+	
+	
 	List<Medication>findBydateMedication(Date dateMedication);
 	
 }
