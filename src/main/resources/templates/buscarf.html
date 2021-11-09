@@ -18,7 +18,7 @@
 	
 </script>
 
-<script type="text/javascript" th:src="@{/js/vitalsigns.js}"></script>
+<script type="text/javascript" th:src="@{/js/feeding.js}"></script>
 
 </head>
 
@@ -32,13 +32,10 @@
 				th:object="${patient}">
 				<div class="form-group">
 					<div class="col-sm-12">
-						<select class="form-control" th:field="*{namePatient}">
-    					<option th:each="pat: ${listaPacientes}"
-    							th:value="${pat.namePatient}"
-    							th:text="${pat.namePatient + ' ' + pat.lastnamePatient}"
-    							th:selected="(${pat.idPatient} == *{idPatient})">
-    							</option>
-    					</select>
+						<input type="text" class="form-control"
+								th:field="*{namePatient}" id="nombre"
+								placeholder="Ingrese dato a buscar por Nombre y Apellido">
+						</input>
 						
 
 						<div align="left">

@@ -14,6 +14,7 @@ public interface IFeedingService {
 	
 	public List<Feeding> listar();
 	public List<Feeding> buscarPaciente(String namePatient);
+	public List<Feeding> buscarApellido(String lastnamePatient);
 	public List<Feeding> buscarMedico(String namePM);
 	public List<Feeding> buscarTipo (String nameTDA);
 	public List<Feeding> buscarTurno (String nameTRDA);
