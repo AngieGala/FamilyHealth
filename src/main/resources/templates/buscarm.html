@@ -134,22 +134,40 @@
 						data-widget="treeview" role="menu" data-accordion="false">
 						<!-- Add icons to the links using the .nav-icon class
 	               with font-awesome or any other icon font library -->
+
+						<li class="nav-item"><a th:href="@{/medicalstaff/listar}"
+							class="nav-link"> <i class="nav-icon fas fa-user-md"></i>
+								<p>Personal Medico</p>
+						</a></li>
+
+						<li class="nav-item"><a th:href="@{/familypatient/listar}"
+							class="nav-link"> <i class="nav-icon fas fa-user-friends"></i>
+								<p>Familiar del Paciente</p>
+						</a></li>
+
 						<li class="nav-item"><a th:href="@{/patient/listar}"
 							class="nav-link"> <i class="nav-icon far fa-user"></i>
-								<p>Pacientes</p>
+								<p>Paciente</p>
 						</a></li>
 
 						<li class="nav-item"><a th:href="@{/vitalsigns/listar}"
 							class="nav-link"> <i class="nav-icon fas fa-medkit"></i>
 								<p>Signos vitales</p>
 						</a></li>
+
 						<li class="nav-item"><a th:href="@{/feeding/listar}"
 							class="nav-link"> <i class="nav-icon fas fa-list-ul"></i>
 								<p>Alimentación</p>
 						</a></li>
+
 						<li class="nav-item"><a th:href="@{/medication/listar}"
 							class="nav-link"> <i class="nav-icon fas fa-hospital-user"></i>
 								<p>Medicación</p>
+						</a></li>
+
+						<li class="nav-item"><a th:href="@{/report/listar}"
+							class="nav-link"> <i class="nav-icon fas fa-file-medical"></i>
+								<p>Reporte Medico</p>
 						</a></li>
 
 					</ul>
@@ -177,9 +195,9 @@
 
 
 					<div class="card-body">
-	
+
 						<div class="container-fluid">
-	
+
 							<div class="row clearfix">
 								<form th:action="@{/medication/buscar}" method="post"
 									th:object="${patient}">
@@ -195,21 +213,21 @@
 												<a href="/medication/listar" class="btn btn-danger">Cancelar</a>
 
 											</div>
-						
+
 										</div>
 
 									</div>
 								</form>
 							</div>
-			
+
 							<div class="row clearflix">
 								<form th:action="@{/medication/buscarFecha}" method="post"
 									th:object="${patient}">
 									<div class="form-group">
 										<div class="col-sm-12">
-											<input type="date" class="form-control" th:field="*{datePatient}"
-											id="fecha" placeholder="Ingrese dato a buscar por Fecha">
-											</input>
+											<input type="date" class="form-control"
+												th:field="*{datePatient}" id="fecha"
+												placeholder="Ingrese dato a buscar por Fecha"> </input>
 
 											<div align="left">
 												<button type="submit" class="btn btn-primary">Buscar</button>
@@ -220,42 +238,40 @@
 								</form>
 							</div>
 
-     					  	<div class="row clearfix">
+							<div class="row clearfix">
 								<form th:action="@{/medication/buscarMedico}" method="post"
 									th:object="${medicalstaff}">
 									<div class="form-group">
 										<div class="col-sm-24">
 											<select class="form-control" th:field="*{namePM}">
-    											<option th:each="med: ${listaPersonalMedicos}"
-						    							th:value="${med.namePM}"
-						    							th:text="${med.namePM + ' ' + med.lastnamePM}"
-						    							th:selected="(${med.idPM} == *{idPM})">
-    											</option>
-    										</select>
-						
-						
+												<option th:each="med: ${listaPersonalMedicos}"
+													th:value="${med.namePM}"
+													th:text="${med.namePM + ' ' + med.lastnamePM}"
+													th:selected="(${med.idPM} == *{idPM})"></option>
+											</select>
+
+
 											<div align="left">
-													<button type="submit" class="btn btn-primary">Buscar</button>
-													<a href="/medication/listar" class="btn btn-danger">Cancelar</a>
+												<button type="submit" class="btn btn-primary">Buscar</button>
+												<a href="/medication/listar" class="btn btn-danger">Cancelar</a>
 											</div>
 										</div>
 									</div>
 								</form>
 							</div>
 
-            				 <div class="row clearfix">
+							<div class="row clearfix">
 								<form th:action="@{/medication/buscarStatus}" method="post"
 									th:object="${medicinestatus}">
 									<div class="form-group">
 										<div class="col-sm-12">
 											<select class="form-control" th:field="*{nameEDLMA}">
-						    					<option th:each="est: ${listaEstadoMedicinas}"
-						    							th:value="${est.nameEDLMA}"
-						    							th:text="${est.nameEDLMA}">
-    											</option>
-    										</select>
-						
-						
+												<option th:each="est: ${listaEstadoMedicinas}"
+													th:value="${est.nameEDLMA}" th:text="${est.nameEDLMA}">
+												</option>
+											</select>
+
+
 											<div align="left">
 												<button type="submit" class="btn btn-primary">Buscar</button>
 												<a href="/medication/listar" class="btn btn-danger">Cancelar</a>
@@ -268,19 +284,18 @@
 
 
 
-             				<div class="row clearfix">
+							<div class="row clearfix">
 								<form th:action="@{/medication/buscarMedicine}" method="post"
 									th:object="${medicine}">
 									<div class="form-group">
 										<div class="col-sm-12">
 											<select class="form-control" th:field="*{nameMedicine}">
-						    					<option th:each="medic: ${listaMedicinas}"
-						    							th:value="${medic.nameMedicine}"
-						    							th:text="${medic.nameMedicine}">
-						    					</option>
-    										</select>
-						
-						
+												<option th:each="medic: ${listaMedicinas}"
+													th:value="${medic.nameMedicine}"
+													th:text="${medic.nameMedicine}"></option>
+											</select>
+
+
 											<div align="left">
 												<button type="submit" class="btn btn-primary">Buscar</button>
 												<a href="/medication/listar" class="btn btn-danger">Cancelar</a>
@@ -299,23 +314,26 @@
 								<thead>
 									<tr>
 										<th class="text-center">CODIGO</th>
-					    				<th class="text-center">NOMBRE DE MEDICACION</th>
-					    				<th class="text-center">FECHA DE MEDICACION</th>
-					    				<th class="text-center">ESTADO DE MEDICACION</th>
-					    				<th class="text-center">PERSONAL MEDICO</th>
-					    				<th class="text-center">PACIENTE</th>
-					
+										<th class="text-center">NOMBRE DE MEDICACION</th>
+										<th class="text-center">FECHA DE MEDICACION</th>
+										<th class="text-center">ESTADO DE MEDICACION</th>
+										<th class="text-center">PERSONAL MEDICO</th>
+										<th class="text-center">PACIENTE</th>
+
 									</tr>
 								</thead>
 								<tbody>
-										<tr th:each="med: ${listaMedicaciones}">
-						    			    <td th:text="${med.idMedication}"></td>
-						    			    <td th:text="${med.medicine.nameMedicine}"></td>
-						    				 <td th:text="${#dates.format(med.dateMedication,'dd/MM/yyyy')}"></td>
-						    				 <td th:text="${med.medicinestatus.nameEDLMA}"></td>
-						    				 <td th:text="${med.medicalstaff.namePM + ' ' + med.medicalstaff.lastnamePM}"></td>
-						    				 <td th:text="${med.patient.namePatient + ' ' + med.patient.lastnamePatient}"></td>
-										</tr>
+									<tr th:each="med: ${listaMedicaciones}">
+										<td th:text="${med.idMedication}"></td>
+										<td th:text="${med.medicine.nameMedicine}"></td>
+										<td
+											th:text="${#dates.format(med.dateMedication,'dd/MM/yyyy')}"></td>
+										<td th:text="${med.medicinestatus.nameEDLMA}"></td>
+										<td
+											th:text="${med.medicalstaff.namePM + ' ' + med.medicalstaff.lastnamePM}"></td>
+										<td
+											th:text="${med.patient.namePatient + ' ' + med.patient.lastnamePatient}"></td>
+									</tr>
 								</tbody>
 							</table>
 

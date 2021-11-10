@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Signos Vitales</title>
+<title>Paciente</title>
 
 <!-- Google Font: Source Sans Pro -->
 <link rel="stylesheet"
@@ -42,9 +42,10 @@
 	th:href="@{/plugins/datatables-buttons/css/buttons.bootstrap4.min.css}">
 </head>
 
-
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
+
+
 
 		<!-- Navbar -->
 		<nav
@@ -72,7 +73,7 @@
 					class="nav-link" data-toggle="dropdown"> <img
 						src="../../dist/img/user2-160x160.jpg" class="user-image"
 						alt="User Image"> <span class="hidden-xs">Nombre del
-							usuario</span>
+							Administrador</span>
 				</a>
 
 
@@ -85,8 +86,8 @@
 
 							<p>
 
-								<small>Nombre del usuario</small> <small>Miembro desde
-									:25/12/2021</small>
+								<small>Nombre del Administrador</small> <small>Miembro
+									desde :25/12/2021</small>
 							</p></li>
 						<!-- Menu Body -->
 
@@ -122,10 +123,9 @@
 							class="img-circle elevation-2" alt="User Image">
 					</div>
 					<div class="info">
-						<a href="#" class="d-block">Nombre del usuario</a>
+						<a href="#" class="d-block">Nombre del Administrador</a>
 					</div>
 				</div>
-
 
 
 				<!-- Sidebar Menu -->
@@ -135,14 +135,13 @@
 						<!-- Add icons to the links using the .nav-icon class
 	               with font-awesome or any other icon font library -->
 						
-						
 						<li class="nav-item"><a th:href="@{/medicalstaff/listar}"
-							class="nav-link"> <i class="nav-icon fas fa-user-md"></i>
+							class="nav-link"> <i class="nav-icon fas fa-user-alt"></i>
 								<p>Personal Medico</p>
 						</a></li>
 						
 						<li class="nav-item"><a th:href="@{/familypatient/listar}"
-							class="nav-link"> <i class="nav-icon fas fa-user-friends"></i>
+							class="nav-link"> <i class="nav-icon fad fa-user"></i>
 								<p>Familiar del Paciente</p>
 						</a></li>
 						
@@ -165,13 +164,6 @@
 							class="nav-link"> <i class="nav-icon fas fa-hospital-user"></i>
 								<p>Medicación</p>
 						</a></li>
-						
-						<li class="nav-item"><a th:href="@{/report/listar}"
-							class="nav-link"> <i class="nav-icon fas fa-file-medical"></i>
-								<p>Reporte Medico</p>
-						</a></li>
-
-
 
 					</ul>
 				</nav>
@@ -181,8 +173,6 @@
 			</div>
 			<!-- /.sidebar -->
 		</aside>
-		<!-- Content Wrapper. Contains page content -->
-
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
@@ -190,14 +180,14 @@
 					<div class="row mb-2">
 						<div class="col-sm-6">
 							<h1>
-								Signos Vitales
+								Pacientes
 								<h5></h5>
 							</h1>
 						</div>
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right">
 								<li class="breadcrumb-item"><a href="#">Inicio</a></li>
-								<li class="breadcrumb-item active">Signos Vitales</li>
+								<li class="breadcrumb-item active">Pacientes</li>
 							</ol>
 						</div>
 					</div>
@@ -212,63 +202,95 @@
 				<div class="card">
 					<div class="card-header">
 
-						
-						<a 	th:href="@{/vitalsigns/irRegistrar}"
-    						id="add-row" type="button" class="btn btn-primary btn-md left-block">
-    						<span class="glyphicon glyphicon-plus"></span> Signos Vitales
-    					</a>
-    					
-						<a 	th:href="@{/vitalsigns/irBuscar}"
-    						id="add-row" type="button" class="btn btn-primary btn-md left-block">
-    						<span class="glyphicon glyphicon-search"></span> Buscar
-    					</a>
+						<div class="container">
+
+							<form th:action="@{/patient/registrar}" method="post"
+								th:object="${patient}" enctype="multipart/form-data">
+								<div class="form-group">
+
+									<label for="idpatient">ID:</label> <input type="text"
+										class="form-control" th:field="*{idPatient}"></input>
+
+									<div class="form-group">
+
+
+
+
+										<label for="nombre">NOMBRE:</label> <input type="text"
+											class="form-control" th:field="*{namePatient}" id="nombre"></input>
+
+										<div class="alert alert-danger"
+											th:if="${#fields.hasErrors('namePatient')}"
+											th:errors="*{namePatient}"></div>
+
+
+
+
+										<label for="apellido">APELLIDO:</label> <input type="text"
+											class="form-control" th:field="*{lastnamePatient}"
+											id="apellido"></input>
+
+										<div class="alert alert-danger"
+											th:if="${#fields.hasErrors('lastnamePatient')}"
+											th:errors="*{lastnamePatient}"></div>
+
+
+
+
+										<label for="dni">DNI:</label> <input type="text"
+											class="form-control" th:field="*{dniPatient}" id="dni"></input>
+
+										<div class="alert alert-danger"
+											th:if="${#fields.hasErrors('dniPatient')}"
+											th:errors="*{dniPatient}"></div>
+
+
+
+
+										<label for="edad">EDAD:</label> <input type="text"
+											class="form-control" th:field="*{agePatient}" id="edad"></input>
+
+										<div class="alert alert-danger"
+											th:if="${#fields.hasErrors('agePatient')}"
+											th:errors="*{agePatient}"></div>
+
+
+
+
+										<label for="ncama"># DE CAMA:</label> <input type="text"
+											class="form-control" th:field="*{bednumberPatient}"
+											id="ncama"></input>
+
+										<div class="alert alert-danger"
+											th:if="${#fields.hasErrors('bednumberPatient')}"
+											th:errors="*{bednumberPatient}"></div>
+
+
+
+
+										<label for="fechaIngreso">FECHA DE INGRESO:</label> <input
+											type="date" th:field="*{datePatient}" class="form-control"
+											id="fechaIngreso"></input>
+
+										<div class="alert alert-danger"
+											th:if="${#fields.hasErrors('datePatient')}"
+											th:errors="*{datePatient}"></div>
+
+
+
+
+									</div>
+
+
+
+								</div>
+								<button type="submit" class="btn btn-primary">Aceptar</button>
+								<a href="/patient/listar" class="btn btn-danger">Cancelar</a>
+							</form>
+						</div>
 
 					</div>
-					<div class="card-body">
 
-						<table class="table table-bordered table-hover table-striped"
-							id="tab_logic">
-							<thead>
-								<tr>
-									<th class="text-center">CODIGO</th>
-    								<th class="text-center">SATURACION</th>
-    								<th class="text-center">PRESION</th>
-    								<th class="text-center">TEMPERATURA</th>
-    								<th class="text-center">FECHA</th>
-    								<th class="text-center">PACIENTE</th>
-    								<th class="text-center">PERSONAL MEDICO</th>
-									<th class="text-center">OPERACIONES</th>
-								</tr>
-							</thead>
-
-							<tbody>
-								<tr th:each="vs: ${listaSignosVitales}">
-    								<td th:text="${vs.idSV}"></td>
-    								<td th:text="${vs.saturationSV}"></td>
-    								<td th:text="${vs.pressureSV}"></td>
-    								<td th:text="${vs.temperatureSV}"></td>
-    								<td th:text="${#dates.format(vs.dateSV,'dd/MM/yyyy')}"></td>
-    								<td th:text="${vs.patient.namePatient + ' ' + vs.patient.lastnamePatient}"></td>
-									<td th:text="${vs.medicalstaff.namePM + ' ' + vs.medicalstaff.lastnamePM}"></td>
-									<td>
-										<div class="btn-group">
-
-											<a th:href="@{'/vitalsigns/modificar/'}+${vs.idSV}"
-												id="add-row" type="button" class="btn btn-warning"> <i
-												class="fas fa-pencil-alt" style="color: white;"> </i>
-											</a> 
-											<a th:href="@{/vitalsigns/eliminar?id=}+${vs.idSV}"
-												id="add-row" type="button" class="btn btn-danger"> <i
-												class="fa fa-times" style="color: white;"> </i>
-											</a>
-
-										</div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					<!-- /.card-body -->
 
 				</div>
 				<!-- /.card -->
@@ -290,6 +312,7 @@
 		<!-- /.control-sidebar -->
 	</div>
 	<!-- ./wrapper -->
+
 
 	<!-- jQuery -->
 	<script th:src="@{/plugins/jquery/jquery.min.js}"></script>
