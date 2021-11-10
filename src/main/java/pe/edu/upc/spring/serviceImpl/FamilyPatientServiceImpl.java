@@ -61,5 +61,10 @@ public class FamilyPatientServiceImpl implements IFamilyPatientService{
 	public List<FamilyPatient> buscarApellido(String lastnameFDP) {
 		return dFamilyPatient.buscarApellido(lastnameFDP);
 	}
+
+	@Override
+	public List<FamilyPatient> buscarDNI(String dniFDP) {
+		return dFamilyPatient.buscarDNI(dniFDP);
+	}
 	
 }

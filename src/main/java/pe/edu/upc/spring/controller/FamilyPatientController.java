@@ -125,7 +125,10 @@ public class FamilyPatientController {
 			listaFamiliar = fpService.buscarApellido(familypatient.getNamePM());
 		}
 		
-	
+		if(listaFamiliar.isEmpty()) {
+			listaFamiliar = fpService.buscarDNI(familypatient.getNamePM());
+		}
+		
 		if(listaFamiliar.isEmpty()) {
 			model.put("mensaje", "No se encontro");
 		}

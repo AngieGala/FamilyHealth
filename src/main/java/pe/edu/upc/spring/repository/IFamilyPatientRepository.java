@@ -17,4 +17,7 @@ public interface IFamilyPatientRepository extends JpaRepository<FamilyPatient, I
 	
 	@Query("from FamilyPatient fp where fp.lastnameFDP like %:lastnameFDP%")
 	List<FamilyPatient> buscarApellido(@Param("lastnameFDP") String lastnameFDP);
+	
+	@Query("from FamilyPatient p where p.dniFDP like %:dniFDP%")
+	List<FamilyPatient> buscarDNI(@Param("dniFDP") String dniFDP);
 }
