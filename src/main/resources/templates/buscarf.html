@@ -330,8 +330,8 @@
 										<th class="text-center">TIPO DE ALIMENTACION</th>
 										<th class="text-center">TURNO DE ALIMENTACION</th>
 										<th class="text-center">FECHA DE ALIMENTACION</th>
-										<th class="text-center">PACIENTE</th>
 										<th class="text-center">PERSONAL MEDICO</th>
+										<th class="text-center">PACIENTE</th>
 					
 									</tr>
 								</thead>
@@ -341,8 +341,8 @@
 					    				<td th:text="${alim.feedingtype.nameTDA}"></td>
 					    				<td th:text="${alim.feedingshift.nameTRDA}"></td>
 					    				<td th:text="${#dates.format(alim.dateFeeding,'dd/MM/yyyy')}"></td>
-					    				<td th:text="${alim.patient.namePatient + ' ' + alim.patient.lastnamePatient}"></td>
 					    				<td th:text="${alim.medicalstaff.namePM + ' ' + alim.medicalstaff.lastnamePM}"></td>
+					    				<td th:text="${alim.patient.namePatient + ' ' + alim.patient.lastnamePatient}"></td>
 									</tr>
 								</tbody>
 							</table>
