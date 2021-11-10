@@ -13,5 +13,6 @@ public interface IFamilyPatientService {
 	
 	public List<FamilyPatient> listar();
 	public List<FamilyPatient> buscarNombre(String namePM);
+	public List<FamilyPatient> buscarApellido(String lastnameFDP);
 	
 }

@@ -134,11 +134,11 @@ public class MedicalStaffController {
 		listaPersonalMedicos = msService.buscarNombre(medicalstaff.getNamePM()); 
 		
 		if(listaPersonalMedicos.isEmpty()) {
-			listaPersonalMedicos = msService.buscarApellido(medicalstaff.getLastnamePM());
+			listaPersonalMedicos = msService.buscarApellido(medicalstaff.getNamePM());
 		}
 		
 		if(listaPersonalMedicos.isEmpty()) {
-			listaPersonalMedicos = msService.buscarDNI(medicalstaff.getDniPMe());
+			listaPersonalMedicos = msService.buscarDNI(medicalstaff.getNamePM());
 		}
 		
 		
