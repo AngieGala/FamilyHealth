@@ -72,7 +72,7 @@ public class VitalSignsController {
 			if (flag) {
 				return "redirect:/vitalsigns/listar";
 			} else {
-				model.addAttribute("mensaje", "Ocurrió un error");
+				model.addAttribute("mensaje", "Ocurrio un error");
 				return "redirect:/vitalsigns/irRegistrar";
 			}
 		}
@@ -82,7 +82,7 @@ public class VitalSignsController {
 	public String modificar(@PathVariable int id, Model model, RedirectAttributes objRedir) throws ParseException {
 		Optional<VitalSigns> objVitalSigns = vsService.listarId(id);
 		if (objVitalSigns == null) {
-			objRedir.addAttribute("mensaje", "Ocurrió un error");
+			objRedir.addAttribute("mensaje", "Ocurrio un error");
 			return "redirect:/vitalsigns/listar";
 		} else {
 			model.addAttribute("listaPacientes", pService.listar());
@@ -102,7 +102,7 @@ public class VitalSignsController {
 			}
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
-			model.put("mensaje", "Ocurrió un error");
+			model.put("mensaje", "Ocurrio un error");
 			model.put("listaSignosVitales", vsService.listar());
 		}
 		return "listVitalSigns";
@@ -125,23 +125,38 @@ public class VitalSignsController {
 		model.addAttribute("patient", new Patient());
 		model.addAttribute("medico", new MedicalStaff());
 		model.addAttribute("vitalsigns", new VitalSigns());
+		
+		model.addAttribute("listaPersonalMedicos",pmService.listar());
+		model.addAttribute("listaPacientes", pService.listar());
+        model.addAttribute("listaSignosVitales", vsService.listar());
 		return "buscarvs";
 	}
 
 	@RequestMapping("/buscar")
 	public String buscar(Map<String, Object> model, @ModelAttribute("patient") Patient patient) throws ParseException {
+		
 		// vamos a buscar por nombre de paciente
 
 		List<VitalSigns> listaSignosVitales;
 		patient.setNamePatient(patient.getNamePatient());
 		listaSignosVitales = vsService.buscarPaciente(patient.getNamePatient());
+		
+		if(listaSignosVitales.isEmpty()) {
+			listaSignosVitales = vsService.buscarApellido(patient.getNamePatient());
+		}
 
 		if (listaSignosVitales.isEmpty()) {
 			model.put("mensaje", "No se encontro");
 		}
+		
 		model.put("patient", new Patient());
-		model.put("medico", new MedicalStaff());
-		model.put("listaSignosVitales", listaSignosVitales);
+        model.put("medico", new MedicalStaff());
+        model.put("vitalsigns", new VitalSigns());
+
+        model.put("listaSignosVitales", listaSignosVitales);
+        model.put("listaPacientes", pService.listar());
+        model.put("listaPersonalMedicos", pmService.listar());
+		
 		return "buscarvs";
 	}
 	
@@ -151,16 +166,21 @@ public class VitalSignsController {
 		// vamos a buscar por fecha en cual se hizo el control
 
 		List<VitalSigns> listaSignosVitales;
-
-		medico.setNamePM(medico.getNamePM()); // capturo la fecha del control
+		medico.setNamePM(medico.getNamePM());
 		listaSignosVitales = vsService.buscarPersonalMedico(medico.getNamePM()); // buscando uwu
 
 		if (listaSignosVitales.isEmpty()) {
 			model.put("mensaje", "No se encontro");
 		}
+
 		model.put("patient", new Patient());
-		model.put("medico", new MedicalStaff());
-		model.put("listaSignosVitales", listaSignosVitales);
+        model.put("medico", new MedicalStaff());
+        model.put("vitalsigns", new VitalSigns());
+
+        model.put("listaSignosVitales", listaSignosVitales);
+        model.put("listaPacientes", pService.listar());
+        model.put("listaPersonalMedicos", pmService.listar());
+		
 		return "buscarvs";
 	}
 
@@ -178,8 +198,13 @@ public class VitalSignsController {
 			model.put("mensaje", "No se encontro");
 		}
 		model.put("patient", new Patient());
-		model.put("medico", new MedicalStaff());
-		model.put("listaSignosVitales", listaSignosVitales);
+        model.put("medico", new MedicalStaff());
+        model.put("vitalsigns", new VitalSigns());
+
+        model.put("listaSignosVitales", listaSignosVitales);
+        model.put("listaPacientes", pService.listar());
+        model.put("listaPersonalMedicos", pmService.listar());
+		
 		return "buscarvs";
 	}
 	

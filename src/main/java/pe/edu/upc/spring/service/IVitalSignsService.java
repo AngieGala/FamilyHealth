@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import pe.edu.upc.spring.model.Feeding;
 import pe.edu.upc.spring.model.VitalSigns;
 
 public interface IVitalSignsService {
@@ -14,6 +15,7 @@ public interface IVitalSignsService {
 	
 	public List<VitalSigns> listar();
 	public List<VitalSigns> buscarPaciente(String namePatient);
+	public List<VitalSigns> buscarApellido(String lastnamePatient);
 	public List<VitalSigns> findByDateSV(Date dateSV);
 	public List<VitalSigns> buscarPersonalMedico(String namePM);
 }

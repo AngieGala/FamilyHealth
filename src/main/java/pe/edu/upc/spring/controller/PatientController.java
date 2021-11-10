@@ -113,7 +113,7 @@ public class PatientController {
 	@RequestMapping("/buscar")
 	public String buscar(Map<String, Object> model, @ModelAttribute Patient patient ) throws ParseException, java.text.ParseException
 	{
-		//vamos a buscar por nombre, apellido, dni, o numero de cama
+		//vamos a buscar por nombre y apellido
 		
 		List<Patient> listaPacientes;
 		patient.setNamePatient(patient.getNamePatient());//capturo lo de la caja de texto
@@ -127,9 +127,11 @@ public class PatientController {
 			listaPacientes = pService.buscarDNI(patient.getNamePatient());
 		}
 		
+		/*
 		if(listaPacientes.isEmpty()) {
 			listaPacientes = pService.buscarCama(Integer.parseInt(patient.getNamePatient()));
 		}
+		*/
 		
 		if(listaPacientes.isEmpty()) {
 			model.put("mensaje", "No se encontro");

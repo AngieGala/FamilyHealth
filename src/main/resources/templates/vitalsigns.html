@@ -247,14 +247,16 @@
 										<label for="nombre">PACIENTE:</label> <select
 											class="form-control" th:field="*{patient.idPatient}">
 											<option th:each="sigvi: ${listaPacientes}"
-												th:value="${sigvi.idPatient}" th:text="${sigvi.namePatient}"
+												th:value="${sigvi.idPatient}" 
+												th:text="${sigvi.namePatient + ' ' + sigvi.lastnamePatient}"
 												th:selected="(${sigvi.idPatient} == *{patient.idPatient})">
 											</option>
 
 										</select> <label for="personal">PERSONAL MEDICO:</label> <select
 											class="form-control" th:field="*{medicalstaff.idPM}">
 											<option th:each="personal: ${listaPersonalMedicos}"
-												th:value="${personal.idPM}" th:text="${personal.namePM}"
+												th:value="${personal.idPM}" 
+												th:text="${personal.namePM + ' ' + personal.lastnamePM}"
 												th:selected="(${personal.idPM} == *{medicalstaff.idPM})">
 											</option>
 

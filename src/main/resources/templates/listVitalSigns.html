@@ -229,8 +229,8 @@
     								<td th:text="${vs.pressureSV}"></td>
     								<td th:text="${vs.temperatureSV}"></td>
     								<td th:text="${#dates.format(vs.dateSV,'dd/MM/yyyy')}"></td>
-    								<td th:text="${vs.patient.namePatient}"></td>
-    								<td th:text="${vs.medicalstaff.namePM}"></td>
+    								<td th:text="${vs.patient.namePatient + ' ' + vs.patient.lastnamePatient}"></td>
+									<td th:text="${vs.medicalstaff.namePM + ' ' + vs.medicalstaff.lastnamePM}"></td>
 									<td>
 										<div class="btn-group">
 

@@ -185,6 +185,7 @@
 									th:object="${patient}">
 									<div class="form-group">
 										<div class="col-sm-24">
+											<h4>Buscar por Nombre de Paciente:</h4>
 											<input type="text" class="form-control"
 												th:field="*{namePatient}" id="nombre"
 												placeholder="Ingrese dato a buscar por Nombre del paciente">
@@ -206,6 +207,7 @@
 									th:object="${patient}">
 									<div class="form-group">
 										<div class="col-sm-12">
+											<h4>Buscar por Fecha de Control:</h4>
 											<input type="date" class="form-control"
 												th:field="*{datePatient}" id="fecha"
 												placeholder="Ingrese dato a buscar por Fecha"> </input>
@@ -224,17 +226,20 @@
 									th:object="${medico}">
 									<div class="form-group">
 										<div class="col-sm-24">
-											<input type="text" class="form-control" th:field="*{namePM}"
-												id="nombrePM"
-												placeholder="Ingrese dato a buscar por Nombre del Personal Medico">
-											</input>
+											<h4>Buscar por Nombre de Personal Médico:</h4>
+											<select class="form-control" th:field="*{namePM}">
+    											<option th:each="med: ${listaPersonalMedicos}"
+    													th:value="${med.namePM}"
+    													th:text="${med.namePM + ' ' + med.lastnamePM}"
+    													th:selected="(${med.idPM} == *{idPM})">
+    											</option>
+    										</select>
 
 											<div align="left">
 												<button type="submit" class="btn btn-primary">Buscar</button>
 												<a href="/vitalsigns/listar" class="btn btn-danger">Cancelar</a>
 											</div>
 										</div>
-
 									</div>
 								</form>
 							</div>
@@ -263,8 +268,8 @@
 										<td th:text="${vs.pressureSV}"></td>
 										<td th:text="${vs.temperatureSV}"></td>
 										<td th:text="${#dates.format(vs.dateSV,'dd/MM/yyyy')}"></td>
-										<td th:text="${vs.patient.namePatient}"></td>
-										<td th:text="${vs.medicalstaff.namePM}"></td>
+										<td th:text="${vs.patient.namePatient + ' ' + vs.patient.lastnamePatient}"></td>
+										<td th:text="${vs.medicalstaff.namePM + ' ' + vs.medicalstaff.lastnamePM}"></td>
 
 									</tr>
 								</tbody>
