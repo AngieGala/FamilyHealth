@@ -165,7 +165,7 @@
 								<p>Medicación</p>
 						</a></li>
 
-						<li class="nav-item"><a th:href="@{/report/listar}"
+						<li class="nav-item"><a th:href="@{/report/buscarreporte}"
 							class="nav-link"> <i class="nav-icon fas fa-file-medical"></i>
 								<p>Reporte Medico</p>
 						</a></li>
@@ -202,10 +202,11 @@
 								<form th:action="@{/medication/buscar}" method="post"
 									th:object="${patient}">
 									<div class="form-group">
+										<h4>Buscar por Nombre y Apellido del Paciente:</h4>
 										<div class="col-sm-24">
 											<input type="text" class="form-control"
 												th:field="*{namePatient}" id="nombre"
-												placeholder="Ingrese dato a buscar por Nombre y Apellido">
+												placeholder="Ingrese los datos a buscar">
 											</input>
 
 											<div align="left">
@@ -224,6 +225,7 @@
 								<form th:action="@{/medication/buscarFecha}" method="post"
 									th:object="${patient}">
 									<div class="form-group">
+										<h4>Buscar por Fecha:</h4>
 										<div class="col-sm-12">
 											<input type="date" class="form-control"
 												th:field="*{datePatient}" id="fecha"
@@ -242,6 +244,7 @@
 								<form th:action="@{/medication/buscarMedico}" method="post"
 									th:object="${medicalstaff}">
 									<div class="form-group">
+										<h4>Buscar por Personal Medico:</h4>
 										<div class="col-sm-24">
 											<select class="form-control" th:field="*{namePM}">
 												<option th:each="med: ${listaPersonalMedicos}"
@@ -264,6 +267,7 @@
 								<form th:action="@{/medication/buscarStatus}" method="post"
 									th:object="${medicinestatus}">
 									<div class="form-group">
+										<h4>Buscar por Estado de la Medicina:</h4>
 										<div class="col-sm-12">
 											<select class="form-control" th:field="*{nameEDLMA}">
 												<option th:each="est: ${listaEstadoMedicinas}"
@@ -288,6 +292,7 @@
 								<form th:action="@{/medication/buscarMedicine}" method="post"
 									th:object="${medicine}">
 									<div class="form-group">
+										<h4>Buscar por Nombre del Medicamento:</h4>
 										<div class="col-sm-12">
 											<select class="form-control" th:field="*{nameMedicine}">
 												<option th:each="medic: ${listaMedicinas}"
