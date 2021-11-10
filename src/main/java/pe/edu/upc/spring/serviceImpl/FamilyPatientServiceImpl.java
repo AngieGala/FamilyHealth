@@ -51,8 +51,15 @@ public class FamilyPatientServiceImpl implements IFamilyPatientService{
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<FamilyPatient> buscarNombre(String namePM) {
 		return dFamilyPatient.buscarNombre(namePM);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<FamilyPatient> buscarApellido(String lastnameFDP) {
+		return dFamilyPatient.buscarApellido(lastnameFDP);
 	}
 	
 }
