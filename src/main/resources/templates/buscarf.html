@@ -200,13 +200,13 @@
 					<div class="card-body">
 
 						<div class="container-fluid">
-							<h1 class="btn btn-primary btn-md left-block">Buscar Paciente</h1>
 								
 							<div class="row clearfix">
 								
 								<form th:action="@{/feeding/buscar}" method="post"
 									 th:object="${patient}">
 									<div class="form-group">
+										<h4>Buscar por Nombre y Apellido del Paciente:</h4>
 										<div class="col-sm-24">
 											<input type="text" class="form-control"
 												th:field="*{namePatient}" id="nombre"
@@ -225,13 +225,13 @@
 								</form>
 							</div>
 							
-							<h1 class="btn btn-primary btn-md left-block">Buscar Fecha</h1> 
 							
 							<div class="row clearflix">
 								
 								<form th:action="@{/feeding/buscarFecha}" method="post"
 									th:object="${patient}">
 									<div class="form-group">
+										<h4>Buscar por Fecha de Control:</h4>
 										<div class="col-sm-12">
 											<input type="date" class="form-control" th:field="*{datePatient}"
 											id="fecha" placeholder="Ingrese dato a buscar por Fecha">
@@ -246,13 +246,12 @@
 								</form>
 							</div>
 
-							<h1 class="btn btn-primary btn-md left-block">Buscar Médico</h1>
-
 							<div class="row clearfix">
 								
 								<form th:action="@{/feeding/buscarMedico}" method="post"
 									th:object="${medicalstaff}">
 									<div class="form-group">
+										<h4>Buscar por Nombre de Personal Médico:</h4>
 										<div class="col-sm-24">
 											<select class="form-control" th:field="*{namePM}">
     											<option th:each="med: ${listaPersonalMedicos}"
@@ -271,13 +270,12 @@
 								</form>
 							</div>
 
-							<h1 class="btn btn-primary btn-md left-block">Buscar Tipo Alimentacion</h1>
-
 							<div class="row clearfix">
 								
 								<form th:action="@{/feeding/buscarTipo}" method="post"
 									th:object="${feedingtype}">
 									<div class="form-group">
+										<h4>Buscar por Tipo de Alimentación:</h4>
 										<div class="col-sm-12">
 											<select class="form-control" th:field="*{nameTDA}">
 	    										<option th:each="tip: ${listaTipoAlimentacion}"
@@ -295,13 +293,12 @@
 								</form>
 							</div>
 
-							<h1 class="btn btn-primary btn-md left-block">Buscar Turno Alimentacion</h1>
-
 							<div class="row clearfix">
 								
 								<form th:action="@{/feeding/buscarTurno}" method="post"
 									th:object="${feedingshift}">
 									<div class="form-group">
+										<h4>Buscar por Turno de Alimentacion:</h4>
 										<div class="col-sm-12">
 											<select class="form-control" th:field="*{nameTRDA}">
 	    										<option th:each="tur: ${listaTurnoAlimentacion}"

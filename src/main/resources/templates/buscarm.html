@@ -202,7 +202,7 @@
 								<form th:action="@{/medication/buscar}" method="post"
 									th:object="${patient}">
 									<div class="form-group">
-										<h4>Buscar por Nombre, Apellido y/o DNI:</h4>
+										<h4>Buscar por Nombre y Apellido del Paciente:</h4>
 										<div class="col-sm-24">
 											<input type="text" class="form-control"
 												th:field="*{namePatient}" id="nombre"
@@ -267,7 +267,7 @@
 								<form th:action="@{/medication/buscarStatus}" method="post"
 									th:object="${medicinestatus}">
 									<div class="form-group">
-										<h4>Buscar por Estado de la Medicina:</h4>
+										<h4>Buscar por Estado del Medicamento:</h4>
 										<div class="col-sm-12">
 											<select class="form-control" th:field="*{nameEDLMA}">
 												<option th:each="est: ${listaEstadoMedicinas}"
@@ -292,7 +292,7 @@
 								<form th:action="@{/medication/buscarMedicine}" method="post"
 									th:object="${medicine}">
 									<div class="form-group">
-										<h4>Buscar por Nombre de la Medicina:</h4>
+										<h4>Buscar por Nombre del Medicamento:</h4>
 										<div class="col-sm-12">
 											<select class="form-control" th:field="*{nameMedicine}">
 												<option th:each="medic: ${listaMedicinas}"
