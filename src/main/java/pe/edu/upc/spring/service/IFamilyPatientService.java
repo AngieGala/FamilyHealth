@@ -9,5 +9,9 @@ public interface IFamilyPatientService {
 	public boolean grabar (FamilyPatient familypatient);
 	public void eliminar(int idFDP);
 	public Optional<FamilyPatient> listarId(int idFDP);
+	public Optional<FamilyPatient> buscarId(int idFDP);
+	
 	public List<FamilyPatient> listar();
+	public List<FamilyPatient> buscarNombre(String namePM);
+	
 }

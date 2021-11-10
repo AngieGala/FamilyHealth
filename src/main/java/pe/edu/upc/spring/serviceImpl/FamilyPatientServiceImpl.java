@@ -44,5 +44,15 @@ public class FamilyPatientServiceImpl implements IFamilyPatientService{
 	public List<FamilyPatient> listar() {
 		return dFamilyPatient.findAll();
 	}
+
+	@Override
+	public Optional<FamilyPatient> buscarId(int idFDP) {
+		return dFamilyPatient.findById(idFDP);
+	}
+
+	@Override
+	public List<FamilyPatient> buscarNombre(String namePM) {
+		return dFamilyPatient.buscarNombre(namePM);
+	}
 	
 }

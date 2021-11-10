@@ -179,8 +179,10 @@
 					<div class="card-body">
 
 						<div class="container-fluid">
-
+							<h1 class="btn btn-primary btn-md left-block">Buscar Paciente</h1>
+								
 							<div class="row clearfix">
+								
 								<form th:action="@{/feeding/buscar}" method="post"
 									 th:object="${patient}">
 									<div class="form-group">
@@ -201,8 +203,11 @@
 									</div>
 								</form>
 							</div>
-			
+							
+							<h1 class="btn btn-primary btn-md left-block">Buscar Fecha</h1> 
+							
 							<div class="row clearflix">
+								
 								<form th:action="@{/feeding/buscarFecha}" method="post"
 									th:object="${patient}">
 									<div class="form-group">
@@ -220,7 +225,10 @@
 								</form>
 							</div>
 
+							<h1 class="btn btn-primary btn-md left-block">Buscar Médico</h1>
+
 							<div class="row clearfix">
+								
 								<form th:action="@{/feeding/buscarMedico}" method="post"
 									th:object="${medicalstaff}">
 									<div class="form-group">
@@ -242,9 +250,10 @@
 								</form>
 							</div>
 
-
+							<h1 class="btn btn-primary btn-md left-block">Buscar Tipo Alimentacion</h1>
 
 							<div class="row clearfix">
+								
 								<form th:action="@{/feeding/buscarTipo}" method="post"
 									th:object="${feedingtype}">
 									<div class="form-group">
@@ -265,8 +274,10 @@
 								</form>
 							</div>
 
-							<div class="row clearfix">
+							<h1 class="btn btn-primary btn-md left-block">Buscar Turno Alimentacion</h1>
 
+							<div class="row clearfix">
+								
 								<form th:action="@{/feeding/buscarTurno}" method="post"
 									th:object="${feedingshift}">
 									<div class="form-group">
