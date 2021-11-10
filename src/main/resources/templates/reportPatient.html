@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Paciente</title>
+<title>Reporte de Paciente</title>
 
 <!-- Google Font: Source Sans Pro -->
 <link rel="stylesheet"
@@ -73,7 +73,7 @@
 					class="nav-link" data-toggle="dropdown"> <img
 						src="../../dist/img/user2-160x160.jpg" class="user-image"
 						alt="User Image"> <span class="hidden-xs">Nombre del
-							Administrador</span>
+							usuario</span>
 				</a>
 
 
@@ -86,8 +86,8 @@
 
 							<p>
 
-								<small>Nombre del Administrador</small> <small>Miembro
-									desde :25/12/2021</small>
+								<small>Nombre del usuario</small> <small>Miembro desde
+									:25/12/2021</small>
 							</p></li>
 						<!-- Menu Body -->
 
@@ -123,7 +123,7 @@
 							class="img-circle elevation-2" alt="User Image">
 					</div>
 					<div class="info">
-						<a href="#" class="d-block">Nombre del Administrador</a>
+						<a href="#" class="d-block">Nombre del usuario</a>
 					</div>
 				</div>
 
@@ -136,12 +136,12 @@
 	               with font-awesome or any other icon font library -->
 						
 						<li class="nav-item"><a th:href="@{/medicalstaff/listar}"
-							class="nav-link"> <i class="nav-icon fas fa-user-alt"></i>
+							class="nav-link"> <i class="nav-icon fas fa-user-md"></i>
 								<p>Personal Medico</p>
 						</a></li>
 						
 						<li class="nav-item"><a th:href="@{/familypatient/listar}"
-							class="nav-link"> <i class="nav-icon fad fa-user"></i>
+							class="nav-link"> <i class="nav-icon fas fa-user-friends"></i>
 								<p>Familiar del Paciente</p>
 						</a></li>
 						
@@ -164,6 +164,11 @@
 							class="nav-link"> <i class="nav-icon fas fa-hospital-user"></i>
 								<p>Medicación</p>
 						</a></li>
+						
+						<li class="nav-item"><a th:href="@{/report/buscarreporte}"
+							class="nav-link"> <i class="nav-icon fas fa-file-medical"></i>
+								<p>Reporte Medico</p>
+						</a></li>
 
 					</ul>
 				</nav>
@@ -174,26 +179,6 @@
 			<!-- /.sidebar -->
 		</aside>
 		<div class="content-wrapper">
-			<!-- Content Header (Page header) -->
-			<section class="content-header">
-				<div class="container-fluid">
-					<div class="row mb-2">
-						<div class="col-sm-6">
-							<h1>
-								Pacientes
-								<h5></h5>
-							</h1>
-						</div>
-						<div class="col-sm-6">
-							<ol class="breadcrumb float-sm-right">
-								<li class="breadcrumb-item"><a href="#">Inicio</a></li>
-								<li class="breadcrumb-item active">Pacientes</li>
-							</ol>
-						</div>
-					</div>
-				</div>
-				<!-- /.container-fluid -->
-			</section>
 
 			<!-- Main content -->
 			<section class="content">
@@ -201,95 +186,139 @@
 				<!-- Default box -->
 				<div class="card">
 					<div class="card-header">
-
-						<div class="container">
-
-							<form th:action="@{/patient/registrar}" method="post"
-								th:object="${patient}" enctype="multipart/form-data">
-								<div class="form-group">
-
-									<label for="idpatient">ID:</label> <input type="text"
-										class="form-control" th:field="*{idPatient}"></input>
-
-									<div class="form-group">
-
-
-
-
-										<label for="nombre">NOMBRE:</label> <input type="text"
-											class="form-control" th:field="*{namePatient}" id="nombre"></input>
-
-										<div class="alert alert-danger"
-											th:if="${#fields.hasErrors('namePatient')}"
-											th:errors="*{namePatient}"></div>
-
-
-
-
-										<label for="apellido">APELLIDO:</label> <input type="text"
-											class="form-control" th:field="*{lastnamePatient}"
-											id="apellido"></input>
-
-										<div class="alert alert-danger"
-											th:if="${#fields.hasErrors('lastnamePatient')}"
-											th:errors="*{lastnamePatient}"></div>
-
-
-
-
-										<label for="dni">DNI:</label> <input type="text"
-											class="form-control" th:field="*{dniPatient}" id="dni"></input>
-
-										<div class="alert alert-danger"
-											th:if="${#fields.hasErrors('dniPatient')}"
-											th:errors="*{dniPatient}"></div>
-
-
-
-
-										<label for="edad">EDAD:</label> <input type="text"
-											class="form-control" th:field="*{agePatient}" id="edad"></input>
-
-										<div class="alert alert-danger"
-											th:if="${#fields.hasErrors('agePatient')}"
-											th:errors="*{agePatient}"></div>
-
-
-
-
-										<label for="ncama"># DE CAMA:</label> <input type="text"
-											class="form-control" th:field="*{bednumberPatient}"
-											id="ncama"></input>
-
-										<div class="alert alert-danger"
-											th:if="${#fields.hasErrors('bednumberPatient')}"
-											th:errors="*{bednumberPatient}"></div>
-
-
-
-
-										<label for="fechaIngreso">FECHA DE INGRESO:</label> <input
-											type="date" th:field="*{datePatient}" class="form-control"
-											id="fechaIngreso"></input>
-
-										<div class="alert alert-danger"
-											th:if="${#fields.hasErrors('datePatient')}"
-											th:errors="*{datePatient}"></div>
-
-
-
-
-									</div>
-
-
-
-								</div>
-								<button type="submit" class="btn btn-primary">Aceptar</button>
-								<a href="/patient/listar" class="btn btn-danger">Cancelar</a>
-							</form>
-						</div>
+						<h3>
+							Reportes
+							<h5></h5>
+						</h3>
 
 					</div>
+
+
+					<div class="card-body">
+
+						<div class="container-fluid">
+
+							<div class="row clearfix">
+								<form th:action="@{/report/buscarreporte}" method="post"
+									th:object="${patient}">
+									<div class="form-group">
+										<div class="col-sm-24">
+											<h4>Buscar por Nombre o Apellido del Paciente:</h4>
+											<input type="text" class="form-control"
+												th:field="*{namePatient}" id="nombre"
+												placeholder="Ingrese datos del paciente">
+											</input>
+
+											<div align="left">
+												<button type="submit" class="btn btn-primary">Buscar</button>
+											
+											</div>
+										</div>
+
+									</div>
+								</form>
+							</div>
+
+
+							<hr class="sidebar-divider">
+							
+							<h2>Signos Vitales: </h2>
+
+							<table class="table table-bordered table-hover table-striped"
+								id="tab_logic">
+								<thead>
+									<tr>
+										<th class="text-center">CODIGO</th>
+										<th class="text-center">SATURACION</th>
+										<th class="text-center">PRESION</th>
+										<th class="text-center">TEMPERATURA</th>
+										<th class="text-center">FECHA</th>
+										<th class="text-center">PERSONAL MEDICO</th>
+										<th class="text-center">PACIENTE</th>
+										
+
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="vs: ${listaSignosVitales}">
+										<td th:text="${vs.idSV}"></td>
+										<td th:text="${vs.saturationSV}"></td>
+										<td th:text="${vs.pressureSV}"></td>
+										<td th:text="${vs.temperatureSV}"></td>
+										<td th:text="${#dates.format(vs.dateSV,'dd/MM/yyyy')}"></td>
+										<td th:text="${vs.medicalstaff.namePM + ' ' + vs.medicalstaff.lastnamePM}"></td>
+										<td th:text="${vs.patient.namePatient + ' ' + vs.patient.lastnamePatient}"></td>
+										
+
+									</tr>
+								</tbody>
+							</table>
+							
+							<hr class="sidebar-divider">
+							
+							<h2>Medicación: </h2>
+
+							<table class="table table-bordered table-hover table-striped"
+								id="tab_logic">
+								<thead>
+									<tr>
+										<th class="text-center">CODIGO</th>
+										<th class="text-center">NOMBRE DE MEDICACION</th>
+										<th class="text-center">FECHA DE MEDICACION</th>
+										<th class="text-center">ESTADO DE MEDICACION</th>
+										<th class="text-center">PERSONAL MEDICO</th>
+										<th class="text-center">PACIENTE</th>
+
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="med: ${listaMedicaciones}">
+										<td th:text="${med.idMedication}"></td>
+										<td th:text="${med.medicine.nameMedicine}"></td>
+										<td
+											th:text="${#dates.format(med.dateMedication,'dd/MM/yyyy')}"></td>
+										<td th:text="${med.medicinestatus.nameEDLMA}"></td>
+										<td
+											th:text="${med.medicalstaff.namePM + ' ' + med.medicalstaff.lastnamePM}"></td>
+										<td
+											th:text="${med.patient.namePatient + ' ' + med.patient.lastnamePatient}"></td>
+									</tr>
+								</tbody>
+							</table>
+							
+							<h2>Alimentación: </h2>
+
+							<table class="table table-bordered table-hover table-striped"
+								id="tab_logic">
+								<thead>
+									<tr>
+										<th class="text-center">CODIGO</th>
+										<th class="text-center">TIPO DE ALIMENTACION</th>
+										<th class="text-center">TURNO DE ALIMENTACION</th>
+										<th class="text-center">FECHA DE ALIMENTACION</th>
+										<th class="text-center">PERSONAL MEDICO</th>
+										<th class="text-center">PACIENTE</th>
+										
+					
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="alim: ${listaAlimentacion}">
+					    				<td th:text="${alim.idFeeding}"></td>
+					    				<td th:text="${alim.feedingtype.nameTDA}"></td>
+					    				<td th:text="${alim.feedingshift.nameTRDA}"></td>
+					    				<td th:text="${#dates.format(alim.dateFeeding,'dd/MM/yyyy')}"></td>
+					    				<td th:text="${alim.medicalstaff.namePM + ' ' + alim.medicalstaff.lastnamePM}"></td>
+					    				<td th:text="${alim.patient.namePatient + ' ' + alim.patient.lastnamePatient}"></td>
+					    				
+									</tr>
+								</tbody>
+							</table>
+
+							<p th:text="${mensaje}" class="form-text text-dark"></p>
+						</div>
+					</div>
+					<!-- /.card-body -->
 
 
 				</div>

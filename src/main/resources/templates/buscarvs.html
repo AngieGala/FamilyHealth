@@ -165,7 +165,7 @@
 								<p>Medicación</p>
 						</a></li>
 						
-						<li class="nav-item"><a th:href="@{/report/listar}"
+						<li class="nav-item"><a th:href="@{/report/buscarreporte}"
 							class="nav-link"> <i class="nav-icon fas fa-file-medical"></i>
 								<p>Reporte Medico</p>
 						</a></li>
@@ -203,10 +203,10 @@
 									th:object="${patient}">
 									<div class="form-group">
 										<div class="col-sm-24">
-											<h4>Buscar por Nombre de Paciente:</h4>
+											<h4>Buscar por Nombre o Apellido del Paciente:</h4>
 											<input type="text" class="form-control"
 												th:field="*{namePatient}" id="nombre"
-												placeholder="Ingrese dato a buscar por Nombre del paciente">
+												placeholder="Ingrese datos del paciente">
 											</input>
 
 											<div align="left">
