@@ -184,10 +184,11 @@
 								<form th:action="@{/patient/buscar}" method="post"
 									th:object="${patient}">
 									<div class="form-group">
+										<h4>Buscar por Nombre, Apellido y/o DNI:</h4>
 										<div class="col-sm-24">
 											<input type="text" class="form-control"
 												th:field="*{namePatient}" id="nombre"
-												placeholder="Ingrese dato a buscar por Nombre, Apellido, DNI o Numero de cama del Paciente">
+												placeholder="Ingrese dato del Paciente">
 											</input>
 
 											<div align="left">
@@ -205,10 +206,11 @@
 								<form th:action="@{/patient/buscarFecha}" method="post"
 									th:object="${patient}">
 									<div class="form-group">
+										<h4>Buscar por Fecha de ingreso:</h4>
 										<div class="col-sm-12">
 											<input type="date" class="form-control"
 												th:field="*{datePatient}" id="fecha"
-												placeholder="Ingrese dato a buscar por Fecha de ingreso del Paciente"></input>
+												placeholder="Ingrese Fecha"></input>
 
 											<div align="left">
 												<button type="submit" class="btn btn-primary">Buscar</button>

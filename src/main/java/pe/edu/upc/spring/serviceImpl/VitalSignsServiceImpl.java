@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import pe.edu.upc.spring.model.Feeding;
 import pe.edu.upc.spring.model.VitalSigns;
 import pe.edu.upc.spring.repository.IVitalSignsRepository;
 import pe.edu.upc.spring.service.IVitalSignsService;
@@ -67,6 +68,11 @@ public class VitalSignsServiceImpl implements IVitalSignsService{
 	@Override
 	public List<VitalSigns> buscarPersonalMedico(String namePM) {
 		return dVitalSigns.buscarPersonalMedico(namePM);
+	}
+
+	@Override
+	public List<VitalSigns> buscarApellido(String lastnamePatient) {
+		return dVitalSigns.buscarApellido(lastnamePatient);
 	}
 
 	
