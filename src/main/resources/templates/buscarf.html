@@ -134,23 +134,44 @@
 						data-widget="treeview" role="menu" data-accordion="false">
 						<!-- Add icons to the links using the .nav-icon class
 	               with font-awesome or any other icon font library -->
+						
+						
+						<li class="nav-item"><a th:href="@{/medicalstaff/listar}"
+							class="nav-link"> <i class="nav-icon fas fa-user-md"></i>
+								<p>Personal Medico</p>
+						</a></li>
+						
+						<li class="nav-item"><a th:href="@{/familypatient/listar}"
+							class="nav-link"> <i class="nav-icon fas fa-user-friends"></i>
+								<p>Familiar del Paciente</p>
+						</a></li>
+						
 						<li class="nav-item"><a th:href="@{/patient/listar}"
 							class="nav-link"> <i class="nav-icon far fa-user"></i>
-								<p>Pacientes</p>
+								<p>Paciente</p>
 						</a></li>
 
 						<li class="nav-item"><a th:href="@{/vitalsigns/listar}"
 							class="nav-link"> <i class="nav-icon fas fa-medkit"></i>
 								<p>Signos vitales</p>
 						</a></li>
+						
 						<li class="nav-item"><a th:href="@{/feeding/listar}"
 							class="nav-link"> <i class="nav-icon fas fa-list-ul"></i>
 								<p>Alimentación</p>
 						</a></li>
+						
 						<li class="nav-item"><a th:href="@{/medication/listar}"
 							class="nav-link"> <i class="nav-icon fas fa-hospital-user"></i>
 								<p>Medicación</p>
 						</a></li>
+						
+						<li class="nav-item"><a th:href="@{/report/buscarreporte}"
+							class="nav-link"> <i class="nav-icon fas fa-file-medical"></i>
+								<p>Reporte Medico</p>
+						</a></li>
+
+
 
 					</ul>
 				</nav>
@@ -179,11 +200,13 @@
 					<div class="card-body">
 
 						<div class="container-fluid">
-
+								
 							<div class="row clearfix">
+								
 								<form th:action="@{/feeding/buscar}" method="post"
 									 th:object="${patient}">
 									<div class="form-group">
+										<h4>Buscar por Nombre y Apellido del Paciente:</h4>
 										<div class="col-sm-24">
 											<input type="text" class="form-control"
 												th:field="*{namePatient}" id="nombre"
@@ -201,11 +224,14 @@
 									</div>
 								</form>
 							</div>
-			
+							
+							
 							<div class="row clearflix">
+								
 								<form th:action="@{/feeding/buscarFecha}" method="post"
 									th:object="${patient}">
 									<div class="form-group">
+										<h4>Buscar por Fecha de Control:</h4>
 										<div class="col-sm-12">
 											<input type="date" class="form-control" th:field="*{datePatient}"
 											id="fecha" placeholder="Ingrese dato a buscar por Fecha">
@@ -221,9 +247,11 @@
 							</div>
 
 							<div class="row clearfix">
+								
 								<form th:action="@{/feeding/buscarMedico}" method="post"
 									th:object="${medicalstaff}">
 									<div class="form-group">
+										<h4>Buscar por Nombre de Personal Médico:</h4>
 										<div class="col-sm-24">
 											<select class="form-control" th:field="*{namePM}">
     											<option th:each="med: ${listaPersonalMedicos}"
@@ -242,12 +270,12 @@
 								</form>
 							</div>
 
-
-
 							<div class="row clearfix">
+								
 								<form th:action="@{/feeding/buscarTipo}" method="post"
 									th:object="${feedingtype}">
 									<div class="form-group">
+										<h4>Buscar por Tipo de Alimentación:</h4>
 										<div class="col-sm-12">
 											<select class="form-control" th:field="*{nameTDA}">
 	    										<option th:each="tip: ${listaTipoAlimentacion}"
@@ -266,10 +294,11 @@
 							</div>
 
 							<div class="row clearfix">
-
+								
 								<form th:action="@{/feeding/buscarTurno}" method="post"
 									th:object="${feedingshift}">
 									<div class="form-group">
+										<h4>Buscar por Turno de Alimentacion:</h4>
 										<div class="col-sm-12">
 											<select class="form-control" th:field="*{nameTRDA}">
 	    										<option th:each="tur: ${listaTurnoAlimentacion}"
@@ -301,8 +330,8 @@
 										<th class="text-center">TIPO DE ALIMENTACION</th>
 										<th class="text-center">TURNO DE ALIMENTACION</th>
 										<th class="text-center">FECHA DE ALIMENTACION</th>
-										<th class="text-center">PACIENTE</th>
 										<th class="text-center">PERSONAL MEDICO</th>
+										<th class="text-center">PACIENTE</th>
 					
 									</tr>
 								</thead>
@@ -312,8 +341,8 @@
 					    				<td th:text="${alim.feedingtype.nameTDA}"></td>
 					    				<td th:text="${alim.feedingshift.nameTRDA}"></td>
 					    				<td th:text="${#dates.format(alim.dateFeeding,'dd/MM/yyyy')}"></td>
-					    				<td th:text="${alim.patient.namePatient + ' ' + alim.patient.lastnamePatient}"></td>
 					    				<td th:text="${alim.medicalstaff.namePM + ' ' + alim.medicalstaff.lastnamePM}"></td>
+					    				<td th:text="${alim.patient.namePatient + ' ' + alim.patient.lastnamePatient}"></td>
 									</tr>
 								</tbody>
 							</table>

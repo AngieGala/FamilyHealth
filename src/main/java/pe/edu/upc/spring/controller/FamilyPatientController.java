@@ -1,5 +1,6 @@
 package pe.edu.upc.spring.controller;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -95,6 +96,46 @@ public class FamilyPatientController {
 	public String listar(Map<String, Object> model) {
 		model.put("listaFamiliar", fpService.listar());
 		return "listFamilyPatient";
+	}
+	
+	@RequestMapping("/listarId")
+	public String listar(Map<String, Object> model, @ModelAttribute FamilyPatient familypatient) throws ParseException {
+		fpService.listarId(familypatient.getIdFDP());
+		return "listFamilyPatient";
+	}
+	
+	@RequestMapping("/irBuscar")
+	public String irBuscar(Model model ) {
+		model.addAttribute("familypatient", new FamilyPatient());
+		
+		model.addAttribute("listaFamiliar", fpService.listar());
+		return "buscarfp";
+	}
+
+	@RequestMapping("/buscar")
+	public String buscar(Map<String, Object> model, @ModelAttribute FamilyPatient familypatient ) throws ParseException, java.text.ParseException
+	{
+		//vamos a buscar por nombre, apellido, dni, o numero de cama
+		
+		List<FamilyPatient> listaFamiliar;
+		familypatient.setNamePM(familypatient.getNamePM());//capturo lo de la caja de texto
+		listaFamiliar = fpService.buscarNombre(familypatient.getNamePM()); //buscando 1
+		
+		if(listaFamiliar.isEmpty()) {
+			listaFamiliar = fpService.buscarApellido(familypatient.getNamePM());
+		}
+		
+		if(listaFamiliar.isEmpty()) {
+			listaFamiliar = fpService.buscarDNI(familypatient.getNamePM());
+		}
+		
+		if(listaFamiliar.isEmpty()) {
+			model.put("mensaje", "No se encontro");
+		}
+		
+		model.put("familypatient", new FamilyPatient());
+		model.put("listaFamiliar", listaFamiliar);
+		return "buscarfp";
 	}
 		
 }

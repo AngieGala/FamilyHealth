@@ -225,7 +225,9 @@
 								<form th:action="@{/medication/buscarFecha}" method="post"
 									th:object="${patient}">
 									<div class="form-group">
+
 										<h4>Buscar por Fecha:</h4>
+
 										<div class="col-sm-12">
 											<input type="date" class="form-control"
 												th:field="*{datePatient}" id="fecha"
@@ -244,7 +246,9 @@
 								<form th:action="@{/medication/buscarMedico}" method="post"
 									th:object="${medicalstaff}">
 									<div class="form-group">
+
 										<h4>Buscar por Personal Medico:</h4>
+
 										<div class="col-sm-24">
 											<select class="form-control" th:field="*{namePM}">
 												<option th:each="med: ${listaPersonalMedicos}"
@@ -267,7 +271,9 @@
 								<form th:action="@{/medication/buscarStatus}" method="post"
 									th:object="${medicinestatus}">
 									<div class="form-group">
+
 										<h4>Buscar por Estado de la Medicina:</h4>
+
 										<div class="col-sm-12">
 											<select class="form-control" th:field="*{nameEDLMA}">
 												<option th:each="est: ${listaEstadoMedicinas}"

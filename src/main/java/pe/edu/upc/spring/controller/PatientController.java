@@ -107,6 +107,8 @@ public class PatientController {
 	@RequestMapping("/irBuscar")
 	public String irBuscar(Model model ) {
 		model.addAttribute("patient", new Patient());
+		
+		model.addAttribute("listaPacientes", pService.listar());
 		return "buscar";
 	}
 	

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Alimentacion</title>
+<title>Busqueda de Familiar Paciente</title>
 
 <!-- Google Font: Source Sans Pro -->
 <link rel="stylesheet"
@@ -42,9 +42,10 @@
 	th:href="@{/plugins/datatables-buttons/css/buttons.bootstrap4.min.css}">
 </head>
 
-
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
+
+
 
 		<!-- Navbar -->
 		<nav
@@ -127,13 +128,13 @@
 				</div>
 
 
-
 				<!-- Sidebar Menu -->
 				<nav class="mt-2">
 					<ul class="nav nav-pills nav-sidebar flex-column"
 						data-widget="treeview" role="menu" data-accordion="false">
 						<!-- Add icons to the links using the .nav-icon class
 	               with font-awesome or any other icon font library -->
+						
 						
 						<li class="nav-item"><a th:href="@{/medicalstaff/listar}"
 							class="nav-link"> <i class="nav-icon fas fa-user-md"></i>
@@ -170,101 +171,93 @@
 								<p>Reporte Medico</p>
 						</a></li>
 
+
 					</ul>
 				</nav>
 				<!-- /.sidebar-menu -->
-				
-				
+
+
 			</div>
 			<!-- /.sidebar -->
 		</aside>
-		<!-- Content Wrapper. Contains page content -->
-
 		<div class="content-wrapper">
-			<!-- Content Header (Page header) -->
-			<section class="content-header">
-				<div class="container-fluid">
-					<div class="row mb-2">
-						<div class="col-sm-6">
-							<h1>
-								Alimentacion
-								<h5></h5>
-							</h1>
-						</div>
-						<div class="col-sm-6">
-							<ol class="breadcrumb float-sm-right">
-								<li class="breadcrumb-item"><a href="#">Inicio</a></li>
-								<li class="breadcrumb-item active">Alimentacion</li>
-							</ol>
-						</div>
-					</div>
-				</div>
-				<!-- /.container-fluid -->
-			</section>
-			
+
 			<!-- Main content -->
 			<section class="content">
 
 				<!-- Default box -->
 				<div class="card">
 					<div class="card-header">
-	
+						<h3>
+							Busquedas de Familiar Paciente
+							<h5></h5>
+						</h3>
 
-    					<a 	th:href="@{/feeding/irRegistrar}"
-    						id="add-row" type="button" class="btn btn-primary btn-md left-block">
-    						<span class="glyphicon glyphicon-plus"></span> Alimentacion
-    					</a>
-
-                        <a 	th:href="@{/feeding/irBuscar}"
-    						id="add-row" type="button" class="btn btn-primary btn-md left-block">
-    						<span class="glyphicon glyphicon-search"></span> Buscar
-    					</a>
-    					
 					</div>
-    				<div class="card-body">
-    				
-    					<table class="table table-bordered table-hover table-striped" id="tab_logic">
-    						<thead>
-    							<tr>
-    								<th class="text-center">CODIGO</th>
-    								<th class="text-center">TIPO DE ALIMENTACION</th>
-    								<th class="text-center">TURNO DE ALIMENTACION</th>
-    								<th class="text-center">FECHA DE ALIMENTACION</th>
-    								<th class="text-center">PACIENTE</th>
-    								<th class="text-center">PERSONAL MEDICO</th>
-    								<th class="text-center">OPERACIONES</th>
-    							</tr>
-    						</thead>
-    						
-    						<tbody>
-    							<tr th:each="alim: ${listaAlimentacion}">
-    								<td th:text="${alim.idFeeding}"></td>
-    								<td th:text="${alim.feedingtype.nameTDA}"></td>
-    								<td th:text="${alim.feedingshift.nameTRDA}"></td>
-    								<td th:text="${#dates.format(alim.dateFeeding,'dd/MM/yyyy')}"></td>
-    								<td th:text="${alim.patient.namePatient + ' ' + alim.patient.lastnamePatient}"></td>
-    								<td th:text="${alim.medicalstaff.namePM + ' ' + alim.medicalstaff.lastnamePM}"></td>
-    								<td>
-    									<div class="btn-group">
 
-											<a th:href="@{'/feeding/modificar/'}+${alim.idFeeding}"
-												id="add-row" type="button" class="btn btn-warning"> <i
-												class="fas fa-pencil-alt" style="color: white;"> </i>
-											</a> 
-											<a th:href="@{/feeding/eliminar?id=}+${alim.idFeeding}"
-												id="add-row" type="button" class="btn btn-danger"> <i
-												class="fa fa-times" style="color: white;"> </i>
-											</a>
 
+					<div class="card-body">
+
+						<div class="container-fluid">
+								
+							<div class="row clearfix">
+
+
+								<form th:action="@{/familypatient/buscar}" method="post"
+									th:object="${familypatient}">
+									<div class="form-group">
+										<h4>Buscar por Nombre y Apellido del Familiar del Paciente:</h4>
+										<div class="col-sm-24">
+											<input type="text" class="form-control" th:field="*{namePM}"
+												id="nombre"
+												placeholder="Ingrese dato a buscar por Nombre del familiar del paciente">
+											</input>
+					
+											<div align="left">
+												<button type="submit" class="btn btn-primary">Buscar</button>
+												<a href="/familypatient/listar" class="btn btn-danger">Cancelar</a>
+											</div>
 										</div>
-									</td>
-    							</tr>
-							</tbody>
-						</table>
+					
+									</div>
+								</form>
+							
+							</div>
+
+      						 <hr class="sidebar-divider">
+
+							<table class="table table-bordered table-hover table-striped"
+								id="tab_logic">
+								<thead>
+									<tr>
+											<th class="text-center">CODIGO</th>
+					    					<th class="text-center">NOMBRE</th>
+					    					<th class="text-center">APELLIDO</th>
+					    					<th class="text-center">NUMERO</th>
+					    					<th class="text-center">DNI</th>
+					
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="fp: ${listaFamiliar}">
+					    					<td th:text="${fp.idFDP}"></td>
+					    					<td th:text="${fp.namePM}"></td>
+					    					<td th:text="${fp.lastnameFDP}"></td>
+					    					<td th:text="${fp.numberFDP}"></td>
+					    					<td th:text="${fp.dniFDP}"></td>
+					
+									</tr>
+								</tbody>
+							</table>
+
+
+							<p th:text="${mensaje}" class="form-text text-dark"></p>
+						</div>
 					</div>
-    				<!-- /.card-body -->
-    				
-    			</div>
+					<!-- /.card-body -->
+
+
+				</div>
 				<!-- /.card -->
 
 			</section>
@@ -284,6 +277,7 @@
 		<!-- /.control-sidebar -->
 	</div>
 	<!-- ./wrapper -->
+
 
 	<!-- jQuery -->
 	<script th:src="@{/plugins/jquery/jquery.min.js}"></script>
@@ -358,29 +352,10 @@
 	</script>
 </body>
 </html>
-    						
-    								
-    								
-    								
-    								
-    								
-    								
-    								
-    								
-    								
-    								
-    							</tr>
-    						</tbody>
-    					</table> 
-    					
-    				</div>
-    			</div>
-    			<div th:if="${mensaje}" class="alert alert-danger">
-    				<p th:text="${mensaje}"></p>
-    			</div>
-    		</form>
-    	</div>
-    	<div th:replace="fragments/footer :: footer"></div>
-	</body>
+
+		<p th:text="${mensaje}" class="form-text text-dark"></p>
+	</div>
+	<div th:replace="fragments/footer :: footer"></div>
+</body>
 
 </html>

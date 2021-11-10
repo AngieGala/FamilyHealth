@@ -44,5 +44,27 @@ public class FamilyPatientServiceImpl implements IFamilyPatientService{
 	public List<FamilyPatient> listar() {
 		return dFamilyPatient.findAll();
 	}
+
+	@Override
+	public Optional<FamilyPatient> buscarId(int idFDP) {
+		return dFamilyPatient.findById(idFDP);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<FamilyPatient> buscarNombre(String namePM) {
+		return dFamilyPatient.buscarNombre(namePM);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<FamilyPatient> buscarApellido(String lastnameFDP) {
+		return dFamilyPatient.buscarApellido(lastnameFDP);
+	}
+
+	@Override
+	public List<FamilyPatient> buscarDNI(String dniFDP) {
+		return dFamilyPatient.buscarDNI(dniFDP);
+	}
 	
 }
