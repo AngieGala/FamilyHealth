@@ -134,18 +134,18 @@
 						data-widget="treeview" role="menu" data-accordion="false">
 						<!-- Add icons to the links using the .nav-icon class
 	               with font-awesome or any other icon font library -->
-						
-						
+
+
 						<li class="nav-item"><a th:href="@{/medicalstaff/listar}"
 							class="nav-link"> <i class="nav-icon fas fa-user-md"></i>
 								<p>Personal Medico</p>
 						</a></li>
-						
+
 						<li class="nav-item"><a th:href="@{/familypatient/listar}"
 							class="nav-link"> <i class="nav-icon fas fa-user-friends"></i>
 								<p>Familiar del Paciente</p>
 						</a></li>
-						
+
 						<li class="nav-item"><a th:href="@{/patient/listar}"
 							class="nav-link"> <i class="nav-icon far fa-user"></i>
 								<p>Paciente</p>
@@ -155,17 +155,17 @@
 							class="nav-link"> <i class="nav-icon fas fa-medkit"></i>
 								<p>Signos vitales</p>
 						</a></li>
-						
+
 						<li class="nav-item"><a th:href="@{/feeding/listar}"
 							class="nav-link"> <i class="nav-icon fas fa-list-ul"></i>
 								<p>Alimentación</p>
 						</a></li>
-						
+
 						<li class="nav-item"><a th:href="@{/medication/listar}"
 							class="nav-link"> <i class="nav-icon fas fa-hospital-user"></i>
 								<p>Medicación</p>
 						</a></li>
-						
+
 						<li class="nav-item"><a th:href="@{/report/buscarreporte}"
 							class="nav-link"> <i class="nav-icon fas fa-file-medical"></i>
 								<p>Reporte Medico</p>
@@ -181,24 +181,31 @@
 			</div>
 			<!-- /.sidebar -->
 		</aside>
-		
-		
-		<div class="container py-4">
 
-        <div class="card bg-danger text-white">
-            <div class="card-header">Error:Acceso Negado!</div>
-            <div class="card-body">
-                <h5 class="card-title">
-                    No tienes permiso para acceder a este recurso
-                </h5>
+		<div class="content-wrapper">
+			<section class="content">
+				<div class="card">
+					<div class="card-body">
+
+						<div class="card bg-danger text-white">
+							<div class="card-header">Error: Acceso Negado!</div>
+							<div class="card-body">
+								<h5 class="card-title">No tienes permiso para acceder a
+									este recurso</h5>
 
 
-            </div>
-        </div>
-    </div>
-		
-		
-		
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+			</section>
+
+		</div>
+
+
+
 		<!-- /.content-wrapper -->
 		<footer class="main-footer">
 			<strong>Copyright &copy; 2014-2021 <a href="index.html">Family
@@ -289,4 +296,3 @@
 	</script>
 </body>
 </html>
-					
