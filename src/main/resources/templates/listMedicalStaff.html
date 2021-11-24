@@ -238,13 +238,13 @@
     						
     						<tbody>
     							<tr th:each="ms: ${listaPersonalMedicos}">
-    								<td th:text="${ms.idPM}"></td>
-    								<td th:text="${ms.namePM}"></td>
-    								<td th:text="${ms.lastnamePM}"></td>
-    								<td th:text="${ms.numberPM}"></td>
-    								<td th:text="${ms.dniPMe}"></td>
-     								<td th:text="${ms.typemedical.nameTDPM}"></td>
-    								<td>
+    								<td align="center" th:text="${ms.idPM}"></td>
+    								<td align="center" th:text="${ms.namePM}"></td>
+    								<td align="center" th:text="${ms.lastnamePM}"></td>
+    								<td align="center" th:text="${ms.numberPM}"></td>
+    								<td align="center" th:text="${ms.dniPMe}"></td>
+     								<td align="center" th:text="${ms.typemedical.nameTDPM}"></td>
+    								<td align="center" >
     									<div class="btn-group">
 
 											<a th:href="@{'/medicalstaff/modificar/'}+${ms.idPM}"
