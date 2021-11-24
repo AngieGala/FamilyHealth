@@ -334,15 +334,15 @@
 								</thead>
 								<tbody>
 									<tr th:each="med: ${listaMedicaciones}">
-										<td th:text="${med.idMedication}"></td>
-										<td th:text="${med.medicine.nameMedicine}"></td>
+										<td align="center"th:text="${med.idMedication}"></td>
+										<td align="center" th:text="${med.medicine.nameMedicine}"></td>
 										<td
-											th:text="${#dates.format(med.dateMedication,'dd/MM/yyyy')}"></td>
-										<td th:text="${med.medicinestatus.nameEDLMA}"></td>
+											align="center" th:text="${#dates.format(med.dateMedication,'dd/MM/yyyy')}"></td>
+										<td align="center" th:text="${med.medicinestatus.nameEDLMA}"></td>
 										<td
-											th:text="${med.medicalstaff.namePM + ' ' + med.medicalstaff.lastnamePM}"></td>
+											align="center" th:text="${med.medicalstaff.namePM + ' ' + med.medicalstaff.lastnamePM}"></td>
 										<td
-											th:text="${med.patient.namePatient + ' ' + med.patient.lastnamePatient}"></td>
+											align="center" th:text="${med.patient.namePatient + ' ' + med.patient.lastnamePatient}"></td>
 									</tr>
 								</tbody>
 							</table>
