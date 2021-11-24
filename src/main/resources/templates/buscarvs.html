@@ -281,13 +281,13 @@
 								</thead>
 								<tbody>
 									<tr th:each="vs: ${listaSignosVitales}">
-										<td th:text="${vs.idSV}"></td>
-										<td th:text="${vs.saturationSV}"></td>
-										<td th:text="${vs.pressureSV}"></td>
-										<td th:text="${vs.temperatureSV}"></td>
-										<td th:text="${#dates.format(vs.dateSV,'dd/MM/yyyy')}"></td>
-										<td th:text="${vs.patient.namePatient + ' ' + vs.patient.lastnamePatient}"></td>
-										<td th:text="${vs.medicalstaff.namePM + ' ' + vs.medicalstaff.lastnamePM}"></td>
+										<td align="center" th:text="${vs.idSV}"></td>
+										<td align="center" th:text="${vs.saturationSV}"></td>
+										<td align="center" th:text="${vs.pressureSV}"></td>
+										<td align="center" th:text="${vs.temperatureSV}"></td>
+										<td align="center" th:text="${#dates.format(vs.dateSV,'dd/MM/yyyy')}"></td>
+										<td align="center" th:text="${vs.patient.namePatient + ' ' + vs.patient.lastnamePatient}"></td>
+										<td align="center" th:text="${vs.medicalstaff.namePM + ' ' + vs.medicalstaff.lastnamePM}"></td>
 
 									</tr>
 								</tbody>

@@ -40,6 +40,23 @@
 	th:href="@{/plugins/datatables-responsive/css/responsive.bootstrap4.min.css}">
 <link rel="stylesheet"
 	th:href="@{/plugins/datatables-buttons/css/buttons.bootstrap4.min.css}">
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+</link>
+
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+	
+</script>
+
+<script src="//code.jquery.com/jquery-1.11.1.min.js">
+	
+</script>
+
 </head>
 
 
@@ -211,11 +228,11 @@
 					<div class="card-header">
 
 						<a th:href="@{/patient/irRegistrar}" id="add-row" type="button"
-							class="btn btn-primary btn-md left-block"> <span
+							class="btn btn-success"> <span 
 							class="glyphicon glyphicon-plus"></span> Paciente
 						</a> 
 						<a th:href="@{/patient/irBuscar}" id="add-row" type="button"
-							class="btn btn-primary btn-md left-block"> <span
+							class="btn btn-primary"> <span
 							class="glyphicon glyphicon-search"></span> Buscar
 						</a>
 
@@ -239,14 +256,14 @@
 
 							<tbody>
 								<tr th:each="pat: ${listaPacientes}">
-									<td th:text="${pat.idPatient}"></td>
-									<td th:text="${pat.namePatient}"></td>
-									<td th:text="${pat.lastnamePatient}"></td>
-									<td th:text="${pat.dniPatient}"></td>
-									<td th:text="${pat.agePatient}"></td>
-									<td th:text="${pat.bednumberPatient}"></td>
-									<td th:text="${#dates.format(pat.datePatient,'dd/MM/yyyy')}"></td>
-									<td>
+									<td align="center" th:text="${pat.idPatient}"></td>
+									<td align="center" th:text="${pat.namePatient}"></td>
+									<td align="center" th:text="${pat.lastnamePatient}"></td>
+									<td align="center" th:text="${pat.dniPatient}"></td>
+									<td align="center" th:text="${pat.agePatient}"></td>
+									<td align="center" th:text="${pat.bednumberPatient}"></td>
+									<td align="center" th:text="${#dates.format(pat.datePatient,'dd/MM/yyyy')}"></td>
+									<td align="center">
 										<div class="btn-group">
 
 											<a th:href="@{'/patient/modificar/'}+${pat.idPatient}"
