@@ -337,12 +337,12 @@
 								</thead>
 								<tbody>
 									<tr th:each="alim: ${listaAlimentacion}">
-					    				<td th:text="${alim.idFeeding}"></td>
-					    				<td th:text="${alim.feedingtype.nameTDA}"></td>
-					    				<td th:text="${alim.feedingshift.nameTRDA}"></td>
-					    				<td th:text="${#dates.format(alim.dateFeeding,'dd/MM/yyyy')}"></td>
-					    				<td th:text="${alim.medicalstaff.namePM + ' ' + alim.medicalstaff.lastnamePM}"></td>
-					    				<td th:text="${alim.patient.namePatient + ' ' + alim.patient.lastnamePatient}"></td>
+					    				<td align="center" th:text="${alim.idFeeding}"></td>
+					    				<td align="center" th:text="${alim.feedingtype.nameTDA}"></td>
+					    				<td align="center" th:text="${alim.feedingshift.nameTRDA}"></td>
+					    				<td align="center" th:text="${#dates.format(alim.dateFeeding,'dd/MM/yyyy')}"></td>
+					    				<td align="center" th:text="${alim.medicalstaff.namePM + ' ' + alim.medicalstaff.lastnamePM}"></td>
+					    				<td align="center" th:text="${alim.patient.namePatient + ' ' + alim.patient.lastnamePatient}"></td>
 									</tr>
 								</tbody>
 							</table>
