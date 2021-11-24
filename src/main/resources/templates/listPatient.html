@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -88,8 +89,8 @@
 				<li class="dropdown user user-menu"><a href="#"
 					class="nav-link" data-toggle="dropdown"> <img
 						src="../../dist/img/user2-160x160.jpg" class="user-image"
-						alt="User Image"> <span class="hidden-xs">Nombre del
-							usuario</span>
+						alt="User Image"> <span class="hidden-xs"
+						sec:authentication="name"></span>
 				</a>
 
 
@@ -99,20 +100,22 @@
 						<li class="user-header"><img
 							src="../../dist/img/user2-160x160.jpg" class="user-image"
 							alt="User Image">
-
 							<p>
-
-								<small>Nombre del usuario</small> <small>Miembro desde
-									:25/12/2021</small>
+								<p sec:authentication="name" > </p> 
+								<small>Miembro desde:25/11/2021</small>
 							</p></li>
 						<!-- Menu Body -->
 
 						<!-- Menu Footer-->
 						<li class="user-footer">
-
+						
 							<div class="pull-right">
-								<a href="#" class="btn btn-danger btn-flat dropdown-footer">Salir</a>
+								<a th:href="@{/login}" id="add-row" type="button"
+									class="btn btn-danger"> <i class="fas fa-sign-out-alt"
+									style="color: white;"> Cerrar Sesion</i>
+								</a>
 							</div>
+							
 						</li>
 					</ul></li>
 
@@ -139,7 +142,7 @@
 							class="img-circle elevation-2" alt="User Image">
 					</div>
 					<div class="info">
-						<a href="#" class="d-block">Nombre del usuario</a>
+						<a href="#" class="d-block" sec:authentication="name"></a>
 					</div>
 				</div>
 
@@ -151,17 +154,17 @@
 						data-widget="treeview" role="menu" data-accordion="false">
 						<!-- Add icons to the links using the .nav-icon class
 	               with font-awesome or any other icon font library -->
-						
+
 						<li class="nav-item"><a th:href="@{/medicalstaff/listar}"
 							class="nav-link"> <i class="nav-icon fas fa-user-md"></i>
 								<p>Personal Medico</p>
 						</a></li>
-						
+
 						<li class="nav-item"><a th:href="@{/familypatient/listar}"
 							class="nav-link"> <i class="nav-icon fas fa-user-friends"></i>
 								<p>Familiar del Paciente</p>
 						</a></li>
-						
+
 						<li class="nav-item"><a th:href="@{/patient/listar}"
 							class="nav-link"> <i class="nav-icon far fa-user"></i>
 								<p>Paciente</p>
@@ -171,17 +174,17 @@
 							class="nav-link"> <i class="nav-icon fas fa-medkit"></i>
 								<p>Signos vitales</p>
 						</a></li>
-						
+
 						<li class="nav-item"><a th:href="@{/feeding/listar}"
 							class="nav-link"> <i class="nav-icon fas fa-list-ul"></i>
 								<p>Alimentación</p>
 						</a></li>
-						
+
 						<li class="nav-item"><a th:href="@{/medication/listar}"
 							class="nav-link"> <i class="nav-icon fas fa-hospital-user"></i>
 								<p>Medicación</p>
 						</a></li>
-						
+
 						<li class="nav-item"><a th:href="@{/report/buscarreporte}"
 							class="nav-link"> <i class="nav-icon fas fa-file-medical"></i>
 								<p>Reporte Medico</p>
@@ -228,10 +231,9 @@
 					<div class="card-header">
 
 						<a th:href="@{/patient/irRegistrar}" id="add-row" type="button"
-							class="btn btn-success"> <span 
+							class="btn btn-success"> <span
 							class="glyphicon glyphicon-plus"></span> Paciente
-						</a> 
-						<a th:href="@{/patient/irBuscar}" id="add-row" type="button"
+						</a> <a th:href="@{/patient/irBuscar}" id="add-row" type="button"
 							class="btn btn-primary"> <span
 							class="glyphicon glyphicon-search"></span> Buscar
 						</a>
@@ -262,7 +264,8 @@
 									<td align="center" th:text="${pat.dniPatient}"></td>
 									<td align="center" th:text="${pat.agePatient}"></td>
 									<td align="center" th:text="${pat.bednumberPatient}"></td>
-									<td align="center" th:text="${#dates.format(pat.datePatient,'dd/MM/yyyy')}"></td>
+									<td align="center"
+										th:text="${#dates.format(pat.datePatient,'dd/MM/yyyy')}"></td>
 									<td align="center">
 										<div class="btn-group">
 
