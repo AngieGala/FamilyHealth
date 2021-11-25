@@ -1,6 +1,4 @@
 target/
-.settings/
+.setting
 .mvn/
 
-#Para el application properties
-src/main/resources/application.properties
